@@ -1,15 +1,15 @@
-/node_modules
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
-.env
-.env.backup
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
+#/node_modules
+#/public/hot
+#/public/storage
+#/storage/*.key
+#/vendor
+#.env
+#.env.backup
+#.phpunit.result.cache
+#Homestead.json
+#Homestead.yaml
+#npm-debug.log
+#yarn-error.log
 
 
 # ignorar archivos de registro y bases de datos 
@@ -466,3 +466,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+
+
