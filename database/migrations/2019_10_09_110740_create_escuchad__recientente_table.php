@@ -20,7 +20,7 @@ class CreateEscuchadReciententeTable extends Migration
             $table->timestamps();
 
             $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_cancion')->references('id_cancion')->on('cancion')->onDelete('cascade');
+            $table->foreign('id_cancion')->references('id_cancion')->on('canciones')->onDelete('cascade');
         });
     }
 
