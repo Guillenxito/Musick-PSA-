@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCancionTable extends Migration
+class CreateCancionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateCancionTable extends Migration
      */
     public function up()
     {
-        Schema::create('cancion', function (Blueprint $table) {
+        Schema::create('canciones', function (Blueprint $table) {
             $table->bigIncrements('id_cancion');
             $table->string('titulo');
             $table->unsignedBigInteger('id_disco');
             $table->unsignedBigInteger('id_autor');
             $table->unsignedBigInteger('id_estilo');
             $table->timestamps();
-            $table->foreign('id_disco')->references('id_disco')->on('disco')->onDelete('cascade');
-            $table->foreign('id_autor')->references('id_autor')->on('autor')->onDelete('cascade');
-            $table->foreign('id_estilo')->references('id_estilo')->on('estilo')->onDelete('cascade');
+            $table->foreign('id_disco')->references('id_disco')->on('discos')->onDelete('cascade');
+            $table->foreign('id_autor')->references('id_autor')->on('autores')->onDelete('cascade');
+            $table->foreign('id_estilo')->references('id_estilo')->on('estilos')->onDelete('cascade');
             
         });
     }
@@ -34,6 +34,6 @@ class CreateCancionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cancion');
+        Schema::dropIfExists('canciones');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateListaReproduccionTable extends Migration
+class CreateListasReproduccionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateListaReproduccionTable extends Migration
      */
     public function up()
     {
-        Schema::create('lista_reproduccion', function (Blueprint $table) {
+        Schema::create('listas_reproduccion', function (Blueprint $table) {
             $table->bigIncrements('id_lista');
             $table->string('nombre');
             $table->unsignedBigInteger('id_usuario');
@@ -21,7 +21,7 @@ class CreateListaReproduccionTable extends Migration
             $table->timestamps();
 
             $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_cancion')->references('id_cancion')->on('cancion')->onDelete('cascade');
+            $table->foreign('id_cancion')->references('id_cancion')->on('canciones')->onDelete('cascade');
         });
     }
 
@@ -32,6 +32,6 @@ class CreateListaReproduccionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lista_reproduccion');
+        Schema::dropIfExists('listas_reproduccion');
     }
 }

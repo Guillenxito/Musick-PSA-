@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAutorTable extends Migration
+class CreateAutoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAutorTable extends Migration
      */
     public function up()
     {
-        Schema::create('autor', function (Blueprint $table) {
+        Schema::create('autores', function (Blueprint $table) {
             $table->bigIncrements('id_autor');
             $table->string('nombre');
             $table->text('informacion');
@@ -28,6 +28,6 @@ class CreateAutorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('autor');
+        Schema::dropIfExists('autores');
     }
 }
