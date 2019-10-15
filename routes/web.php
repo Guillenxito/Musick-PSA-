@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::get('/', 'MiControlador@index');
 Route::get('/home', 'MiControlador@home');
 Route::get('/login', 'MiControlador@login');
+
+Route::get('/show/{id}', 'UserController@show');
