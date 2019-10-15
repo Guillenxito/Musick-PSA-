@@ -51,6 +51,11 @@ class UserController extends Controller
         return view('user.profile', ['user' => User::findOrFail($id)]);
     }
 
+    public function showAll()
+    {
+        return view('user.all_profile', ['users' => User::all()]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
