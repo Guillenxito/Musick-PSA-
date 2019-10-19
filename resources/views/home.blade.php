@@ -1,5 +1,7 @@
 @extends('layouts.plantilla')
 
 @section('cuerpo')
-    @include('layouts.categoriaHome')
+    @foreach($categorias as $categoria)
+        @include('layouts.categoriaHome')
+    @endforeach
 @endsection
