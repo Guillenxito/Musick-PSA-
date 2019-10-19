@@ -1,5 +1,6 @@
 @extends('layouts.plantilla')
 
+<<<<<<< HEAD
 @section('cuerpo')    
     @foreach ( $categorias as $nombreCategoria => $categoria )
             @if ( $nombreCategoria !== 'estilos' )
@@ -58,4 +59,10 @@
             @endif
     @endforeach
 
+=======
+@section('cuerpo')
+    @foreach($categorias as $categoria)
+        @include('layouts.categoriaHome')
+    @endforeach
+>>>>>>> 0f57f40... cambios blade
 @endsection
