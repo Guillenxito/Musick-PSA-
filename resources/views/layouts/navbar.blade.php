@@ -1,5 +1,5 @@
 <header>		
-		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		  <a class="navbar-brand" href="#">
 		  	<img src="../img/logo.jpg" alt="logo" class="rounded-circle  w-25 logo">
 		  </a>
