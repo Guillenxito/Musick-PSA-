@@ -24,3 +24,7 @@ Route::get('/login', 'MiControlador@login');
 
 Route::get('/user/show/{id}', 'UserController@show');
 Route::get('/users/showAll', 'UserController@showAll');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
