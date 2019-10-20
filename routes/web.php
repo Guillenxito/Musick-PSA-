@@ -25,6 +25,11 @@ Route::get('/login', 'MiControlador@login');
 Route::get('/user/show/{id}', 'UserController@show');
 Route::get('/users/showAll', 'UserController@showAll');
 
+<<<<<<< Updated upstream
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+=======
+
+Route::get('/album/show/{id}', 'AlbumController@show');
+>>>>>>> Stashed changes
