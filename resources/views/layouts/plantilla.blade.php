@@ -20,8 +20,7 @@
 </head>
 <body>
     <div class="cabecera">
-    @yield('cabecera')
-    @include('layouts.navbar')
+        @include('layouts.navbar')
     </div>
 
     <div class="cuerpo">
