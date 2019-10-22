@@ -24,6 +24,8 @@ Route::get('/login', 'MiControlador@login');
 
 Route::get('/user/show/{id}', 'UserController@show');
 Route::get('/users/showAll', 'UserController@showAll');
+Route::get('/user/destroy/{id}', 'UserController@destroy');
+
 
 Auth::routes();
 
