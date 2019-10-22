@@ -2,42 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class AlbumController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
     /**
      * Display the specified resource.
      *
@@ -46,41 +16,18 @@ class AlbumController extends Controller
      */
     public function show($id)
     {
-        $datos = (array) DB::table('albums')->where('id_album', $id)->first();
-        return view('layouts.songList', $datos);
-    }
+        // id_song, titulo, id_album, id_author, id_style
+        $temp = DB::table('songs')->where('id_album', '=', $id)->get();
+        $datos['canciones'] = json_decode(json_encode($temp), true);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        // id_song, titulo, id_album, id_author, id_style
+        $temp = DB::table('albums')->where('id_album', '=', $id)->get();
+        $datos['album'] = json_decode(json_encode($temp[0]), true);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        // id_author, nombre, informacion,
+        $temp =  DB::table('authors')->where('id_author', '=', $datos['canciones'][0]['id_author'])->get();
+        $datos['autor'] = json_decode(json_encode($temp[0]), true);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('list.album', ['datos' => $datos]);
     }
 }
