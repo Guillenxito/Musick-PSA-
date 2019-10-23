@@ -1,31 +1,6 @@
 @extends('layouts.plantilla')
 
-<<<<<<< HEAD
-
-@include('layouts.navbar')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                             {{ session('id') }}
-                        </div>
-                    @endif
-                    You are logged in!
-
-                    
-                   
-=======
-@section('cuerpo')
-    <?= getcwd();?>
-    
+@section('cuerpo')    
     @foreach ( $categorias as $nombreCategoria => $categoria )
             @if ( $nombreCategoria !== 'estilos' )
                 <div class="container text-center">
@@ -42,7 +17,6 @@
                         </div>
                     @endforeach
                     </div>
->>>>>>> Pablo.Alvarez
                 </div>
             @else
                 <div class="bd-example">
