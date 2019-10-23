@@ -22,11 +22,11 @@ class MiControlador extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function home()
-    {
-        //
-        return view('home');
-    }
+    // public function home()
+    // {
+    //     //
+    //     return view('home');
+    // }
 
     /**
      * Muestra la página login.

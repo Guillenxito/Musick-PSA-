@@ -7,6 +7,7 @@
     <title>Document</title>
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <style>
+        /*
         .cabecera {
             background-color: red;
         }
@@ -16,6 +17,7 @@
         .pie {
             background-color: yellow;
         }
+        */
     </style>
 </head>
 <body>

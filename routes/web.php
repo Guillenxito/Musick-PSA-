@@ -18,7 +18,8 @@ Route::get('/', function () {
 
 
 Route::get('/', 'MiControlador@index');
-Route::get('/home', 'MiControlador@home');
+// Route::get('/home', 'MiControlador@home');
+
 Route::get('/login', 'MiControlador@login');
 
 
@@ -27,4 +28,5 @@ Route::get('/users/showAll', 'UserController@showAll');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@home');
