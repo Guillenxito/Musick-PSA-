@@ -30,3 +30,5 @@ Route::get('/user/destroy/{id}', 'UserController@destroy');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/album/show/{id}', 'AlbumController@show');
