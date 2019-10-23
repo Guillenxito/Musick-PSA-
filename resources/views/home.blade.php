@@ -14,10 +14,13 @@
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
+                             {{ session('id') }}
                         </div>
                     @endif
-
                     You are logged in!
+
+                    
+                   
                 </div>
             </div>
         </div>
