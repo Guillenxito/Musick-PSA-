@@ -47,8 +47,8 @@ class User extends Authenticatable
         return $this->hasOne(Journal::class);
     }
 
-    public function lists()
+    public function playLists()
     {
-        return $this->hasMany(List::class);
+        return $this->hasMany(PlayList::class);
     }
 }
