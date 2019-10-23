@@ -32,3 +32,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/album/show/{id}', 'AlbumController@show');
+
+Route::post('reproductor/play/{id}', 'ReproductorController@play');
