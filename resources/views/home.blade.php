@@ -12,7 +12,7 @@
                                 <h5 class="card-title text-light">{{ $artista }}</h5>
                             </div>
                             <a href="#">
-                                <img class="card-img-top" src="<?= getcwd();?>/img/{{ $artista }}.jpg" alt="Card image cap">
+                                <img class="card-img-top" src="../img/{{ $artista }}.jpg" alt="Card image cap">
                             </a>
                         </div>
                     @endforeach
@@ -23,7 +23,7 @@
                 <div id="carruselEstilos" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                     @foreach ( $categoria as $nombreEstilo)
-                        @if ($nombreEstilo == 'Rock')
+                        @if ($nombreEstilo == 'rock')
                             <li data-target="#carruselEstilos" data-slide-to="{{ $nombreEstilo }}" class="active">
                         @else
                             <li data-target="#carruselEstilos" data-slide-to="{{ $nombreEstilo }}">
@@ -33,12 +33,12 @@
                     </ol>
                     <div class="carousel-inner">
                     @foreach ( $categoria as $nombreEstilo => $descripcion )
-                        @if ($nombreEstilo == 'Rock')
+                        @if ($nombreEstilo == 'rock')
                         <div class="carousel-item active">
                         @else
                         <div class="carousel-item">
                         @endif
-                            <img src="<?= getcwd();?>/img/{{ $nombreEstilo }}.jpg" class="d-block w-100" alt="...">
+                            <img src="../img/{{ $nombreEstilo }}.jpg" class="d-block w-100" alt="...">
                             <div class="carousel-caption rounded d-none d-md-block bg-dark ">
                                 <h5>{{ $nombreEstilo }}</h5>
                                 <p>{{ $descripcion }}</p>

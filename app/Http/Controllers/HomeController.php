@@ -32,34 +32,34 @@ class HomeController extends Controller
               
         $categorias = [
             'tendencias' => [
-                'logo',
-                'logo',
-                'logo',
-                'logo',
-                'logo',
-                'logo'
+                'paramore',
+                'paramore',
+                'paramore',
+                'paramore',
+                'paramore',
+                'paramore'
             ],
             'estilos' => [
-                'Rock' => 'La mejor música Rock',
-                'HipHop' => 'Disfruta del mejor HipHop',
-                'Punk' => 'La música más rebelde.',
-                'Música Urbana' => 'Disfruta de lo más callejera.'
+                'rock' => 'La mejor música Rock',
+                'hiphop' => 'Disfruta del mejor HipHop',
+                'punk' => 'La música más rebelde.',
+                'musicaurbana' => 'Disfruta de lo más callejera.'
             ],
             'recomendados' => [
-                'logo',
-                'logo',
-                'logo',
-                'logo',
-                'logo',
-                'logo'
+                'paramore',
+                'paramore',
+                'paramore',
+                'paramore',
+                'paramore',
+                'paramore'
             ],
             'novedades'  => [
-                'logo',
-                'logo',
-                'logo',
-                'logo',
-                'logo',
-                'logo'
+                'paramore',
+                'paramore',
+                'paramore',
+                'paramore',
+                'paramore',
+                'paramore'
             ]
         ];
         
