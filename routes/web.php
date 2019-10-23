@@ -28,7 +28,7 @@ Route::get('/users/showAll', 'UserController@showAll');
 Route::get('/user/destroy/{id}', 'UserController@destroy');
 
 
-Auth::routes();
+Auth::routes();//Con esto se pide autentificacion para todas las paginas.
 
 Route::get('/album/show/{id}', 'AlbumController@show');
 
