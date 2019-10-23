@@ -1,4 +1,5 @@
 @extends('layouts.songList')
+
 @section('title', 'Album')
 
 @section('cuerpo')
@@ -19,7 +20,7 @@ echo "</pre>";
         <div class="col-sm-12 col-md-7 my-auto text-center text-md-left" id="info">
             <h2>ÁBUM</h2>
             <h1>{{ $datos['album']['nombre'] }}</h1>
-            <h2>Paramore</h2>
+            <h2>{{ $datos['autor']['nombre'] }}</h2>
             <div id="icons">
                 <i class="material-icons md-48">
                     play_circle_outline
@@ -60,7 +61,11 @@ echo "</pre>";
                             <tr>
                                 <td></td>
                                 <td scope="row">{{ $item['id_song'] }}</td>
-                                <td class="">¿imagen album?<img src="m5albumcover.jpg" alt="" class=""></td>
+                                <td class=""> 
+                                    <i class="material-icons md-18">
+                                        play_circle_outline
+                                    </i>
+                                </td>
                                 <td>{{ $item['titulo'] }}</td>
                                 <td>¿3:09?</td>
                                 <td>+</td>
@@ -76,3 +81,5 @@ echo "</pre>";
     </div>
 </div>
 @endsection
+
+@extends('layouts.footer')

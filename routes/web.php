@@ -34,3 +34,4 @@ Route::get('/album/show/{id}', 'AlbumController@show');
 
 Route::get('/home', 'HomeController@home');
 
+Route::post('reproductor/play/{id}', 'ReproductorController@play');

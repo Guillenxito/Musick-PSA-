@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class AlbumController extends Controller
 {
+    
     /**
      * Display the specified resource.
      *
