@@ -18,7 +18,8 @@ Route::get('/', function () {
 
 
 Route::get('/', 'MiControlador@index');
-Route::get('/home', 'MiControlador@home');
+// Route::get('/home', 'MiControlador@home');
+
 Route::get('/login', 'MiControlador@login');
 
 
@@ -29,6 +30,7 @@ Route::get('/user/destroy/{id}', 'UserController@destroy');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/album/show/{id}', 'AlbumController@show');
+
+Route::get('/home', 'HomeController@home');
+
