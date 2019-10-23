@@ -132,9 +132,8 @@
         @yield('cuerpo')
     </div>
     
-    <div class="pie">
-        @yield('pie')
-        @include('layouts.footer')
+    <div class="footer">
+        @yield('footer')
     </div>
  
 
