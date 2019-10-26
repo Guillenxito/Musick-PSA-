@@ -4,7 +4,7 @@
     @foreach ( $categorias as $nombreCategoria => $categoria )
             @if ( $nombreCategoria !== 'estilos' )
                 <div class="container text-center">
-                    <div class="well text-center h1">{{ $nombreCategoria }}</div>
+                    <div class="well text-center h1">{{ strtoupper($nombreCategoria) }}</div>
                     <div class="row text-center">
                     @foreach ( $categoria as $artista )
                         <div class="card m-2 text-left flex-fill" style="width: 16rem;">

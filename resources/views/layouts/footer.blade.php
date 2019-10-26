@@ -1,5 +1,5 @@
 @section('footer')
-    <div class="container">
+    <div class="container-fluid fixed-bottom bg-dark">
         <div class="row">
             <div class="col-12">
                 <!-- 
