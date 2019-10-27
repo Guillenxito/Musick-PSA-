@@ -19,6 +19,7 @@
         }
         */
     </style>
+    @yield('styles')
 </head>
 <body>
     <div class="cabecera">
@@ -26,16 +27,17 @@
     </div>
 
     <div class="cuerpo">
-    @yield('cuerpo')
+        @yield('cuerpo')
     </div>
 
     <div class="pie">
-    @yield('pie')
-    @include('layouts.footer')
+        @yield('pie')
+        @include('layouts.footer')
     </div>
     <!-- Hay que descargar las bibliotecas popper y jquery y ponerlas en este orden. -->
     <script src="{{ asset('js/jquery-3.3.1.slim.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    @yield('scrips')
 </body>
 </html>
