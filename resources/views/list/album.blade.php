@@ -1,17 +1,14 @@
-@extends('layouts.songList')
+@extends('layouts.plantilla')
 
 @section('title', 'Album')
 
-@section('cuerpo')
-<?php
-/*
-echo "<pre>";
-print_r($datos);
-echo "</pre>";
-*/
-?>
+@section('styles')
+    <link href="{{ asset('css/songsList.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+@endsection
 
-      
+@section('cuerpo')
+    
 <div class="container overflow-auto">
     <div class="row h-100" id="head">
         <div id="albumcontainer" class="col-sm-12 col-md-5">
@@ -82,4 +79,14 @@ echo "</pre>";
 </div>
 @endsection
 
+{{-- 
+aqui meto despues de que carge la pagina los scrips de js que quiera
+@push('styles') 
+--}}
+
 @extends('layouts.footer')
+
+@section('scripts')
+    <script src="{{ asset('/../dist/material-components-web/material-components-web.min.js') }}" rel="text/javascript"></script>
+    <script src="https://fonts.googleapis.com/icon?family=Material+Icons" rel="text/javascript"></script>
+@endsection
