@@ -1,7 +1,11 @@
 <header>		
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
 		  <a class="navbar-brand" href="#">
+<<<<<<< HEAD
+		  	<img src="../img/logo.jpg" alt="logo" class="rounded-circle w-25 logo">
+=======
 		  	<img src="{{ asset('img/logo.jpg')}}" alt="logo" class="rounded-circle  w-25 logo">
+>>>>>>> 9aa2e45124da2de5c486afc027c1e8a647ed83ff
 		  </a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
