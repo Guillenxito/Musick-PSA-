@@ -58,8 +58,8 @@
                             <tr>
                                 <td></td>
                                 <td scope="row">{{ $item['id_song'] }}</td>
-                                <td class=""> 
-                                    <i class="material-icons md-18">
+                                <td class="" id="playContainer"> 
+                                    <i class="material-icons md-18" id="playIcon">
                                         play_circle_outline
                                     </i>
                                 </td>
@@ -89,4 +89,5 @@ aqui meto despues de que carge la pagina los scrips de js que quiera
 @section('scripts')
     <script src="{{ asset('/../dist/material-components-web/material-components-web.min.js') }}" rel="text/javascript"></script>
     <script src="https://fonts.googleapis.com/icon?family=Material+Icons" rel="text/javascript"></script>
+    <script src="{{ asset('resources/js/player.js') }}" rel="text/javascript"></script>
 @endsection
