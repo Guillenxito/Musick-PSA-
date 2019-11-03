@@ -12,25 +12,25 @@
 		        <a class="nav-link" href="#">Biblioteca<span class="sr-only">(current)</span></a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="#">Tendencias</a>
+		        <a class="nav-link" href="#tendencias">Tendencias</a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="#">Recomendados</a>
+		        <a class="nav-link" href="#recomendados">Recomendados</a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="#">Novedades</a>
+		        <a class="nav-link" href="#novedades">Novedades</a>
 		      </li>
 		      <li class="nav-item dropdown">
-		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		        <a class="nav-link dropdown-toggle" href="#estilos" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		          Estilos
 		        </a>
 		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-		          <a class="dropdown-item" href="#">Rock</a>
-		          <a class="dropdown-item" href="#">Pop</a>
-		          <a class="dropdown-item" href="#">Electrónica</a>
-		          <a class="dropdown-item" href="#">Jazz</a>
 		          <a class="dropdown-item" href="#">Flamenco</a>
-		          <a class="dropdown-item" href="#">Clásica</a>
+		          <a class="dropdown-item" href="#">Rap</a>
+		          <a class="dropdown-item" href="#">Rock</a>
+		          <a class="dropdown-item" href="#">Jazz</a>
+		          <a class="dropdown-item" href="#">Pop</a>
+		          <a class="dropdown-item" href="#">Reggaeton</a>
 		        </div>
 		      </li>
 		    </ul>

@@ -28,43 +28,57 @@ class HomeController extends Controller
     
     public function home()
     {
-        //  
-              
+        /*
+        // Nombres de los últimos authors incluidos en la base de datos
+        $novedades = DB::table('authors')->orderBy('created_at')->get('nombre');
+        $datos['authors'] = json_decode(json_encode($novedades), true);
+
+        // id_song, titulo, id_album, id_author, id_style
+        $temp = DB::table('albums')->where('id_album', '=', $id)->get();
+        $datos['album'] = json_decode(json_encode($temp[0]), true);
+
+        // id_author, nombre, informacion,
+        $temp =  DB::table('authors')->where('id_author', '=', $datos['canciones'][0]['id_author'])->get();
+        $datos['autor'] = json_decode(json_encode($temp[0]), true);
+
+        return view('list.album', ['datos' => $datos]);
+        */
+        
         $categorias = [
             'tendencias' => [
                 'paramore',
-                'paramore',
-                'paramore',
-                'paramore',
-                'paramore',
-                'paramore'
+                'bad_bunny',
+                'la_excepcion',
+                'los_delinquentes',
+                'arce',
+                'camaron'
             ],
             'estilos' => [
+                'flamenco' => 'Lo más flamenco',
+                'rap' => 'Disfruta de lo más callejera.',
                 'rock' => 'La mejor música Rock',
-                'hiphop' => 'Disfruta del mejor HipHop',
-                'punk' => 'La música más rebelde.',
-                'musicaurbana' => 'Disfruta de lo más callejera.'
+                'jazz' => 'Jazz para disfrutar',
+                'pop' => 'El pop más animado.',
+                'reggaeton' => 'Reggaeton 100%.'
             ],
             'recomendados' => [
+                'la_excepcion',
                 'paramore',
-                'paramore',
-                'paramore',
-                'paramore',
-                'paramore',
-                'paramore'
+                'camaron',
+                'arce',
+                'bad_bunny',
+                'los_delinquentes'
             ],
             'novedades'  => [
+                'bad_bunny',
+                'camaron',
+                'los_delinquentes',
+                'arce',
                 'paramore',
-                'paramore',
-                'paramore',
-                'paramore',
-                'paramore',
-                'paramore'
+                'la_excepcion'
             ]
         ];
         
-            // return view('home', $categorias);
-            // $frase = ['HOLA','ADIOS'];
-            return view('home', compact('categorias'));
+        return view('home', compact('categorias'));
     }
 }
