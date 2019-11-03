@@ -1,10 +1,10 @@
 @extends('layouts.plantilla')
 
-<<<<<<< HEAD
 @section('cuerpo')    
     @foreach ( $categorias as $nombreCategoria => $categoria )
             @if ( $nombreCategoria !== 'estilos' )
                 <div class="container text-center">
+                <a  name="{{ $nombreCategoria }}"></a>
                     <div class="well text-center h1">{{ strtoupper($nombreCategoria) }}</div>
                     <div class="row text-center">
                     @foreach ( $categoria as $artista )
@@ -13,7 +13,7 @@
                                 <h5 class="card-title text-light">{{ $artista }}</h5>
                             </div>
                             <a href="#">
-                                <img class="card-img-top" src="../img/{{ $artista }}.jpg" alt="Card image cap">
+                                <img class="card-img-top" src="../img/artistas/{{ $artista }}/{{ $artista }}.png" alt="Card image cap">
                             </a>
                         </div>
                     @endforeach
@@ -21,6 +21,7 @@
                 </div>
             @else
                 <div class="bd-example">
+                <a  name="{{ $nombreCategoria }}"></a>
                 <div id="carruselEstilos" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                     @foreach ( $categoria as $nombreEstilo)
@@ -39,7 +40,7 @@
                         @else
                         <div class="carousel-item">
                         @endif
-                            <img src="../img/{{ $nombreEstilo }}.jpg" class="d-block w-100" alt="...">
+                            <img src="../img/estilos/{{ $nombreEstilo }}.png" class="d-block w-100 p-5" alt="...">
                             <div class="carousel-caption rounded d-none d-md-block bg-dark ">
                                 <h5>{{ $nombreEstilo }}</h5>
                                 <p>{{ $descripcion }}</p>
@@ -58,11 +59,4 @@
                 </div>
             @endif
     @endforeach
-
-=======
-@section('cuerpo')
-    @foreach($categorias as $categoria)
-        @include('layouts.categoriaHome')
-    @endforeach
->>>>>>> 0f57f40... cambios blade
 @endsection

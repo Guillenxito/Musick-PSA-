@@ -15,7 +15,7 @@
             <img src="{{ asset('img/' . $datos['autor']['nombre'] . '.jpg') }}" class="" alt="">
         </div>
         <div class="col-sm-12 col-md-7 my-auto text-center text-md-left" id="info">
-            <h2>ÁBUM</h2>
+            <h2>ÁLBUM</h2>
             <h1>{{ $datos['album']['nombre'] }}</h1>
             <h2>{{ $datos['autor']['nombre'] }}</h2>
             <div id="icons">
