@@ -4,11 +4,19 @@
 
 @section('styles')
     <link href="{{ asset('css/songsList.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 @endsection
 
 @section('cuerpo')
     
+<?php
+/*
+echo "<pre>";
+echo '<b>ARRAY $datos</b><BR>';
+print_r($datos);
+echo "</pre>";
+*/
+?>
+
 <div class="container overflow-auto">
     <div class="row h-100" id="head">
         <div id="albumcontainer" class="col-sm-12 col-md-5">
@@ -18,19 +26,19 @@
             <h2>ÁBUM</h2>
             <h1>{{ $datos['album']['nombre'] }}</h1>
             <h2>{{ $datos['autor']['nombre'] }}</h2>
-            <div id="icons">
-                <i class="material-icons md-48">
-                    play_circle_outline
-                </i>
-                <i class="material-icons md-48">
-                    add_circle_outline
-                </i>
-                <i class="material-icons md-48">
-                    share
-                </i>
-                <i class="material-icons md-48">
-                    more_vert
-                </i>
+            <div id="iconsContainer">
+                <div id="play">
+                        <a><img class="playall" src="{{ asset('img/iconos/play-button.png') }}" alt=""></a>
+                </div>
+                <div id="add">
+                        <a><img class="addall" src="{{ asset('img/iconos/add-button.png') }}" alt=""></a>
+                </div>
+                <div id="share">
+                        <img src="{{ asset('img/iconos/share-button.png') }}" alt="">
+                </div>
+                <div id="more">
+                        <img src="{{ asset('img/iconos/more-button.png') }}" alt="">
+                </div>
             </div>
             <p>{{ array_key_last($datos['canciones'])+ 1 }} Canciones (42 minutos) - Publicado el {{ $datos['album']['created_at'] }}</p>
         </div>
@@ -58,19 +66,20 @@
                             <tr>
                                 <td></td>
                                 <td scope="row">{{ $item['id_song'] }}</td>
-                                <td class="" id="playContainer"> 
-                                    <i class="material-icons md-18" id="playIcon">
-                                        play_circle_outline
-                                    </i>
+                                <td class=""> 
+                                    <a>
+                                        <img class="playsong icono pointer" src="{{ asset('img/iconos/play-button1.png') }}" alt="">
+                                    </a>
                                 </td>
                                 <td>{{ $item['titulo'] }}</td>
                                 <td>¿3:09?</td>
-                                <td>+</td>
+                                <td>
+                                    <a>
+                                            <img class="addsong icono pointer" src="{{ asset('img/iconos/add-button.png') }}" alt="">
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
-                    @else
-                       {{ "esta vacio señor, vayase. quiere bolsa?"}}
-                       {!! "esta vacio señor, vayase. quiere bolsa?"!!}
                     @endif
                 </tbody>
             </table>
@@ -79,15 +88,8 @@
 </div>
 @endsection
 
-{{-- 
-aqui meto despues de que carge la pagina los scrips de js que quiera
-@push('styles') 
---}}
-
 @extends('layouts.footer')
 
 @section('scripts')
-    <script src="{{ asset('/../dist/material-components-web/material-components-web.min.js') }}" rel="text/javascript"></script>
-    <script src="https://fonts.googleapis.com/icon?family=Material+Icons" rel="text/javascript"></script>
-    <script src="{{ asset('resources/js/player.js') }}" rel="text/javascript"></script>
+    <script src="{{ asset('js/player.js') }}" rel="text/javascript"></script>
 @endsection
