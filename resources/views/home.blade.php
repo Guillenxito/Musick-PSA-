@@ -1,7 +1,12 @@
 @extends('layouts.plantilla')
 
-@section('cuerpo')    
-    @foreach ( $categorias as $nombreCategoria => $categoria )
+@section('cuerpo')
+<pre>
+    <?php
+        print_r($categorias);
+    ?>
+</pre>
+@foreach ( $categorias as $nombreCategoria => $categoria )
             @if ( $nombreCategoria !== 'estilos' )
                 <div class="container text-center">
                 <a  name="{{ $nombreCategoria }}"></a>
