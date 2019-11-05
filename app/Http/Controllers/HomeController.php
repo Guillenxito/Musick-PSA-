@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -43,8 +44,9 @@ class HomeController extends Controller
 
         return view('list.album', ['datos' => $datos]);
         */
+         $categorias = [];
         
-        $categorias = [
+   /*     $categorias = [
             'tendencias' => [
                 'paramore',
                 'bad_bunny',
@@ -70,14 +72,63 @@ class HomeController extends Controller
                 'los_delinquentes'
             ],
             'novedades'  => [
-                'bad_bunny',
-                'camaron',
-                'los_delinquentes',
-                'arce',
-                'paramore',
-                'la_excepcion'
             ]
-        ];
+        ];*/
+        /*$novedades2 = DB::table('songs')
+                    ->join('authors', 'authors.id_author', '=', 'songs.id_author')
+                    ->orderBy('created_at', 'desc')
+                    ->take(6)
+                    ->get();*/
+/* CONSULTA NOVEDADES*/
+$novedades = DB::table('songs')
+                         ->join('authors','songs.id_author', '=', 'authors.id_author')
+                         ->join('albums','songs.id_album','=','albums.id_album')
+                         ->select('authors.nombre AS artista','albums.nombre')
+                         ->orderBy('albums.created_at', 'DESC')
+                         ->take(6)
+                         ->get();
+$categorias['novedades'] = json_decode(json_encode($novedades), true);
+
+
+
+/*CONSULTA RECOMENDACIONES*/
+//Conseguir los ultimos 6 estilos escuchados:
+$JournalStyle = DB::table('journals')
+                ->join('songs', 'journals.id_song', '=', 'songs.id_song')
+                ->select('songs.id_style')
+                ->take(6)
+                ->get();
+
+//$categorias['id estilos escuchados'] = json_decode(json_encode($JournalStyle), true);
+//Funcion para contar valores repetidos
+$countStyles = array();
+$JournalStyle = json_decode(json_encode($JournalStyle), true);
+foreach($JournalStyle as $value)
+{
+    if(array_key_exists($value['id_style'],$countStyles))
+    {// si ya existe, le añadimos uno
+        $countStyles[$value['id_style']] += 1;
+    }else{// si no existe lo añadimos al array
+        $countStyles[$value['id_style']] = 1;
+    }
+}
+$recomendaciones = array();
+
+foreach($countStyles as $key => $value)
+{
+   $recomendacion = DB::table('songs')
+                         ->join('albums','songs.id_album','=','albums.id_album')
+                         ->select('albums.*')
+                         ->where('songs.id_style','=',$key)
+                         ->distinct('albums.id_album')
+                         ->take($value)
+                         ->get();
+
+
+    array_push($recomendaciones,$recomendacion);
+}
+//$categorias['cuenta de la vieja'] = json_decode(json_encode($countStyles), true);
+$categorias['recomendados'] = json_decode(json_encode($recomendaciones[0]), true);
         
         return view('home', compact('categorias'));
     }
