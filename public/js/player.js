@@ -29,11 +29,9 @@ function AgregarTodas(){
 }
 
 function RefrescarEventos() {
-    // Remove handler from existing elements
     $( '.playsong' ).off();
     $( '.playall' ) .off();
     $( '.addsong' ) .off();
     $( '.addall' )  .off();
-
     AsignarEventos();
 }

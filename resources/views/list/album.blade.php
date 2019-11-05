@@ -9,14 +9,18 @@
 @section('cuerpo')
     
 <?php
-/*
+
 echo "<pre>";
 echo '<b>ARRAY $datos</b><BR>';
 print_r($datos);
 echo "</pre>";
+/*
+echo "<h3>";
+echo $_SERVER['SCRIPT_FILENAME'];
+echo "</h3>";
 */
 ?>
-
+{{--
 <div class="container overflow-auto">
     <div class="row h-100" id="head">
         <div id="albumcontainer" class="col-sm-12 col-md-5">
@@ -93,3 +97,4 @@ echo "</pre>";
 @section('scripts')
     <script src="{{ asset('js/player.js') }}" rel="text/javascript"></script>
 @endsection
+--}}
