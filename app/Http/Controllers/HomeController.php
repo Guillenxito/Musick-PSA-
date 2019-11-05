@@ -89,7 +89,7 @@ $novedades = DB::table('songs')
                          ->get();
 $categorias['novedades'] = json_decode(json_encode($novedades), true);
 
-$recomendaciones = array();
+
 
 /*CONSULTA RECOMENDACIONES*/
 //Conseguir los ultimos 6 estilos escuchados:
@@ -99,38 +99,36 @@ $JournalStyle = DB::table('journals')
                 ->take(6)
                 ->get();
 
-
+//$categorias['id estilos escuchados'] = json_decode(json_encode($JournalStyle), true);
 //Funcion para contar valores repetidos
+$countStyles = array();
 $JournalStyle = json_decode(json_encode($JournalStyle), true);
-
-$countStyles=array();
-
 foreach($JournalStyle as $value)
 {
-    if(isset($countStyles[$value]))
-    {
-        // si ya existe, le añadimos uno
-    $countStyles[$value]+=1;
-    }else{
-        // si no existe lo añadimos al array
-    $countStyles[$value]=1;
+    if(array_key_exists($value['id_style'],$countStyles))
+    {// si ya existe, le añadimos uno
+        $countStyles[$value['id_style']] += 1;
+    }else{// si no existe lo añadimos al array
+        $countStyles[$value['id_style']] = 1;
     }
 }
+$recomendaciones = array();
 
 foreach($countStyles as $key => $value)
 {
-   $re = DB::table('songs')
+   $recomendacion = DB::table('songs')
                          ->join('albums','songs.id_album','=','albums.id_album')
-                         ->select('song.+')
+                         ->select('albums.*')
                          ->where('songs.id_style','=',$key)
                          ->distinct('albums.id_album')
                          ->take($value)
                          ->get();
 
 
-    array_push($recomendaciones,$re);
+    array_push($recomendaciones,$recomendacion);
 }
-$categorias['recomendados'] = json_decode(json_encode($recomendaciones), true);
+//$categorias['cuenta de la vieja'] = json_decode(json_encode($countStyles), true);
+$categorias['recomendados'] = json_decode(json_encode($recomendaciones[0]), true);
         
         return view('home', compact('categorias'));
     }
