@@ -20,10 +20,14 @@ yarn-error.log
 # ignorar archivos compilados 
 * .com 
 *. clase
- * .dll 
+* .dll 
 * .exe 
 * .o 
 * .so 
+
+# ignorar archivos mp3
+* .mp3
+* .mp4
 
 # ignorar archivos empaquetados 
 * .7z 
