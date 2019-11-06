@@ -9,22 +9,22 @@
 @section('cuerpo')
     
 <?php
-
+/*
 echo "<pre>";
 echo '<b>ARRAY $datos</b><BR>';
 print_r($datos);
 echo "</pre>";
-/*
+
 echo "<h3>";
 echo $_SERVER['SCRIPT_FILENAME'];
 echo "</h3>";
 */
 ?>
-{{--
+
 <div class="container overflow-auto">
     <div class="row h-100" id="head">
         <div id="albumcontainer" class="col-sm-12 col-md-5">
-            <img src="{{ asset('img/' . $datos['autor']['nombre'] . '.jpg') }}" class="" alt="">
+            <img src="{{ asset('img/artistas/' . $datos['autor']['nombre'] .'/' . $datos['autor']['nombre'] . '.png') }}" class="" alt="">
         </div>
         <div class="col-sm-12 col-md-7 my-auto text-center text-md-left" id="info">
             <h2>ÁLBUM</h2>
@@ -66,20 +66,20 @@ echo "</h3>";
                 </thead>
                 <tbody>
                     @if (!empty($datos['canciones']))
-                        @foreach ($datos['canciones'] as $item)
-                            <tr>
+                        @foreach ($datos['canciones'] as $clave => $cancion)
+                            <tr id="{{ $cancion['id_song'] }}">
                                 <td></td>
-                                <td scope="row">{{ $item['id_song'] }}</td>
+                                <td scope="row" >{{ ++$clave }}</td>
                                 <td class=""> 
                                     <a>
                                         <img class="playsong icono pointer" src="{{ asset('img/iconos/play-button1.png') }}" alt="">
                                     </a>
                                 </td>
-                                <td>{{ $item['titulo'] }}</td>
-                                <td>¿3:09?</td>
+                                <td>{{ $cancion['titulo'] }}</td>
+                                <td>{{ $datos['autor']['nombre'] }}</td>
                                 <td>
                                     <a>
-                                            <img class="addsong icono pointer" src="{{ asset('img/iconos/add-button.png') }}" alt="">
+                                       <img class="addsong icono pointer" src="{{ asset('img/iconos/add-button.png') }}" alt="">
                                     </a>
                                 </td>
                             </tr>
@@ -97,4 +97,3 @@ echo "</h3>";
 @section('scripts')
     <script src="{{ asset('js/player.js') }}" rel="text/javascript"></script>
 @endsection
---}}
