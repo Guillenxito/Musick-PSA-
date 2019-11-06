@@ -198,6 +198,46 @@ INSERT INTO escuchado_recientemente (id_user, id_song, fecha) VALUES(3,53,sysdat
 INSERT INTO escuchado_recientemente (id_user, id_song, fecha) VALUES(3,30,sysdate());
 INSERT INTO escuchado_recientemente (id_user, id_song, fecha) VALUES(3,33,sysdate());
 
+
+/*INSERT GUILLENXITO*/
+--BAD BUNNY--   
+INSERT INTO authors (nombre, informacion) VALUES('bad bunny','Benito Antonio Martínez Ocasio (San Juan, Puerto Rico, 10 de marzo de 1994), más conocido por su nombre artístico Bad Bunny, es un cantante puertorriqueño de trap y reguetón.');
+INSERT INTO albums (nombre) VALUES('x100pre');
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('caro',8,4,6,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('cuando_perriabas',8,4,6,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('la_romana',8,4,6,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('ni_bien_ni_mal',8,4,6,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('otra_noche_en_miami',8,4,6,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('quien_tu_eres',8,4,6,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('ser_bichote',8,4,6,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('si_estuviesemos_juntos',8,4,6,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('solo_de_mi',8,4,6,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('tenemos_que_hablar',8,4,6,CURRENT_DATE);
+
+
+
+--ARCE
+INSERT INTO authors (nombre, informacion) VALUES('arce','Pablo Arce es un rapero gallego nacido en Santiago de Compostela en 1990. Empezó con el rap en el 2002: escribía letras en su casa y las grababa con un mp3, después las bajaba al Parque de Ramírez y a la gente le gustaba porque era un rollo diferente, callejero, con las drogas, el dinero y las chicas como temática. Precisamente por el contenido "salvaje" de sus letras se le ha colgado el cartel de "polémico".');
+INSERT INTO albums (nombre) VALUES('lucifer');
+
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('all_starts',9,5,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('ayer',9,5,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bitch',9,5,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('carpe_diem',9,5,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('eros',9,5,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('luciffer',9,5,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('luzbel',9,5,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('manicomio',9,5,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('matusalem',9,5,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('mirame_a_los_ojos',9,5,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('mi_ruina-que-hablar',9,5,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('alcoholics',9,5,2,CURRENT_DATE);
+
+
+
+
+
+
 /* Canciones repetidas */
 /**/
 /*
