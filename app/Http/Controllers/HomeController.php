@@ -46,90 +46,124 @@ class HomeController extends Controller
         */
          $categorias = [];
         
-   /*     $categorias = [
-            'tendencias' => [
-                'paramore',
-                'bad_bunny',
-                'la_excepcion',
-                'los_delinquentes',
-                'arce',
-                'camaron'
-            ],
-            'estilos' => [
-                'flamenco' => 'Lo más flamenco',
-                'rap' => 'Disfruta de lo más callejera.',
-                'rock' => 'La mejor música Rock',
-                'jazz' => 'Jazz para disfrutar',
-                'pop' => 'El pop más animado.',
-                'reggaeton' => 'Reggaeton 100%.'
-            ],
-            'recomendados' => [
-                'la_excepcion',
-                'paramore',
-                'camaron',
-                'arce',
-                'bad_bunny',
-                'los_delinquentes'
-            ],
-            'novedades'  => [
-            ]
-        ];*/
-        /*$novedades2 = DB::table('songs')
-                    ->join('authors', 'authors.id_author', '=', 'songs.id_author')
-                    ->orderBy('created_at', 'desc')
-                    ->take(6)
-                    ->get();*/
-/* CONSULTA NOVEDADES*/
-$novedades = DB::table('songs')
-                         ->join('authors','songs.id_author', '=', 'authors.id_author')
-                         ->join('albums','songs.id_album','=','albums.id_album')
-                         ->select('authors.nombre AS artista','albums.nombre')
-                         ->orderBy('albums.created_at', 'DESC')
-                         ->take(6)
-                         ->get();
-$categorias['novedades'] = json_decode(json_encode($novedades), true);
+           /*     $categorias = [
+                    'tendencias' => [
+                        'paramore',
+                        'bad_bunny',
+                        'la_excepcion',
+                        'los_delinquentes',
+                        'arce',
+                        'camaron'
+                    ],
+                    'estilos' => [
+                        'flamenco' => 'Lo más flamenco',
+                        'rap' => 'Disfruta de lo más callejera.',
+                        'rock' => 'La mejor música Rock',
+                        'jazz' => 'Jazz para disfrutar',
+                        'pop' => 'El pop más animado.',
+                        'reggaeton' => 'Reggaeton 100%.'
+                    ],
+                    'recomendados' => [
+                        'la_excepcion',
+                        'paramore',
+                        'camaron',
+                        'arce',
+                        'bad_bunny',
+                        'los_delinquentes'
+                    ],
+                    'novedades'  => [
+                    ]
+                ];*/
+                /*$novedades2 = DB::table('songs')
+                            ->join('authors', 'authors.id_author', '=', 'songs.id_author')
+                            ->orderBy('created_at', 'desc')
+                            ->take(6)
+                            ->get();*/
+        /***************************** CONSULTA NOVEDADES **************************************/
+        $novedades = DB::table('songs')
+                                 ->join('authors','songs.id_author', '=', 'authors.id_author')
+                                 ->join('albums','songs.id_album','=','albums.id_album')
+                                 ->select('authors.nombre AS artista','albums.nombre')
+                                 ->orderBy('albums.created_at', 'DESC')
+                                 ->take(6)
+                                 ->get();
+
+        /*************************** CONSULTA RECOMENDACIONES *************************/
+        $JournalStyle = DB::table('journals')
+                        ->join('songs', 'journals.id_song', '=', 'songs.id_song')
+                        ->select('songs.id_style')
+                        ->take(6)
+                        ->get();
+
+        $JournalStyle = json_decode(json_encode($JournalStyle), true);
+
+         $countStyles = array();
+        foreach($JournalStyle as $value)
+        {
+            if(array_key_exists($value['id_style'],$countStyles))
+            {
+                $countStyles[$value['id_style']] += 1;
+            }else{
+                $countStyles[$value['id_style']] = 1;
+            }
+        }
+
+        $recomendaciones = array();
+
+        foreach($countStyles as $key => $value)
+        {
+           $recomendacion = DB::table('songs')
+                                 ->join('albums','songs.id_album','=','albums.id_album')
+                                 ->select('albums.*')
+                                 ->where('songs.id_style','=',$key)
+                                 ->distinct('albums.id_album')
+                                 ->take($value)
+                                 ->get();
 
 
-
-/*CONSULTA RECOMENDACIONES*/
-//Conseguir los ultimos 6 estilos escuchados:
-$JournalStyle = DB::table('journals')
-                ->join('songs', 'journals.id_song', '=', 'songs.id_song')
-                ->select('songs.id_style')
-                ->take(6)
-                ->get();
-
-//$categorias['id estilos escuchados'] = json_decode(json_encode($JournalStyle), true);
-//Funcion para contar valores repetidos
-$countStyles = array();
-$JournalStyle = json_decode(json_encode($JournalStyle), true);
-foreach($JournalStyle as $value)
-{
-    if(array_key_exists($value['id_style'],$countStyles))
-    {// si ya existe, le añadimos uno
-        $countStyles[$value['id_style']] += 1;
-    }else{// si no existe lo añadimos al array
-        $countStyles[$value['id_style']] = 1;
-    }
-}
-$recomendaciones = array();
-
-foreach($countStyles as $key => $value)
-{
-   $recomendacion = DB::table('songs')
-                         ->join('albums','songs.id_album','=','albums.id_album')
-                         ->select('albums.*')
-                         ->where('songs.id_style','=',$key)
-                         ->distinct('albums.id_album')
-                         ->take($value)
-                         ->get();
-
-
-    array_push($recomendaciones,$recomendacion);
-}
-//$categorias['cuenta de la vieja'] = json_decode(json_encode($countStyles), true);
-$categorias['recomendados'] = json_decode(json_encode($recomendaciones[0]), true);
+            array_push($recomendaciones,$recomendacion);
+        }
         
+        /******************** CONSULTA TENDENCIAS ***************************/
+        $JournalIdSongs = DB::table('journals')
+                         ->join('songs', 'journals.id_song', '=', 'songs.id_song')
+                         ->select('songs.id_song')
+                         ->get();
+        
+  
+        $JournalIdSongs = json_decode(json_encode($JournalIdSongs), true);
+        $countIdSong = array();
+
+        foreach($JournalIdSongs as $value)
+        {
+            if(array_key_exists($value['id_song'],$countIdSong))
+            {
+                $countIdSong[$value['id_song']] += 1;
+            }else{
+                $countIdSong[$value['id_song']] = 1;
+            }
+        }
+
+        arsort($countIdSong);
+        $countIdSongSix = array_slice($countIdSong, 0,6, true);
+
+        $tendencias = array();
+        foreach($countIdSongSix as $key => $value)
+        {
+           $tendencia = DB::table('songs')
+                                 ->join('albums','songs.id_album','=','albums.id_album')
+                                 ->select('songs.id_song','songs.titulo','songs.id_album','albums.nombre')
+                                 ->where('songs.id_song','=',$key)
+                                 ->get();
+
+            array_push($tendencias,$tendencia[0]);
+        }
+        
+        /*********************** ADD CATEGORIAS **********************************/
+        $categorias['novedades'] = json_decode(json_encode($novedades), true);
+        $categorias['recomendados'] = json_decode(json_encode($recomendaciones[0]), true);
+        $categorias['tendencias'] = json_decode(json_encode($tendencias), true);
+
         return view('home', compact('categorias'));
     }
 }
