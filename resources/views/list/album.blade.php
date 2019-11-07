@@ -16,13 +16,17 @@ echo "<pre>";
 echo '<b>ARRAY $datos</b><BR>';
 print_r($datos);
 echo "</pre>";
+
+echo "<h3>";
+echo $_SERVER['SCRIPT_FILENAME'];
+echo "</h3>";
 */
 ?>
 
 <div class="container overflow-auto">
     <div class="row h-100" id="head">
         <div id="albumcontainer" class="col-sm-12 col-md-5">
-            <img src="{{ asset('img/artistas/'.$datos['autor']['nombre'].'/'.$datos['album']['nombre'].'.png') }}" class="" alt="">
+            <img src="{{ asset('img/artistas/' . $datos['autor']['nombre'] .'/' . $datos['autor']['nombre'] . '.png') }}" class="" alt="">
         </div>
         <div class="col-sm-12 col-md-7 my-auto text-center text-md-left" id="info">
             <h2>ÁLBUM</h2>
@@ -68,21 +72,22 @@ echo "</pre>";
                 </thead>
                 <tbody>
                     @if (!empty($datos['canciones']))
-                        @foreach ($datos['canciones'] as $item)
-                            <tr>
+                        @foreach ($datos['canciones'] as $clave => $cancion)
+                            <tr id="{{ $cancion['id_song'] }}">
                                 <td></td>
-                                <td scope="row">{{ $item['id_song'] }}</td>
+                                <td scope="row" >{{ ++$clave }}</td>
                                 <td class=""> 
                                     <i class="material-icons">
                                         play_circle_filled
                                     </i>
                                 </td>
                                 <td>{{ strtoupper(str_replace('_',' ',$item['titulo'])) }}</td>
-                                <td>¿3:09?</td>
+                                <td>{{ strtoupper($datos['autor']['nombre']) }}</td>
                                 <td>
                                     <i class="material-icons">
                                         playlist_add
                                     </i>
+
                                 </td>
                             </tr>
                         @endforeach

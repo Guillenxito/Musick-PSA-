@@ -4,17 +4,19 @@ $(function(){
 });
 
 function AsignarEventos() {
-    $( '.playsong' ).on('click',function(){ReproducirCancion()});
+    $( '.playsong' ).click(function(e){
+        var td = $(e.target).closest('tr');
+        // console.log(td);
+        console.log(td.id);
+        $.post("musick.test");
+        // $.post("musick.test/reproductor/play/"+td.id);
+        
+    });
     $( '.playall' ) .on('click',function(){ReproducirTodas()});
     $( '.addsong' ) .on('click',function(){AgregarCancion()});
     $( '.addall' )  .on('click',function(){AgregarTodas()});
 }
 
-function ReproducirCancion(){
-    console.log("ReproducirCancion");
-    console.log();
-    RefrescarEventos();
-}
 function ReproducirTodas(){
     console.log("ReproducirTodas");
     RefrescarEventos();
@@ -29,11 +31,9 @@ function AgregarTodas(){
 }
 
 function RefrescarEventos() {
-    // Remove handler from existing elements
     $( '.playsong' ).off();
     $( '.playall' ) .off();
     $( '.addsong' ) .off();
     $( '.addall' )  .off();
-
     AsignarEventos();
 }
