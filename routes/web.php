@@ -17,7 +17,7 @@ Route::get('/', function () {
 */
 
 
-Route::get('/', 'MiControlador@index');
+//Route::get('/', 'MiControlador@index');
 // Route::get('/home', 'MiControlador@home');
 
 Route::get('/login', 'MiControlador@login');
@@ -34,6 +34,6 @@ Auth::routes();//Con esto se pide autentificacion para todas las paginas.
 Route::get('/{artist}', 'AlbumController@showArtist');
 Route::get('/{artist}/{album}', 'AlbumController@showAlbum');
 
-Route::get('/home', 'HomeController@home');
+Route::get('/', 'HomeController@home');
 
 Route::post('reproductor/play/{id}', 'ReproductorController@play');
