@@ -6,12 +6,12 @@ $(function(){
 function AsignarEventos() {
     $( '.playsong' ).click(function(e){
         var td = $(e.target).closest('tr');
-        // console.log(td);
-        console.log(td.id);
-        $.post("musick.test");
-        // $.post("musick.test/reproductor/play/"+td.id);
-        
-    });
+        console.log(td);
+        console.log(td[0].id);
+        $.post("musick.test/reproductor/play/"+td[0].id, {id: td[0].id},function(htmlexterno){
+                $("#cargaexterna").html(htmlexterno);
+            }); 
+        });
     $( '.playall' ) .on('click',function(){ReproducirTodas()});
     $( '.addsong' ) .on('click',function(){AgregarCancion()});
     $( '.addall' )  .on('click',function(){AgregarTodas()});
