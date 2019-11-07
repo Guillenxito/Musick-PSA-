@@ -13,7 +13,7 @@
                                 <h5 class="card-title text-light">{{ $artista }}</h5>
                             </div>
                             <a href="#">
-                                <img class="card-img-top" src="../img/artistas/{{ $artista }}/{{ $artista }}.png" alt="Card image cap">
+                                <img class="card-img-top" src="{{ asset('img/artistas/'.$artista.'/'.$artista.'.png') }}" alt="Card image cap">
                             </a>
                         </div>
                     @endforeach
@@ -40,7 +40,7 @@
                         @else
                         <div class="carousel-item">
                         @endif
-                            <img src="../img/estilos/{{ $nombreEstilo }}.png" class="d-block w-100 p-5" alt="...">
+                            <img src="{{ asset('img/estilos/'.$nombreEstilo.'.png') }}" class="d-block w-100 p-5" alt="...">
                             <div class="carousel-caption rounded d-none d-md-block bg-dark ">
                                 <h5>{{ $nombreEstilo }}</h5>
                                 <p>{{ $descripcion }}</p>
