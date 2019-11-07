@@ -18,7 +18,6 @@
     </div>
 
     <div class="pie">
-        @yield('pie')
         @include('layouts.footer')
     </div>
     <script src="{{ asset('js/jquery-3.3.1.slim.min.js') }}"></script>

@@ -4,6 +4,8 @@
 
 @section('styles')
     <link href="{{ asset('css/songsList.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 @endsection
 
 @section('cuerpo')
@@ -28,14 +30,18 @@ echo "</h3>";
         </div>
         <div class="col-sm-12 col-md-7 my-auto text-center text-md-left" id="info">
             <h2>ÁLBUM</h2>
-            <h1>{{ $datos['album']['nombre'] }}</h1>
-            <h2>{{ $datos['autor']['nombre'] }}</h2>
+            <h1>{{ strtoupper(str_replace('_',' ',$datos['album']['nombre'])) }}</h1>
+            <h2>{{ strtoupper(str_replace('_',' ',$datos['autor']['nombre'])) }}</h2>
             <div id="iconsContainer">
-                <div id="play">
-                        <a><img class="playall" src="{{ asset('img/iconos/play-button.png') }}" alt=""></a>
+                <div id="play"> 
+                    <i class="material-icons">
+                        play_circle_filled
+                    </i>
                 </div>
                 <div id="add">
-                        <a><img class="addall" src="{{ asset('img/iconos/add-button.png') }}" alt=""></a>
+                    <i class="material-icons">
+                        playlist_add
+                    </i>
                 </div>
                 <div id="share">
                         <img src="{{ asset('img/iconos/share-button.png') }}" alt="">
@@ -44,7 +50,7 @@ echo "</h3>";
                         <img src="{{ asset('img/iconos/more-button.png') }}" alt="">
                 </div>
             </div>
-            <p>{{ array_key_last($datos['canciones'])+ 1 }} Canciones (42 minutos) - Publicado el {{ $datos['album']['created_at'] }}</p>
+            <p>{{ array_key_last($datos['canciones'])+ 1 }} Canciones - Publicado el {{ $datos['album']['created_at'] }}</p>
         </div>
     </div>
     <!-- Container esta metiendo margen lateral -->
@@ -71,16 +77,17 @@ echo "</h3>";
                                 <td></td>
                                 <td scope="row" >{{ ++$clave }}</td>
                                 <td class=""> 
-                                    <a>
-                                        <img class="playsong icono pointer" src="{{ asset('img/iconos/play-button1.png') }}" alt="">
-                                    </a>
+                                    <i class="material-icons">
+                                        play_circle_filled
+                                    </i>
                                 </td>
-                                <td>{{ $cancion['titulo'] }}</td>
-                                <td>{{ $datos['autor']['nombre'] }}</td>
+                                <td>{{ strtoupper(str_replace('_',' ',$item['titulo'])) }}</td>
+                                <td>{{ strtoupper($datos['autor']['nombre']) }}</td>
                                 <td>
-                                    <a>
-                                       <img class="addsong icono pointer" src="{{ asset('img/iconos/add-button.png') }}" alt="">
-                                    </a>
+                                    <i class="material-icons">
+                                        playlist_add
+                                    </i>
+
                                 </td>
                             </tr>
                         @endforeach
