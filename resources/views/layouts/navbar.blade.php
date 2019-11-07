@@ -28,8 +28,6 @@
 		          <a class="dropdown-item" href="#">Flamenco</a>
 		          <a class="dropdown-item" href="#">Rap</a>
 		          <a class="dropdown-item" href="#">Rock</a>
-		          <a class="dropdown-item" href="#">Jazz</a>
-		          <a class="dropdown-item" href="#">Pop</a>
 		          <a class="dropdown-item" href="#">Reggaeton</a>
 		        </div>
 		      </li>
