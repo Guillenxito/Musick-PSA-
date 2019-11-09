@@ -4,7 +4,6 @@
 -- ------------------------------------------------------
 -- Server version	5.7.27-0ubuntu0.18.04.1
 
-<<<<<<< HEAD
 /* --- authors --- */
 INSERT INTO authors (nombre, informacion) VALUES('camaron','Fue un cantaor gitano español considerado una de las principales figuras del flamenco.');
 INSERT INTO authors (nombre, informacion) VALUES('la_excepcion', "La excepción que confirma la regla, fue un grupo español de rap originario del barrio de Pan Bendito, en el distrito de Carabanchel, Madrid. Estuvo compuesto por los MC's El Langui y Gitano Antón  y por el DJ La Dako Style . ");
@@ -13,6 +12,9 @@ INSERT INTO authors (nombre, informacion) VALUES('bad_bunny','Benito Antonio Mar
 INSERT INTO authors (nombre, informacion) VALUES('arce','Pablo Arce es un rapero gallego nacido en Santiago de Compostela en 1990. Empezó con el rap en el 2002: escribía letras en su casa y las grababa con un mp3, después las bajaba al Parque de Ramírez y a la gente le gustaba porque era un rollo diferente, callejero, con las drogas, el dinero y las chicas como temática. Precisamente por el contenido "salvaje" de sus letras se le ha colgado el cartel de "polémico".');
 INSERT INTO authors (nombre, informacion) VALUES('paramore','Paramore es una banda estadounidense de pop punk y rock alternativo​​​​ integrada por Hayley Williams, Taylor York y Zac Farro. Fue formada en Franklin, Tennessee, en 2004, por Williams y Jeremy Davis junto con Josh Farro, Zac Farro ​ y Jason Bynum.​');
 INSERT INTO authors (nombre, informacion) VALUES('el_arrebato','Francisco Javier Labandón Pérez (Sevilla, 1 de septiembre de 1969), más conocido como El Arrebato, es un cantautor español de rumba-pop y flamenco. De familia paterna de Sevilla y familia materna de Barbate, comenzó su carrera artística sobre 1985 y su carrera discográfica en 1988 sacando su primer disco con el grupo Piel morena en el que le acompañaban 2 grandes amigos de su Sevilla natal.​');
+INSERT INTO authors (nombre, informacion) VALUES('el_canto_del_loco','(también abreviado ECDL) fue un grupo español de música pop rock. Fue creado en 1994 por Dani Martín e Iván Ganchegui (quien abandonaría el grupo en 2002), y años después terminarían por ser cinco miembros. Influidos principalmente por otros grupos españoles de la década de 1980 y con cinco álbumes de estudio, El Canto del Loco ha conseguido vender más de un millón de copias en el mercado,1​ convirtiéndose en uno de los grupos musicales más importantes del panorama español en su momento.');
+INSERT INTO authors (nombre, informacion) VALUES('thirty_seconds_to_mars','es una banda estadounidense de rock alternativo formada en 1998 en Los Ángeles (California). Integrada originalmente por tres miembros: Jared Leto (voz, guitarra), Matt Wachter (bajo, sintetizador) y Shannon Leto (batería), a quienes más tarde se les uniría el guitarrista Solon Bixler. Después de la publicación de su álbum debut, el guitarrista Solon Bixler salió de la banda debido a problemas durante su primera gira, poco después fue sustituido por el guitarrista Tomo Milicevic.11​ Después de la salida de Matt Wachter (ahora en Angels & Airwaves), Jared Leto se convirtió en el bajista de la banda.');
+INSERT INTO authors (nombre, informacion) VALUES('linkin_park', 'es una banda estadounidense de rock alternativo procedente de Agoura Hills, California. Formada en 1996, el grupo estuvo inicialmente integrado por Mike Shinoda, Dave Farrell, Joe Hahn, Brad Delson, Rob Bourdon y Mark Wakefield, este último como voz principal. La banda inició en ese mismo año sus primeros trabajos musicales de manera independiente y posterior a esto grabaron su primer material llamado Xero; sin embargo no tuvieron gran éxito en la búsqueda de un sello discográfico ya que nadie mostró interés por su trabajo, lo que ocasionó la renuncia de Mark Wakefield.2​ Poco después, Chester Bennington se incorporó a la banda como vocalista; el grupo realizó su primera presentación en un club de Los Ángeles y siendo respaldados por Jeff Blue, en aquel entonces vicepresidente de Warner Bros. Records, lograron firmar con el sello en 1999. El nombre del grupo es un juego de palabras que hace referencia al Lincoln Park en Santa Mónica.');
 
 /********************************/
 
@@ -31,11 +33,23 @@ INSERT INTO albums (nombre) VALUES('extras');
 INSERT INTO albums (nombre) VALUES('x100pre');
 /* arce */
 INSERT INTO albums (nombre) VALUES('lucifer');
-/* paramore */
+/* after laugther de paramore */
+-- borrar id 10
 INSERT INTO albums (nombre) VALUES('after_laughter');
 /* el_arrebato */
 INSERT INTO albums (nombre) VALUES('abrazos');
-
+/* brand new eyes de paramore*/
+-- borrar id 12
+INSERT INTO albums (nombre) VALUES('brand_new_eyes');
+/* el canto del loco */
+INSERT INTO albums (nombre) VALUES('zapatillas');
+INSERT INTO albums (nombre) VALUES('estados_de_animo');
+/* thirty seconds to mars */
+INSERT INTO albums (nombre) VALUES('a_beautiful_lie');
+INSERT INTO albums (nombre) VALUES('love_lust_faith_+_dreams');
+/* linkin park */
+INSERT INTO albums (nombre) VALUES('minutes_to_midnight');
+INSERT INTO albums (nombre) VALUES('living_things');
 /********************************/
 
 /* --- styles --- */
@@ -189,6 +203,120 @@ INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('a_mi_n
 INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('una_noche_con_arte',11,7,1,CURRENT_DATE);
 INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('un_amor_tan_grande',11,7,1,CURRENT_DATE);
 INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('cuando_quieras_quiero',11,7,1,CURRENT_DATE);
+
+/* after_laughter */
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('hard_times',10,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('rose_colored_boy',10,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('told_you_so',10,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('forgiveness',10,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('fake_happy',10,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('26',10,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('pool',10,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('grudges',10,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('caught_in_the_middle',10,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('idle_worship',10,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('no_friend',10,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('tell_me_how',10,6,3,CURRENT_DATE);
+
+/* brand_new_eyes */
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('careful',12,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('ignorance',12,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('playing god',12,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('brick by boring brick',12,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('turn if off',12,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('the only exception',12,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('feeling sorry',12,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('looking up',12,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('where the lines overlap',12,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('misguided ghosts',12,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('all i wanted',12,6,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('decode',12,6,3,CURRENT_DATE);
+
+/* zapatillas */
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('canciones',13,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('volverá',13,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('zapatillas',13,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('será',13,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('besos',13,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('vuelve',13,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('despiértame',13,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('úsanos',13,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('el_pescao',13,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('qué_raro_es_el_tiempo',13,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('desaparece',13,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('tal_como_eres',13,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('por_ti',13,8,3,CURRENT_DATE);
+
+/* estados de animo */
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('volver_a_disfrutar',14,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('la_madre_de_jose',14,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('ya_nada_volvera_a_ser_como_antes',14,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('insoportable',14,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('dentro_de_mi',14,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('otra_vez',14,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('siempre_cerca',14,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('como_un_perro_ladrando',14,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('ekix',14,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('una_foto_en_blanco_y_negro',14,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('no_voy_a_parar',14,8,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('te_recuerdo',14,8,3,CURRENT_DATE);
+
+/* a beautiful lie*/
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('attack',15,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('a beautiful lie',15,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('the_kill',15,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('was_it_a_dream',15,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('the_fantasy',15,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('savior',15,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('from_yesterday',15,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('the_story',15,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('r_evolve',15,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('a_modern_myth',15,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('battle_of_one',15,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('hunter',15,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('the_kill_(rebirth)',15,9,3,CURRENT_DATE);
+
+/* love lust faith + dreams*/
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('birth',16,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('conquistador',16,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('up_in_the_air',16,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('city_of_angels',16,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('the_race',16,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('end_of_all_days',16,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('pyres_of_varanasi',16,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bright_lights',16,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('do_or_die',16,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('convergence',16,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('northern_lights',16,9,3,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('depuis_le_debut',16,9,3,CURRENT_DATE);
+
+/* minutes to midnight */
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('wake',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('given_up',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('leave_out_all_the_rest',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bleed_it_out',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('shadow_of_the_day',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('what_ive_done',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('hands_held_high',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('no_more_sorrow',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('valentines_day',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('in_between',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('in_pieces',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('the_little_things_give_you_away',17,10,4,CURRENT_DATE);
+
+/* living things */
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('lost_in_the_echo',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('in_my_remains',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('burn_it_down',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('lies_greed_misery',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('ill_be_gone',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('castle_of_glass',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('victimized',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('roads_untraveled',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('skin_to_bone',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('until_it_breaks',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('tinfoil',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('powerless',18,10,4,CURRENT_DATE);
 
 /* --- journals --- */
 INSERT INTO journals(id_user, id_song, created_at) VALUES (1,37,CURRENT_DATE);
@@ -401,4 +529,3 @@ CREATE TABLE `users` (
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2019-11-04 20:31:49
->>>>>>> 4c3287c1b3aee27a4bac9141003ea43accf34282
