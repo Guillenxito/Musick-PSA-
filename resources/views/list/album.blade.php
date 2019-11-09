@@ -103,4 +103,5 @@ echo "</h3>";
 
 @section('scripts')
     <script src="{{ asset('js/player.js') }}" rel="text/javascript"></script>
+    <script src="{{ asset('js/jquery.min.js') }}" rel="text/javascript"></script>
 @endsection
