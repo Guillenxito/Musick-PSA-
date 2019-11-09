@@ -114,7 +114,8 @@ class HomeController extends Controller
         {
            $recomendacion = DB::table('songs')
                                  ->join('albums','songs.id_album','=','albums.id_album')
-                                 ->select('albums.*')
+                                 ->join('authors','songs.id_author','=','authors.id_author')
+                                 ->select('albums.nombre AS nombreAlbum','authors.nombre AS nombreAuthor')
                                  ->where('songs.id_style','=',$key)
                                  ->distinct('albums.id_album')
                                  ->take($value)
