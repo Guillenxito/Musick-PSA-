@@ -37,4 +37,11 @@ Route::get('/autor/{artist}/{album}', 'AlbumController@showAlbum');
 
 Route::get('/', 'HomeController@home');
 
-Route::post('reproductor/play/{id}', 'ReproductorController@play');
+
+// Route::middleware('auth:api')->post('reproductor/play', 'ReproductorController@play');
+
+Route::group([
+    'middleware' => 'auth',
+], function () {
+    Route::post('reproductor/play', 'ReproductorController@play');
+});
