@@ -15,6 +15,7 @@ INSERT INTO authors (nombre, informacion) VALUES('el_arrebato','Francisco Javier
 INSERT INTO authors (nombre, informacion) VALUES('el_canto_del_loco','(también abreviado ECDL) fue un grupo español de música pop rock. Fue creado en 1994 por Dani Martín e Iván Ganchegui (quien abandonaría el grupo en 2002), y años después terminarían por ser cinco miembros. Influidos principalmente por otros grupos españoles de la década de 1980 y con cinco álbumes de estudio, El Canto del Loco ha conseguido vender más de un millón de copias en el mercado,1​ convirtiéndose en uno de los grupos musicales más importantes del panorama español en su momento.');
 INSERT INTO authors (nombre, informacion) VALUES('thirty_seconds_to_mars','es una banda estadounidense de rock alternativo formada en 1998 en Los Ángeles (California). Integrada originalmente por tres miembros: Jared Leto (voz, guitarra), Matt Wachter (bajo, sintetizador) y Shannon Leto (batería), a quienes más tarde se les uniría el guitarrista Solon Bixler. Después de la publicación de su álbum debut, el guitarrista Solon Bixler salió de la banda debido a problemas durante su primera gira, poco después fue sustituido por el guitarrista Tomo Milicevic.11​ Después de la salida de Matt Wachter (ahora en Angels & Airwaves), Jared Leto se convirtió en el bajista de la banda.');
 INSERT INTO authors (nombre, informacion) VALUES('linkin_park', 'es una banda estadounidense de rock alternativo procedente de Agoura Hills, California. Formada en 1996, el grupo estuvo inicialmente integrado por Mike Shinoda, Dave Farrell, Joe Hahn, Brad Delson, Rob Bourdon y Mark Wakefield, este último como voz principal. La banda inició en ese mismo año sus primeros trabajos musicales de manera independiente y posterior a esto grabaron su primer material llamado Xero; sin embargo no tuvieron gran éxito en la búsqueda de un sello discográfico ya que nadie mostró interés por su trabajo, lo que ocasionó la renuncia de Mark Wakefield.2​ Poco después, Chester Bennington se incorporó a la banda como vocalista; el grupo realizó su primera presentación en un club de Los Ángeles y siendo respaldados por Jeff Blue, en aquel entonces vicepresidente de Warner Bros. Records, lograron firmar con el sello en 1999. El nombre del grupo es un juego de palabras que hace referencia al Lincoln Park en Santa Mónica.');
+-- ids: a partir del 11 estan llibres
 
 /********************************/
 
@@ -50,6 +51,7 @@ INSERT INTO albums (nombre) VALUES('love_lust_faith_+_dreams');
 /* linkin park */
 INSERT INTO albums (nombre) VALUES('minutes_to_midnight');
 INSERT INTO albums (nombre) VALUES('living_things');
+-- ids: a patir del 19 estan libres
 /********************************/
 
 /* --- styles --- */
