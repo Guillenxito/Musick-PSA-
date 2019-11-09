@@ -160,6 +160,7 @@ class HomeController extends Controller
         }
         
         /*********************** ADD CATEGORIAS **********************************/
+
         $categorias['novedades'] = json_decode(json_encode($novedades), true);
         $categorias['recomendados'] = json_decode(json_encode($recomendaciones[0]), true);
         $categorias['tendencias'] = json_decode(json_encode($tendencias), true);

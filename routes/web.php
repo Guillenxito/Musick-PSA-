@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 
 Route::get('/', 'MiControlador@index');
-Route::get('/home', 'MiControlador@home');
+Route::get('/', 'MiControlador@home');
 
 
 Route::get('/login', 'MiControlador@login');
