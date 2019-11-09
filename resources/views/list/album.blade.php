@@ -81,7 +81,7 @@ echo "</h3>";
                                         play_circle_filled
                                     </i>
                                 </td>
-                                <td>{{ strtoupper(str_replace('_',' ',$item['titulo'])) }}</td>
+                                <td>{{ strtoupper(str_replace('_',' ',$cancion['titulo'])) }}</td>
                                 <td>{{ strtoupper($datos['autor']['nombre']) }}</td>
                                 <td>
                                     <i class="material-icons">
