@@ -17,8 +17,10 @@ Route::get('/', function () {
 */
 
 
-//Route::get('/', 'MiControlador@index');
-// Route::get('/home', 'MiControlador@home');
+
+Route::get('/', 'MiControlador@index');
+Route::get('/home', 'MiControlador@home');
+
 
 Route::get('/login', 'MiControlador@login');
 
@@ -30,9 +32,8 @@ Route::get('/user/destroy/{id}', 'UserController@destroy');
 
 Auth::routes();//Con esto se pide autentificacion para todas las paginas.
 
-// Route::get('/album/show/{id}', 'AlbumController@show');
-Route::get('/{artist}', 'AlbumController@showArtist');
-Route::get('/{artist}/{album}', 'AlbumController@showAlbum');
+Route::get('/autor/{artist}', 'AlbumController@showArtist');
+Route::get('/autor/{artist}/{album}', 'AlbumController@showAlbum');
 
 Route::get('/', 'HomeController@home');
 
