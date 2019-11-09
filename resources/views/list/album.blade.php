@@ -1,5 +1,9 @@
 @extends('layouts.plantilla')
 
+@section('meta')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
+
 @section('title', 'Album')
 
 @section('styles')
@@ -20,26 +24,31 @@ echo "</pre>";
 echo "<h3>";
 echo $_SERVER['SCRIPT_FILENAME'];
 echo "</h3>";
+
+
+echo "<pre>";
+echo '<b>ARRAY $_COOKIE</b><BR>';
+print_r($_COOKIE);
 */
 ?>
 
 <div class="container overflow-auto">
-    <div class="row h-100" id="head">
+    <div class="row" id="head">
         <div id="albumcontainer" class="col-sm-12 col-md-5">
             <img src="{{ asset('img/artistas/' . $datos['autor']['nombre'] .'/' . $datos['autor']['nombre'] . '.png') }}" class="" alt="">
         </div>
-        <div class="col-sm-12 col-md-7 my-auto text-center text-md-left" id="info">
+        <div class="col-sm-12 col-md-7  text-center text-md-left" id="info">
             <h2>ÁLBUM</h2>
             <h1>{{ strtoupper(str_replace('_',' ',$datos['album']['nombre'])) }}</h1>
             <h2>{{ strtoupper(str_replace('_',' ',$datos['autor']['nombre'])) }}</h2>
             <div id="iconsContainer">
                 <div id="play"> 
-                    <i class="material-icons">
+                    <i class="material-icons playall">
                         play_circle_filled
                     </i>
                 </div>
                 <div id="add">
-                    <i class="material-icons">
+                    <i class="material-icons addall">
                         playlist_add
                     </i>
                 </div>
@@ -57,7 +66,6 @@ echo "</h3>";
     <div class="row">
         <div class="col-12">
             <table class="table table-sm table-bordered table-hover table-dark container-fluid table-striped table-borderless">
-                <!--<caption>List of users</caption>-->
                 <thead>
                     <tr>
                         <td scope="col"></td>
@@ -66,7 +74,6 @@ echo "</h3>";
                         <th scope="col">Titulo</th>
                         <th scope="col">artista</th>
                         <th scope="col">
-                            <!--Duración-->
                         </th>
                     </tr>
                 </thead>
@@ -77,17 +84,20 @@ echo "</h3>";
                                 <td></td>
                                 <td scope="row" >{{ ++$clave }}</td>
                                 <td class=""> 
-                                    <i class="material-icons">
-                                        play_circle_filled
-                                    </i>
+                                    <a>
+                                        <i class="material-icons playsong">
+                                            play_circle_filled
+                                        </i>
+                                    </a>
                                 </td>
-                                <td>{{ strtoupper(str_replace('_',' ',$item['titulo'])) }}</td>
+                                <td>{{ strtoupper(str_replace('_',' ',$cancion['titulo'])) }}</td>
                                 <td>{{ strtoupper($datos['autor']['nombre']) }}</td>
                                 <td>
-                                    <i class="material-icons">
-                                        playlist_add
-                                    </i>
-
+                                    <a>
+                                        <i class="material-icons addsong">
+                                            playlist_add
+                                        </i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
