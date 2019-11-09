@@ -11,12 +11,13 @@
 
     const contenedor = document.getElementById('app');
 
-/* FUNCTIONES */
-
+/* FUNCTIONS */
+/*
   const listarRecomendados = array => {
         const patron = document.getElementById('template-recomendados').innerHTML;
-        var ListaRecomendados = [ <?php echo implode("','",categorias);?> ]
+        var ListaRecomendados = [ <?php echo implode("','",categorias);?> ];
         const res = templ.rellenar(patron, ListaRecomendados);
 
         contenedor.innerHTML += `<div class="card m-2 text-left flex-fill" style="width: 16rem;">${res}</div>`;
   }
+*/

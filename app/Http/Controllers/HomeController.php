@@ -84,7 +84,7 @@ class HomeController extends Controller
                                  ->join('authors','songs.id_author', '=', 'authors.id_author')
                                  ->join('albums','songs.id_album','=','albums.id_album')
                                  ->select('authors.nombre AS artista','albums.nombre')
-                                 ->orderBy('albums.created_at', 'DESC')
+                                 ->orderBy('albums.created_at', 'ASC')
                                  ->take(6)
                                  ->get();
 
