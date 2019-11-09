@@ -88,6 +88,7 @@ class HomeController extends Controller
                                  ->take(6)
                                  ->get();
 
+
         /*************************** CONSULTA RECOMENDACIONES *************************/
         $JournalStyle = DB::table('journals')
                         ->join('songs', 'journals.id_song', '=', 'songs.id_song')
@@ -115,7 +116,7 @@ class HomeController extends Controller
            $recomendacion = DB::table('songs')
                                  ->join('albums','songs.id_album','=','albums.id_album')
                                  ->join('authors','songs.id_author','=','authors.id_author')
-                                 ->select('albums.nombre AS nombreAlbum','authors.nombre AS nombreAuthor')
+                                 ->select('albums.nombre AS nombreAlbum','authors.nombre AS artista')
                                  ->where('songs.id_style','=',$key)
                                  ->distinct('albums.id_album')
                                  ->take($value)
@@ -130,8 +131,7 @@ class HomeController extends Controller
                          ->join('songs', 'journals.id_song', '=', 'songs.id_song')
                          ->select('songs.id_song')
                          ->get();
-        
-  
+
         $JournalIdSongs = json_decode(json_encode($JournalIdSongs), true);
         $countIdSong = array();
 
@@ -153,7 +153,8 @@ class HomeController extends Controller
         {
            $tendencia = DB::table('songs')
                                  ->join('albums','songs.id_album','=','albums.id_album')
-                                 ->select('songs.id_song','songs.titulo','songs.id_album','albums.nombre')
+                                 ->join('authors','songs.id_author','=','authors.id_author')
+                                 ->select('songs.id_song','songs.titulo','songs.id_album','albums.nombre','authors.nombre AS artista')
                                  ->where('songs.id_song','=',$key)
                                  ->get();
 
