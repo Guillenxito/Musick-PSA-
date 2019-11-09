@@ -2,6 +2,8 @@
 /public/hot
 /public/storage
 /public/musica/*.mp3
+/public/musica/*.rar
+/public/musica/*.zip
 /storage/*.key
 /vendor
 .env
@@ -36,9 +38,11 @@ yarn-error.log
 * .gz 
 * .iso 
 * .jar 
-* .rar 
+* .rar
+*.rar 
 * .tar 
 * .zip 
+*.zip
 
 
 # ignorar archivos generados por el sistema operativo 
