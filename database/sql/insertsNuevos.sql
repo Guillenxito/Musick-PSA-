@@ -55,10 +55,10 @@ INSERT INTO albums (nombre,created_at) VALUES('living_things',CURRENT_DATE);
 /********************************/
 
 /* --- styles --- */
-INSERT INTO styles (nombre) VALUES('flamenco');
-INSERT INTO styles (nombre) VALUES('rap');
-INSERT INTO styles (nombre) VALUES('rock');
-INSERT INTO styles (nombre) VALUES('reggaeton');
+INSERT INTO styles (nombre,descripcion) VALUES('flamenco','Lo más flamenco');
+INSERT INTO styles (nombre,descripcion) VALUES('rap','Disfruta del rap más callejero.');
+INSERT INTO styles (nombre,descripcion) VALUES('rock','El rock más cañero.');
+INSERT INTO styles (nombre,descripcion) VALUES('reggaeton','Lo más reggaetonero.');
 -- INSERT INTO styles (nombre) VALUES('jazz');
 -- INSERT INTO styles (nombre) VALUES('pop');
 

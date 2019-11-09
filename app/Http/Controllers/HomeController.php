@@ -159,12 +159,18 @@ class HomeController extends Controller
 
             array_push($tendencias,$tendencia[0]);
         }
-        
+              
+        /*********************** CONSULTA ESTILOS **********************************/
+        $estilos = DB::table('styles')
+            ->select('styles.nombre','styles.descripcion')
+            ->get();
+
         /*********************** ADD CATEGORIAS **********************************/
 
         $categorias['novedades'] = json_decode(json_encode($novedades), true);
         $categorias['recomendados'] = json_decode(json_encode($recomendaciones[0]), true);
         $categorias['tendencias'] = json_decode(json_encode($tendencias), true);
+        $categorias['estilos'] = json_decode(json_encode($estilos), true);
 
         return view('home', compact('categorias'));
     }
