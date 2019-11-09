@@ -12,6 +12,7 @@ INSERT INTO authors (nombre, informacion) VALUES('los_delinquentes', 'Los Delinq
 INSERT INTO authors (nombre, informacion) VALUES('bad_bunny','Benito Antonio Martínez Ocasio (San Juan, Puerto Rico, 10 de marzo de 1994), más conocido por su nombre artístico Bad Bunny, es un cantante puertorriqueño de trap y reguetón.');
 INSERT INTO authors (nombre, informacion) VALUES('arce','Pablo Arce es un rapero gallego nacido en Santiago de Compostela en 1990. Empezó con el rap en el 2002: escribía letras en su casa y las grababa con un mp3, después las bajaba al Parque de Ramírez y a la gente le gustaba porque era un rollo diferente, callejero, con las drogas, el dinero y las chicas como temática. Precisamente por el contenido "salvaje" de sus letras se le ha colgado el cartel de "polémico".');
 INSERT INTO authors (nombre, informacion) VALUES('paramore','Paramore es una banda estadounidense de pop punk y rock alternativo​​​​ integrada por Hayley Williams, Taylor York y Zac Farro. Fue formada en Franklin, Tennessee, en 2004, por Williams y Jeremy Davis junto con Josh Farro, Zac Farro ​ y Jason Bynum.​');
+INSERT INTO authors (nombre, informacion) VALUES('el_arrebato','Francisco Javier Labandón Pérez (Sevilla, 1 de septiembre de 1969), más conocido como El Arrebato, es un cantautor español de rumba-pop y flamenco. De familia paterna de Sevilla y familia materna de Barbate, comenzó su carrera artística sobre 1985 y su carrera discográfica en 1988 sacando su primer disco con el grupo Piel morena en el que le acompañaban 2 grandes amigos de su Sevilla natal.​');
 
 /********************************/
 
@@ -32,6 +33,8 @@ INSERT INTO albums (nombre) VALUES('x100pre');
 INSERT INTO albums (nombre) VALUES('lucifer');
 /* paramore */
 INSERT INTO albums (nombre) VALUES('after_laughter');
+/* el_arrebato */
+INSERT INTO albums (nombre) VALUES('abrazos');
 
 /********************************/
 
@@ -170,9 +173,76 @@ INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('luzbel
 INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('manicomio',9,5,2,CURRENT_DATE);
 INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('matusalem',9,5,2,CURRENT_DATE);
 INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('mirame_a_los_ojos',9,5,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('mi_ruina-que-hablar',9,5,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('mi_ruina_que_hablar',9,5,2,CURRENT_DATE);
 INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('alcoholics',9,5,2,CURRENT_DATE);
+/* el_arrebato */
+/* abrazos */
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('aqui_me_tienes',11,7,1,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('que_salga_el_sol_por_donde_quiera',11,7,1,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('primaveras_en_el_pelo',11,7,1,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('si_la_hubieras_visto',11,7,1,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('en_el_ultimo_minuto',11,7,1,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('pequeneces',11,7,1,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('en_el_numero_14',11,7,1,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('buscate_un_hombre_que_te_quiera',11,7,1,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('a_mi_na_ma',11,7,1,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('una_noche_con_arte',11,7,1,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('un_amor_tan_grande',11,7,1,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('cuando_quieras_quiero',11,7,1,CURRENT_DATE);
 
+/* --- journals --- */
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,37,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,29,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,25,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,21,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,23,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,33,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,53,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,72,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,62,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,42,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,33,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,63,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,83,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,102,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,10,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,32,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,23,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,13,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,3,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,72,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,82,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,72,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,63,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,35,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,36,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,27,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,82,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,92,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,33,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,23,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,13,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,2,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,23,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,23,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,5,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,53,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,34,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,23,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,22,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,21,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,73,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,83,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,73,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,82,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,52,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,24,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,33,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,22,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,12,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,112,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,31,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (1,13,CURRENT_DATE);
 /********************************/
 =======
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
