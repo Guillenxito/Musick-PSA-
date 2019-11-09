@@ -154,7 +154,7 @@ class HomeController extends Controller
            $tendencia = DB::table('songs')
                                  ->join('albums','songs.id_album','=','albums.id_album')
                                  ->join('authors','songs.id_author','=','authors.id_author')
-                                 ->select('songs.id_song','songs.titulo','songs.id_album','albums.nombre','songs.nombre AS artista')
+                                 ->select('songs.id_song','songs.titulo','songs.id_album','albums.nombre','authors.nombre AS artista')
                                  ->where('songs.id_song','=',$key)
                                  ->get();
 
