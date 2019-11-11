@@ -16,7 +16,7 @@
         @include('layouts.navbar')
     </div>
 
-    <div class="cuerpo my-5">
+    <div class="cuerpo my-5" id="cuerpo">
         @yield('cuerpo')
     </div>
 

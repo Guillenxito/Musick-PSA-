@@ -66,6 +66,7 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
+
     <!-- tendencias -->
     <div class="container text-center">
         <a name="tendencias"></a>
@@ -76,17 +77,26 @@
                     <div class="card-header bg-dark ">
                         <h5 class="card-title text-light">¡¡¡nombreCancion!!!<br>¡¡¡nombreArtista!!!<br>¡¡¡nombreAlbum!!!</h5>
                     </div>
-                    <a href="#">
-                        <img class="card-img-top" src="{{ asset('img/artistas/¡¡¡nombreArtista_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap">
-                    </a>
+                    <img class="card-img-top" src="{{ asset('img/artistas/¡¡¡nombreArtista_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap"> 
                 </div>
             </template>
         </div>
     </div>
-    <!-- biblioteca -->
-    
+    <!-- Tendencias Cancion -->
+     <div class="container text-center">
+        <a name="cancion Tendencias"></a>
+        <div class="well text-center h1 titulo">Tendencias</div>
+        <div class="row text-center" id="tendencias-cancion">
+            <template id="template-tendencias-cancion">
+                  <button type="button" class="list-group-item list-group-item-action"> ¡¡¡nombreCancion!!! </button>
+            </template>
+        </div>
+    </div>
 
 <script>
+
+    document.querySelector
+
     const templ = (function () {
 
         function aHtml(patron, datos) {
@@ -169,8 +179,24 @@
         arrFinal["estilos"] = estilos;
         return arrFinal;
     }
+    function modificarRespuestaAlbum(array){
+    console.log("CANCIONES");
+        console.log(array);
+        /*var arrFinal = new Array();
+
+        var canciones = new Array();
+        array.forEach(function(element) {
+            canciones.push({"nombreAuthor_":element.id_song,
+                             "titulo":element.titulo,
+                    })
+        });
+
+        arrFinal["canciones"] = canciones;
+        return arrFinal;*/
+    }
 
     var informacionHome = modificarRespuesta(Array(<?php echo json_encode($categorias); ?>));
+    
     // console.log("NOVEDADES",informacionHome.novedades);
     // console.log("RECOMENDADOS",informacionHome.recomendados);
     // console.log("TENDENCIAS",informacionHome.tendencias);
@@ -181,6 +207,7 @@
     const contenedor_tendencias = document.getElementById('tendencias');
     const contenedor_estilos_1 = document.getElementById('estilos_1');
     const contenedor_estilos_2 = document.getElementById('estilos_2');
+    const contenedor_tendencias_cancion = document.getElementById('tendencias-cancion');
     const titulos = document.querySelectorAll('.titulo');
     const divEstilos = document.querySelectorAll('.estilos')[0];
     // const listaUsuarios = document.querySelector(".lista-recomendados");
@@ -209,6 +236,16 @@
         const res = templ.rellenar(patron, informacionHome.tendencias);
 
         contenedor_tendencias.innerHTML += `${res}</div>`;
+    }
+
+    // tendencias-cancion
+    const tendencias_cancion = (array) => {
+        
+        const patron = document.getElementById('template-tendencias-cancion').innerHTML;
+        
+        const res = templ.rellenar(patron, array);
+
+        contenedor_tendencias.innerHTML += ` <div class="list-group">${res}</div>`;
     } 
     // estilos
     const estilos = array => {
@@ -247,7 +284,8 @@
 
     // Mostrar la información del artista con todos sus albunes
     const mostrarArtista = (artista) => {
-        console.log(artista);
+        artista = JSON.parse(artista);
+        tendencias_cancion(artista.canciones);
     }
 
     // Muestra un album
@@ -257,8 +295,8 @@
     }
 
 
-    pedirDatos('http://musick.test/autor/camaron/reencuentro',mostrarArtista);
-    pedirDatos('http://musick.test/autor/camaron',mostrarArtista);
+    //pedirDatos('http://musick.test/autor/camaron/reencuentro',mostrarArtista);
+    //pedirDatos('http://musick.test/autor/camaron',mostrarArtista);
     
   /*
   ** Función para pedir los datos al servidor CORS
@@ -289,7 +327,29 @@
 */  
     }
 
+/*****************************/
+const ponerEvento = () => {
+        const cuerpo = document.getElementById('cuerpo');
+        cuerpo.addEventListener('click', gestionarEvento);
+}
+const gestionarEvento = (evt) => {
+        if (evt.target !== evt.currentTarget) {
+            // console.log(evt.target.className);
+            if (evt.target.tagName == 'IMG' ||
+                evt.target.className == 'card-title text-light' ||
+                evt.target.className == 'card-header bg-dark'|| 
+                evt.target.className == 'card m-2 text-left flex-fill') {
+               
+                if (evt.target.tagName == 'IMG'){
+                    x = evt.target.previousElementSibling.firstElementChild.innerHTML.split("<br>").map((e) => {return e.toLowerCase().replace(" ","_")});
+                    console.log(x);
+                    pedirDatos('http://musick.test/autor/'+ x[1] +'/'+x[2],mostrarArtista);
+                }
+            }
+        }
+    }
 
+    ponerEvento();
     mostrarHome();
 
 </script>
