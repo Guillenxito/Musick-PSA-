@@ -40,10 +40,10 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-md-4 offset-md-4">
+                            <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                    <label class="form-check-label mx-auto" for="remember">
+                                    <label class="form-check-label" for="remember">
                                         Recuérdame
                                     </label>
                                 </div>
@@ -62,7 +62,7 @@
                                     </a>
                                 @endif
                                 <br>
-                                <a class="btn btn-link mx-auto" href="{{ route('register') }}">
+                                <a class="btn btn-link" href="{{ route('register') }}">
                                         ¿No tienes cuenta todavía? Registrate
                                 </a>
                             </div>
