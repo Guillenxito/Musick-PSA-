@@ -66,6 +66,10 @@
                                 <button type="submit" class="btn btn-dark">
                                     Regristrarse
                                 </button>
+                                <br>
+                                 <a class="btn btn-link mx-auto" href="{{ route('login') }}">
+                                        ¿Ya tienes cuenta? Inicia sesión
+                                </a>
                             </div>
                         </div>
                     </form>

@@ -40,13 +40,15 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-4 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="remember">
+                                    <label class="form-check-label mx-auto" for="remember">
                                         Recuérdame
                                     </label>
                                 </div>
+                            </div>
+                            <div class="col-md-4 offset-md-4">
                             </div>
                         </div>
                         <div class="form-group row mb-0">
@@ -55,10 +57,14 @@
                                     Entrar
                                 </button>
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link text-center" href="{{ route('password.request') }}">
                                         ¿Olvidaste tu contraseña?
                                     </a>
                                 @endif
+                                <br>
+                                <a class="btn btn-link mx-auto" href="{{ route('register') }}">
+                                        ¿No tienes cuenta todavía? Registrate
+                                </a>
                             </div>
                         </div>
                     </form>
