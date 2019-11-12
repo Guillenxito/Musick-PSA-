@@ -39,8 +39,8 @@ print_r($_COOKIE);
         </div>
         <div class="col-sm-12 col-md-7  text-center text-md-left" id="info">
             <h2>ÁLBUM</h2>
-            <h1>{{ strtoupper(str_replace('_',' ',$datos['album']['nombre'])) }}</h1>
-            <h2>{{ strtoupper(str_replace('_',' ',$datos['autor']['nombre'])) }}</h2>
+            <h1 id="album">{{ strtoupper(str_replace('_',' ',$datos['album']['nombre'])) }}</h1>
+            <h2 id="artista">{{ strtoupper(str_replace('_',' ',$datos['autor']['nombre'])) }}</h2>
             <div id="iconsContainer">
                 <div id="play"> 
                     <i class="material-icons playall">
@@ -83,21 +83,26 @@ print_r($_COOKIE);
                             <tr id="{{ $cancion['id_song'] }}">
                                 <td></td>
                                 <td scope="row" >{{ ++$clave }}</td>
-                                <td class=""> 
-                                    <a>
+                                <td class="">
+                                     <a>
                                         <i class="material-icons playsong">
                                             play_circle_filled
                                         </i>
                                     </a>
                                 </td>
-                                <td>{{ strtoupper(str_replace('_',' ',$cancion['titulo'])) }}</td>
+                                <td id="titulo">{{ strtoupper(str_replace('_',' ',$cancion['titulo'])) }}</td>
                                 <td>{{ strtoupper($datos['autor']['nombre']) }}</td>
                                 <td>
                                     <a>
-                                        <i class="material-icons addsong">
+                                        <i class="material-icons addsong" id="{{ $cancion['id_song'] }}">
                                             playlist_add
                                         </i>
                                     </a>
+                                    <form id="form{{ $cancion['id_song'] }}" method="POST" action="http://musick.test/biblioteca/AddSong">
+                                        @csrf
+                                        <input id="{{ $cancion['id_song'] }}" type="hidden">
+                                        
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

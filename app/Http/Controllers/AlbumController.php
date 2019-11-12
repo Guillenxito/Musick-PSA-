@@ -22,7 +22,7 @@ class AlbumController extends Controller
         $ids = DB::table('songs')->where('id_author', '=', $id_author)->get();
         $ids = json_decode(json_encode($ids), true);
         $temp = DB::table('albums')->whereIn('id_album', $ids)->get();
-        $datos['albums'] = json_decode(json_encode($temp), true);
+        $datos['album'] = json_decode(json_encode($temp), true);
 
         // id_author, nombre, informacion
         $temp =  DB::table('authors')->where('id_author', '=', $id_author)->get();
