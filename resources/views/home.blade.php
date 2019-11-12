@@ -3,41 +3,37 @@
 
 @section('cuerpo')
     <!-- novedades -->
-    <div class="container text-center">
+    <div class="container text-center" id="nov">
         <a name="novedades"></a>
         <div class="well text-center h1 titulo">Novedades</div>
         <div class="row text-center" id="novedades">
             <template id="template-novedades">
                 <div class="card m-2 text-left flex-fill" style="width: 16rem;">
-                    <div class="card-header bg-dark ">
+                    <div class="card-header bg-dark">
                         <h5 class="card-title text-light">¡¡¡nombreAuthor!!!</h5>
                     </div>
-                    <a href="#">
-                        <img class="card-img-top" src="{{ asset('img/artistas/¡¡¡nombreAuthor_!!!/¡¡¡nombreAuthor_!!!.png') }}" alt="Card image cap">
-                    </a>
+                    <img class="card-img-top" src="{{ asset('img/artistas/¡¡¡nombreAuthor_!!!/¡¡¡nombreAuthor_!!!.png') }}" alt="Card image cap">
                 </div>
             </template>
         </div>
     </div>
     <!-- recomendados -->
-    <div class="container text-center">
+    <div class="container text-center" id="rec">
         <a name="recomendados"></a>
         <div class="well text-center h1 titulo">Recomendados</div>
         <div class="row text-center" id="recomendados">
             <template id="template-recomendados">
                 <div class="card m-2 text-left flex-fill" style="width: 16rem;">
-                    <div class="card-header bg-dark ">
+                    <div class="card-header bg-dark">
                         <h5 class="card-title text-light">¡¡¡nombreAuthor!!!<br>¡¡¡nombreAlbum!!!</h5>
                     </div>
-                    <a href="#">
-                        <img class="card-img-top" src="{{ asset('img/artistas/¡¡¡nombreAuthor_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap">
-                    </a>
+                    <img class="card-img-top" src="{{ asset('img/artistas/¡¡¡nombreAuthor_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap">
                 </div>
             </template>
         </div>
     </div>
     <!-- estilos -->
-    <div class="estilos">
+    <div class="estilos" id="est">
         <a name="estilos"></a>
         <div id="carruselEstilos" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators" id="estilos_1">
@@ -50,7 +46,7 @@
                 <template id="template-estilos-2">
                     <div class="carousel-item active">
                         <img src="{{ asset('img/estilos/¡¡¡nombreEstilo!!!.png') }}" class="d-block w-100 p-5" alt="...">
-                        <div class="carousel-caption rounded d-none d-md-block bg-dark ">
+                        <div class="carousel-caption rounded d-none d-md-block bg-dark">
                             <h5>¡¡¡nombreEstilo!!!</h5>
                             <p>¡¡¡descripcion!!!</p>
                         </div>
@@ -68,13 +64,13 @@
         </div>
 
     <!-- tendencias -->
-    <div class="container text-center">
+    <div class="container text-center" id="ten">
         <a name="tendencias"></a>
         <div class="well text-center h1 titulo">Tendencias</div>
         <div class="row text-center" id="tendencias">
             <template id="template-tendencias">
                 <div class="card m-2 text-left flex-fill" style="width: 16rem;">
-                    <div class="card-header bg-dark ">
+                    <div class="card-header bg-dark">
                         <h5 class="card-title text-light">¡¡¡nombreCancion!!!<br>¡¡¡nombreArtista!!!<br>¡¡¡nombreAlbum!!!</h5>
                     </div>
                     <img class="card-img-top" src="{{ asset('img/artistas/¡¡¡nombreArtista_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap"> 
@@ -82,20 +78,18 @@
             </template>
         </div>
     </div>
-    <!-- Tendencias Cancion -->
-     <div class="container text-center">
-        <a name="cancion Tendencias"></a>
-        <div class="well text-center h1 titulo">Tendencias</div>
-        <div class="row text-center" id="tendencias-cancion">
-            <template id="template-tendencias-cancion">
-                  <button type="button" class="list-group-item list-group-item-action"> ¡¡¡nombreCancion!!! </button>
+    <!-- album -->
+     <div class="container text-center" id="alb">
+        <a name="album"></a>
+        <div class="well text-center h1 titulo">¡¡¡nb_album!!!</div>
+        <div class="row text-center" id="album">
+            <template id="template-album">
+                  <button type="button" class="list-group-item list-group-item-action">¡¡¡nb_cancion!!! </button>
             </template>
         </div>
     </div>
 
 <script>
-
-    document.querySelector
 
     const templ = (function () {
 
@@ -180,7 +174,7 @@
         return arrFinal;
     }
     function modificarRespuestaAlbum(array){
-    console.log("CANCIONES");
+        console.log("CANCIONES");
         console.log(array);
         /*var arrFinal = new Array();
 
@@ -201,13 +195,17 @@
     // console.log("RECOMENDADOS",informacionHome.recomendados);
     // console.log("TENDENCIAS",informacionHome.tendencias);
     // console.log("ESTILOS",informacionHome.estilos);
-
+    
+    // url del servidor
+    const urlServidor = 'http://musick.test';
+    // cancionTendencia guardara la canción buscada para resaltarla en el album
+    let cancionTendencia;
     const contenedor_novedades = document.getElementById('novedades');
     const contenedor_recomendados = document.getElementById('recomendados');
     const contenedor_tendencias = document.getElementById('tendencias');
     const contenedor_estilos_1 = document.getElementById('estilos_1');
     const contenedor_estilos_2 = document.getElementById('estilos_2');
-    const contenedor_tendencias_cancion = document.getElementById('tendencias-cancion');
+    const contenedor_album = document.getElementById('album');
     const titulos = document.querySelectorAll('.titulo');
     const divEstilos = document.querySelectorAll('.estilos')[0];
     // const listaUsuarios = document.querySelector(".lista-recomendados");
@@ -239,14 +237,14 @@
     }
 
     // tendencias-cancion
-    const tendencias_cancion = (array) => {
+    const album = (array) => {
         
-        const patron = document.getElementById('template-tendencias-cancion').innerHTML;
+        const patron = document.getElementById('template-album').innerHTML;
         
         const res = templ.rellenar(patron, array);
-
-        contenedor_tendencias.innerHTML += ` <div class="list-group">${res}</div>`;
-    } 
+        
+        contenedor_album.innerHTML += `<div class="list-group">${res}</div>`;
+    }
     // estilos
     const estilos = array => {
         const patron1 = document.getElementById('template-estilos-1').innerHTML;
@@ -267,9 +265,11 @@
         novedades();
         recomendados();  
         tendencias();   
-        estilos();
+        // estilos();
         titulos.forEach(titulo => titulo.setAttribute('style','display:visibility'));
         divEstilos.setAttribute('style','display:visibility');
+        divEstilos.setAttribute('style','display:visibility');
+        contenedor_album.setAttribute('style','display:none');
     }
 
     // Borra el home principal
@@ -283,20 +283,23 @@
 
 
     // Mostrar la información del artista con todos sus albunes
-    const mostrarArtista = (artista) => {
-        artista = JSON.parse(artista);
-        tendencias_cancion(artista.canciones);
+    const mostrarArtista = (informacionArtista) => {
+        informacionArtista = JSON.parse(informacionArtista);
+        console.log(informacionArtista);
+        // tendencias_cancion(artista.canciones);
+        // borrarHome();
     }
 
     // Muestra un album
-    const mostrarAlbum = (album) => {
-
-
+    const mostrarAlbum = (informacionAlbum) => {
+        informacionAlbum = JSON.parse(informacionAlbum);
+        console.log(informacionAlbum);
+        
     }
 
 
-    //pedirDatos('http://musick.test/autor/camaron/reencuentro',mostrarArtista);
-    //pedirDatos('http://musick.test/autor/camaron',mostrarArtista);
+    // pedirDatos('http://musick.test/autor/camaron/reencuentro',mostrarArtista);
+    // pedirDatos('http://musick.test/autor/camaron',mostrarArtista);
     
   /*
   ** Función para pedir los datos al servidor CORS
@@ -314,37 +317,55 @@
             }
         } 
         });
-        console.log(`${peticion}`);
+        console.log(`${urlServidor}/${peticion}`);
 
-        xhr.open('GET', `${peticion}`);
+        xhr.open('GET', `${urlServidor}/${peticion}`);
         xhr.send(null);
-
-/*
-    console.log(`${urlServidor}/${peticion}`);
-
-    xhr.open('GET', `${urlServidor}/${peticion}`);
-    xhr.send(null);
-*/  
     }
 
-/*****************************/
-const ponerEvento = () => {
+    /*****************************/
+    const ponerEvento = () => {
         const cuerpo = document.getElementById('cuerpo');
         cuerpo.addEventListener('click', gestionarEvento);
-}
-const gestionarEvento = (evt) => {
+    }
+
+    // Falta ver que hacemos con los estilos, si llevan a una nueva página o no.
+    const gestionarEvento = (evt) => {
+        // Mucho cuidados con cambiar o añadir cualquier clase en el template (deja de funcionar).
         if (evt.target !== evt.currentTarget) {
-            // console.log(evt.target.className);
-            if (evt.target.tagName == 'IMG' ||
-                evt.target.className == 'card-title text-light' ||
-                evt.target.className == 'card-header bg-dark'|| 
-                evt.target.className == 'card m-2 text-left flex-fill') {
-               
-                if (evt.target.tagName == 'IMG'){
-                    x = evt.target.previousElementSibling.firstElementChild.innerHTML.split("<br>").map((e) => {return e.toLowerCase().replace(" ","_")});
-                    console.log(x);
-                    pedirDatos('http://musick.test/autor/'+ x[1] +'/'+x[2],mostrarArtista);
-                }
+            let texto;
+            switch (evt.target.className) {
+                case 'card m-2 text-left flex-fill': 
+                    texto = evt.target.firstChild.firstChild.innerHTML;
+                    break;
+                case 'card-header bg-dark': 
+                    texto = evt.target.firstElementChild.innerHTML;
+                    break;
+                case 'card-title text-light': 
+                    texto = evt.target.innerHTML;
+                    break;
+                case 'card-img-top':                    
+                    texto = evt.target.previousElementSibling.firstElementChild.innerHTML;
+                    break;
+            }
+            const buscado = (texto) 
+                            ? texto.split("<br>")
+                                   .map(txt => txt.toLowerCase()
+                                                  .replace(/ /g,"_"))
+                            : undefined;
+            if (typeof(buscado) === 'object') {
+                switch (buscado.length) {
+                    case 1:
+                        pedirDatos('autor/' + buscado[0], mostrarArtista);
+                        break;
+                    case 2:
+                        pedirDatos('autor/' + buscado[0] + '/' + buscado[1], mostrarAlbum);
+                        break;
+                    case 3:
+                        cancionTendencia = buscado[0];
+                        pedirDatos('autor/' + buscado[1] + '/' + buscado[2], mostrarAlbum);
+                        break;
+                }   
             }
         }
     }
