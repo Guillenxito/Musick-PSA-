@@ -18,8 +18,8 @@ Route::get('/', function () {
 
 
 
-Route::get('/', 'MiControlador@index');
-Route::get('/', 'MiControlador@home');
+
+Route::get('/', 'HomeController@home');
 
 
 Route::get('/login', 'MiControlador@login');
@@ -32,18 +32,27 @@ Route::get('/user/destroy/{id}', 'UserController@destroy');
 
 Auth::routes();//Con esto se pide autentificacion para todas las paginas.
 
+
 // Route::get('/autor/{artist}', 'AlbumController@showArtist');
-// Route::get('/autor/{artist}/{album}', 'AlbumController@showAlbum');
+Route::get('/autor/{artist}/{album}', 'AlbumController@showAlbum');
 Route::get('/autor/{artist}', 'HomeController@authorJSON');
-Route::get('/autor/{artist}/{album}', 'HomeController@albumJSON');
-
-Route::get('/', 'HomeController@home');
+//Route::get('/autor/{artist}/{album}', 'HomeController@albumJSON');
 
 
-// Route::middleware('auth:api')->post('reproductor/play', 'ReproductorController@play');
+
+Route::post('biblioteca/AddSong', 'PlaylistController@store');
+// Route::get('biblioteca/AddSong', 'PlaylistController@store'); para probar facil
+
+
+
+/* Intentos sin form y con una peticion ajax por post
+Route::middleware('auth:api')->post('biblioteca/AddSong', 'BibliotecaController@AddSong');
+
+Route::middleware('auth:api')->post('reproductor/play', 'ReproductorController@play');
 
 Route::group([
     'middleware' => 'auth',
 ], function () {
     Route::post('reproductor/play', 'ReproductorController@play');
 });
+*/

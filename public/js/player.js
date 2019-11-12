@@ -1,59 +1,18 @@
 // linea 1-4 se ejecuta cuando el documento se ha cargado (ready)
 $(function(){
     AsignarEventos();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
 });
 
 function AsignarEventos() {
-    $( '.playsong' ).click(function(e){
-        var td = $(e.target).closest('tr');
-        // console.log(listCookies());
-        console.log(getCookie("XSRF-TOKEN"));
-        console.log(td);
-        console.log(td[0].id);
-
-        var id = td[0].id;
-        var token = getCookie("XSRF-TOKEN");
-
-        console.log($('meta[name="csrf-token"]').attr('content'));
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            }
-        });
-
-        $.ajax({
-            type: 'POST',
-            url: "http://musick.test/reproductor/play",
-            data: {'id': id, '_token': token},
-            success: function(Response){
-                console.log("FUNCIONA")
-                console.log(Response);
-            },
-            error: function(Response){
-                console.log("ERROR");
-                console.log(Response);
-            },
-        });
-        e.preventDefault(); // para que no recarge la pagina (?)
-    });
-
-    $( '.playall' ) .on('click',function(){ReproducirTodas()});
-    $( '.addsong' ) .on('click',function(){AgregarCancion()});
-    $( '.addall' )  .on('click',function(){AgregarTodas()});
-}
-
-function ReproducirTodas(){
-    console.log("ReproducirTodas");
-    RefrescarEventos();
-}
-function AgregarCancion(){
-    console.log("AgregarCancion");
-    RefrescarEventos();
-}
-function AgregarTodas(){
-    console.log("AgregarTodas");
-    RefrescarEventos();
+    $( '.playsong' ).click(ReproducirCancion);
+    $( '.playall' ) .click(ReproducirTodas);
+    $( '.addsong' ) .click(AgregarCancion);
+    $( '.addall' )  .click(AgregarTodas);
 }
 
 function RefrescarEventos() {
@@ -77,4 +36,100 @@ function getCookie(name) {
   var value = "; " + document.cookie;
   var parts = value.split("; " + name + "=");
   if (parts.length == 2) return parts.pop().split(";").shift();
+}
+
+function ObtenerIdCancion(evt){
+    var td = $(evt).parent().parent();
+    return td[0].id;
+}
+
+function PrepararCadena(cdn){
+   return cdn.replace(/ /g,"_").toLowerCase();
+}
+
+function ReproducirTodas(evt){
+    console.log("ReproducirTodas");
+    console.dir(evt);
+    RefrescarEventos();
+}
+
+function AgregarCancion(evt){
+    console.dir($( '#form'+evt.target.id ));
+    $( '#form'+evt.target.id ).submit(function(evt){
+        e.preventDefault();
+        // avisar al usuairo de que se a añadido su cancion
+    });
+}
+/*
+function AgregarCancion(evt){
+    // obtener y mandar por la peticion el id_song
+    var id_song = ObtenerIdCancion(evt.target);
+    var token = getCookie("XSRF-TOKEN");
+
+    $.ajax({
+        type: 'POST',
+        url: "http://musick.test/biblioteca/AddSong",
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        data: {'id_song': id_song, '_token': token},
+        success: function(Response){
+            console.log("FUNCIONA")
+            console.log(Response);
+        },
+        error: function(Response){
+            console.log("ERROR");
+            console.log(Response);
+        },
+    });
+
+    RefrescarEventos();
+}
+*/
+function AgregarTodas(evt){
+    console.log("AgregarTodas");
+    RefrescarEventos();
+}
+
+function ReproducirCancion(evt){
+    console.log("ReproducirCancion");
+
+        var td = $(evt.target).parent().parent();
+        var artista = PrepararCadena(document.querySelector("#artista").innerText);
+        var album = PrepararCadena(document.querySelector("#album").innerText);
+        var titulo = PrepararCadena(td.siblings("#titulo").text());
+        var token = getCookie("XSRF-TOKEN");
+        var id = td[0].id;
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: "http://musick.test/reproductor/play",
+            data: {'id': id, '_token': token},
+            success: function(Response){
+                console.log("FUNCIONA")
+                console.log(Response);
+            },
+            error: function(Response){
+                console.log("ERROR");
+                console.log(Response);
+            },
+        });
+
+        /*
+        // $('#reproductor')[0].src=`http://musick.test/musica/${artista}/${album}/${artista}.mp3`;
+        var $reproductor = $('#reproductor')[0];
+        reproductor.src="http://musick.test/musica/"+artista+"/"+album+"/"+titulo+".mp3";
+        $('#reproductor')[0].remove();
+        console.dir(reproductor);
+        $('#reproductorContainer').append($reproductor);
+        */
+
+        //e.preventDefault(); // para que no recarge la pagina (?)
+    RefrescarEventos();
 }
