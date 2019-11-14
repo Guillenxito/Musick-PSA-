@@ -1,5 +1,10 @@
 
 @extends('layouts.plantilla')
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
 
 @section('cuerpo')
 
@@ -54,35 +59,47 @@
     <!-- album -->
     <div class="container text-center" id="alb">
         <div class="row text-center" id="album_autor">
-             <template id="template-album-portada"> 
+            <template id="template-album-portada"> 
                 <div class="well text-center h1 titulo">¡¡¡autor.nombreAutor!!!</div>
                 <!--<div class="well text-center h3 titulo">¡¡¡autor.informacion!!!</div>-->
-                <img class="card-img-top" src="{{ asset('img/artistas/¡¡¡autor.nombreAutor!!!/¡¡¡album.nombreAlbum!!!.png') }}" alt="Card image cap"> 
+                <img class="card-img-top" src="{{ asset('img/artistas/¡¡¡autor.nombreAutor_!!!/¡¡¡album.nombreAlbum_!!!.png') }}" alt="Card image cap"> 
                 <div class="well text-center h1 titulo">¡¡¡album.nombreAlbum!!!</div>
             </template>
         </div>
         <div class="row text-center" id="album">
             <template id="template-album">
-                  <button class="list-group-item list-group-item-action"> ¡¡¡titulo!!! </button>
+                <button class="list-group-item list-group-item-action">
+                    <div id="¡¡¡id_cancion!!!_play">
+                        <!-- icono reproducir cancion -->
+                    </div>
+                    <div>
+                        ¡¡¡posicionCancionAlbum!!!
+                    </div>
+                        ¡¡¡titulo!!!
+                    <div id="¡¡¡id_cancion!!!_biblioteca">
+                        <!-- icono añadir a la biblioteca -->
+                    </div>                
+                </button>
             </template>
         </div>
     </div>
 
-    <!-- albumnesAutor -->
+    <!-- albumesAutor -->
     <div class="container text-center" id="albs">
-        <div class="row text-center" id="albunes_info">
-             <template id="template-albunes-info">  
-                <img class="card-img-top" src="{{ asset('img/artistas/¡¡¡autor.nombreAutor!!!/¡¡¡autor.nombreAutor!!!.png') }}" alt="Card image cap"> 
-                <div class="well text-center h1 titulo">¡¡¡autor.nombreAutor!!!</div>
-                <div class="well text-center h3 titulo">¡¡¡autor.informacion!!!</div>
-              </template>
-        </div>
-        <div class="row text-center" id="albunes_titulos">
-            <template id="template-albunes-canciones">
-                  <button class="list-group-item list-group-item-action"> ¡¡¡nombreAlbum!!! </button>
+        <div class="row text-center" id="albumes_info">
+            <template id="template-albumes-info">  
+                <img class="card-img-top" src="{{ asset('img/artistas/¡¡¡nombreAutor_!!!/¡¡¡nombreAutor_!!!.png') }}" alt="Card image cap"> 
+                <div class="well text-center h1 titulo">¡¡¡nombreAutor!!!</div>
+                <div class="well text-center h3 titulo">¡¡¡informacion!!!</div>
+                <div class="well text-center h3 titulo">Discos</div>
             </template>
         </div>
-    </div> 
+        <div class="row text-center" id="albumes_titulos">
+            <template id="template-albumes-canciones">
+                <button class="list-group-item list-group-item-action">¡¡¡nombreAlbum!!!</button>
+            </template>
+        </div>
+    </div>
 
     <!-- estilos -->
     <div class="estilos" id="est">
@@ -126,17 +143,6 @@
         </div>
     </div>
 
-    <!-- album -->
-    <div class="container text-center" id="alb">
-        <a name="album"></a>
-        <div class="well text-center h1 titulo">¡¡¡nb_album!!!</div>
-        <div class="row text-center" id="album">
-            <template id="template-album">
-                  <button type="button" class="list-group-item list-group-item-action">¡¡¡nb_cancion!!! </button>
-            </template>
-        </div>
-    </div>
-    
 <script>
 
     const templ = (function () {
@@ -178,56 +184,128 @@
 
     })();
 
-    function modificarRespuesta(array){
+    // Tratar la respuesta de home
+    const modificarRespuestaHome = (array) => {
         array = array[0];
-        var arrFinal = new Array();
+        let respuesta = new Array();
 
-        var novedades = new Array();
+        let novedades = new Array();
         array['novedades'].forEach(function(element) {
-            novedades.push({"nombreAuthor_":element.artista,
-                        "nombreAuthor":(element.artista).replace(/_/g,' ').toUpperCase()
-                    })
+            novedades.push({
+                "nombreAuthor_":element.artista,
+                "nombreAuthor":(element.artista).replace(/_/g,' ').toUpperCase()
+            })
         });
 
-        var recomendados = new Array();
+        let recomendados = new Array();
         array['recomendados'].forEach(function(element) {
-            recomendados.push({"nombreAlbum_":element.nombreAlbum,
-                            "nombreAuthor_":element.artista,
-                            "nombreAlbum":(element.nombreAlbum).replace(/_/g,' ').toUpperCase(),
-                            "nombreAuthor":(element.artista).replace(/_/g,' ').toUpperCase()                        
-                        });
+            recomendados.push({
+                "nombreAlbum_":element.nombreAlbum,
+                "nombreAuthor_":element.artista,
+                "nombreAlbum":(element.nombreAlbum).replace(/_/g,' ').toUpperCase(),
+                "nombreAuthor":(element.artista).replace(/_/g,' ').toUpperCase()                        
+            });
         });
 
-        var tendencias = new Array();
+        let tendencias = new Array();
         array['tendencias'].forEach(function(element) {
-            tendencias.push({"nombreCancion_":element.titulo,
-                            "nombreAlbum_":element.nombre,
-                            "nombreArtista_":element.artista,
-                            "nombreCancion":(element.titulo).replace(/_/g,' ').toUpperCase(),
-                            "nombreAlbum":(element.nombre).replace(/_/g,' ').toUpperCase(),
-                            "nombreArtista":(element.artista).replace(/_/g,' ').toUpperCase()
-                        });
+            tendencias.push({
+                "nombreCancion_":element.titulo,
+                "nombreAlbum_":element.nombre,
+                "nombreArtista_":element.artista,
+                "nombreCancion":(element.titulo).replace(/_/g,' ').toUpperCase(),
+                "nombreAlbum":(element.nombre).replace(/_/g,' ').toUpperCase(),
+                "nombreArtista":(element.artista).replace(/_/g,' ').toUpperCase()
+            });
         });
 
-        var estilos = new Array();
+        let estilos = new Array();
         array['estilos'].forEach(function(element) {
-            estilos.push({"nombreEstilo":element.nombre,
-                            "descripcion":element.descripcion
-                        });
+            estilos.push({
+                "nombreEstilo":element.nombre,
+                "descripcion":element.descripcion
+            });
         });
-        arrFinal["novedades"] = novedades;
-        arrFinal["recomendados"] = recomendados;
-        arrFinal["tendencias"] = tendencias;
-        arrFinal["estilos"] = estilos;
-        return arrFinal;
+        respuesta["novedades"] = novedades;
+        respuesta["recomendados"] = recomendados;
+        respuesta["tendencias"] = tendencias;
+        respuesta["estilos"] = estilos;
+        return respuesta;
+    }
+
+    // Tratar la respuesta del author 
+    const modificarRespuestaAuthor = (array) => {
+        let respuesta = new Array();      
+        let albumes = new Array();
+        array.albums.forEach(function(album) {
+            albumes.push({
+                "id_album" : album.id_album,
+                "nombreAlbum_" : album.nombreAlbum,
+                "nombreAlbum" : (album.nombreAlbum).replace(/_/g,' ').toUpperCase()
+            });
+        });
+        let canciones = new Array();
+        array.canciones.forEach(function(cancion) {
+            canciones.push({
+                "id_album" : cancion.id_album,
+                // "id_cancion" : cancion.id_cancion,
+                "titulo_" : cancion.titulo,
+                "titulo" : (cancion.titulo).replace(/_/g,' ').toUpperCase()
+            });
+        });
+        let autor = new Array();
+        autor.push({
+            "nombreAutor_" : array.autor.nombreAutor,
+            "nombreAutor" : (array.autor.nombreAutor).replace(/_/g,' ').toUpperCase(),
+            "informacion" : array.autor.informacion
+        });
+        respuesta['albumes'] = albumes;        
+        respuesta['canciones'] = canciones;
+        respuesta['autor'] = autor;
+        console.log('respuesta --->>> ',respuesta);
+        return respuesta;
+    }
+
+    // Tratar la respuesta del album 
+    const modificarRespuestaAlbum = (array) => {
+        console.log('MODIFICAR RESPUESTA ALBUM ---->>>> ', array);
+        let respuesta = new Array();      
+        let album = new Array();
+        album.push({
+            "id_album" : array.album.id_album,
+            "nombreAlbum_" : array.album.nombreAlbum,
+            "nombreAlbum" : (array.album.nombreAlbum).replace(/_/g,' ').toUpperCase()
+        });
+        let canciones = new Array();
+        let posicionCancionAlbum = 1;
+        array.canciones.forEach(function(cancion) {
+            canciones.push({
+                "id_album" : cancion.id_album,
+                "id_cancion" : cancion.id_song,
+                "titulo_" : cancion.titulo,
+                "titulo" : (cancion.titulo).replace(/_/g,' ').toUpperCase(),
+                "posicionCancionAlbum" : posicionCancionAlbum++
+            });
+        });
+        let autor = new Array();
+        autor.push({
+            "nombreAutor_" : array.autor.nombreAutor,
+            "nombreAutor" : (array.autor.nombreAutor).replace(/_/g,' ').toUpperCase(),
+            "informacion" : array.autor.informacion
+        });
+        respuesta['album'] = album;        
+        respuesta['canciones'] = canciones;
+        respuesta['autor'] = autor;
+        console.log('respuesta --->>> ',respuesta);
+        return respuesta;
     }
     
-    var informacionHome = modificarRespuesta(Array(<?php echo json_encode($categorias); ?>));
+    let informacionHome = modificarRespuestaHome(Array(<?php echo json_encode($categorias); ?>));
     
-     console.log("NOVEDADES",informacionHome.novedades);
-     console.log("RECOMENDADOS",informacionHome.recomendados);
-     console.log("TENDENCIAS",informacionHome.tendencias);
-     console.log("ESTILOS",informacionHome.estilos);
+    // console.log("NOVEDADES",informacionHome.novedades);
+    // console.log("RECOMENDADOS",informacionHome.recomendados);
+    // console.log("TENDENCIAS",informacionHome.tendencias);
+    // console.log("ESTILOS",informacionHome.estilos);
     
     // url del servidor
     const urlServidor = 'http://musick.test';
@@ -240,9 +318,9 @@
     const contenedor_tendencias = document.getElementById('tendencias');
     const contenedor_estilos_1 = document.getElementById('estilos_1');
     const contenedor_estilos_2 = document.getElementById('estilos_2');
-    const contenedor_album_info = document.getElementById('albunes_info');
-    const contenedor_albunes_info = document.getElementById('albunes_info');
-    const contenedor_albunes_titulos = document.getElementById('albunes_titulos');
+    const contenedor_album_info = document.getElementById('albumes_info');
+    const contenedor_albumes_info = document.getElementById('albumes_info');
+    const contenedor_albumes_titulos = document.getElementById('albumes_titulos');
     const contenedor_album  = document.getElementById('album');
     const titulos = document.querySelectorAll('.titulo');
     const contenedor_album_autor = document.querySelectorAll('album_autor');
@@ -278,7 +356,7 @@
 
     /*****CANCIONES POR ALBUM ****/
     const album = (array) => {
-    console.log('PINTANDO ... CANCIONES');
+        console.log('PINTANDO ... CANCIONES');
         console.log(array.canciones);
         const patron = document.getElementById('template-album').innerHTML;
         
@@ -289,9 +367,8 @@
         contenedor_album.style.display="block";
     }
 
-
-       const albumPortada = (array) => {
-       console.log('PINTANDO ... DATOS AUTOR');
+    const albumPortada = (array) => {
+        console.log('PINTANDO ... DATOS ALBUM');
         console.log(array);
         const patron = document.getElementById('template-album-portada').innerHTML;
         
@@ -302,29 +379,29 @@
         contenedor_album.style.display="block";
     }
 
-    /****ALBUNES POR AUTOR***/
-     const albunesInfo = (array) => {
-       console.log('PINTANDO ... ALBUNES AUTOR');
+    /****albumes POR AUTOR***/
+    const albumesInfo = (array) => {
+        console.log('PINTANDO ... albumes AUTOR');
         console.log(array);
-        const patron = document.getElementById('template-albunes-info').innerHTML;
+        const patron = document.getElementById('template-albumes-info').innerHTML;
         
-        const res = templ.rellenar(patron, array);
+        const res = templ.rellenar(patron, array.autor);
         
        contenedor_album_info.innerHTML += res;
 
         contenedor_album_info.style.display="block";
     }
 
-    const albunesTitulos = (array) => {
+    const albumesTitulos = (array) => {
        console.log('PINTANDO ... DATOS AUTOR');
         console.log(array);
-        const patron = document.getElementById('template-albunes-canciones').innerHTML;
+        const patron = document.getElementById('template-albumes-canciones').innerHTML;
         
-        const res = templ.rellenar(patron, array.albums);
+        const res = templ.rellenar(patron, array.albumes);
         
-        contenedor_albunes_titulos.innerHTML += `<div class="list-group">${res}</div>`;
+        contenedor_albumes_titulos.innerHTML += `<div class="list-group">${res}</div>`;
 
-        contenedor_albunes_titulos.style.display="block";
+        contenedor_albumes_titulos.style.display="block";
     }
     // estilos
     const estilos = array => {
@@ -361,26 +438,24 @@
         divEstilos.setAttribute('style','display:none');
     }
 
-
-
-    // Mostrar la información del artista con todos sus albunes
+    // Mostrar la información del artista con todos sus albumes
     const mostrarAuthor = (informacionArtista) => {
         informacionArtista = JSON.parse(informacionArtista);
-        console.log(informacionArtista);
+        console.log('INFORMACION ARTISTA --->>>',informacionArtista);
+        informacionArtista = modificarRespuestaAuthor(informacionArtista);
         borrarHome();
-        albunesInfo(informacionArtista);
-        albunesTitulos(informacionArtista);
-        borrarHome();
+        albumesTitulos(informacionArtista);
+        albumesInfo(informacionArtista);
     }
 
     // Muestra un album
     function mostrarAlbum(informacionAlbum){
         informacionAlbum = JSON.parse(informacionAlbum);
+        console.log('INFORMACION ARTISTA --->>>',informacionAlbum);
+        informacionAlbum = modificarRespuestaAlbum(informacionAlbum);
         borrarHome();
         albumPortada(informacionAlbum);
-        album(informacionAlbum);
-
-        
+        album(informacionAlbum);        
     }
 
     // Guarda la canción en la biblioteca del usuario
@@ -459,7 +534,7 @@
   ** Función para pedir los datos al servidor CORS
   */
     function pedirDatos(peticion, callback) {
-        var xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
 
         xhr.addEventListener('readystatechange', function(evt) {
         if(xhr.readyState === 4) {
@@ -513,20 +588,17 @@
                         //Se mostrara todos los albumnes de Autor buscado
                         // Se usara mostrarAuthor
                         pedirDatos('autor/' + buscado[0], mostrarAuthor);
-                        console.log("CASO 1");
                         break;
                     case 2:
                         //Se mostrara todas las canciones del album buscado
                         // Se usara mostrarAlbum
                         pedirDatos('autor/' + buscado[0] + '/' + buscado[1], mostrarAlbum);
-                        console.log("CASO 2");
                         break;
                     case 3:
                         //Se mostrara todas las canciones del album buscado + indicado la
                         // Se usara mostrarAlbum
                         cancionTendencia = buscado[0];
                         pedirDatos('autor/' + buscado[1] + '/' + buscado[2], mostrarAlbum);
-                        console.log("CASO 3");
                         break;
                 }   
             }
@@ -535,13 +607,13 @@
 
     /*******************************PARTE DE MOSTRAR ALBUM*************************/
 
-
     ponerEvento();
     mostrarHome();
 
     /*SE NECESITA UN BORRAR ALBUM Y BORRAR AUTORALBUMS*/
 
 </script>
+
 <!-- <script src="{{ asset('js/handlerTemplate.js') }}"></script> -->
 <!-- <script src="{{ asset('js/fillerData.js') }}"></script> -->
 

@@ -165,7 +165,7 @@ class HomeController extends Controller
         // id_song, titulo, id_album, id_author, id_style
         $ids = DB::table('songs')->where('id_author', '=', $id_author)->get();
         $ids = json_decode(json_encode($ids), true);
-        $temp = DB::table('albums')->select('id_album','nombre AS nombreAlbum',)->whereIn('id_album', $ids)->get();
+        $temp = DB::table('albums')->select('id_album','nombre AS nombreAlbum')->whereIn('id_album', $ids)->get();
         $datos['albums'] = json_decode(json_encode($temp), true);
 
         // id_author, nombre, informacion
