@@ -34,9 +34,9 @@ Auth::routes();//Con esto se pide autentificacion para todas las paginas.
 
 
 // Route::get('/autor/{artist}', 'AlbumController@showArtist');
-Route::get('/autor/{artist}/{album}', 'AlbumController@showAlbum');
+//Route::get('/autor/{artist}/{album}', 'AlbumController@showAlbum');
 Route::get('/autor/{artist}', 'HomeController@authorJSON');
-//Route::get('/autor/{artist}/{album}', 'HomeController@albumJSON');
+Route::get('/autor/{artist}/{album}', 'HomeController@albumJSON');
 
 
 
