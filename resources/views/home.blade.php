@@ -78,8 +78,18 @@
             </template>
         </div>
     </div>
+    <!-- author -->
+    <div class="container text-center" id="alb">
+        <a name="album"></a>
+        <div class="well text-center h1 titulo">¡¡¡nb_author!!!</div>
+        <div class="row text-center" id="album">
+            <template id="template-album">
+                  <button type="button" class="list-group-item list-group-item-action">¡¡¡informacion!!!</button>
+            </template>
+        </div>
+    </div>
     <!-- album -->
-     <div class="container text-center" id="alb">
+    <div class="container text-center" id="alb">
         <a name="album"></a>
         <div class="well text-center h1 titulo">¡¡¡nb_album!!!</div>
         <div class="row text-center" id="album">
@@ -88,7 +98,6 @@
             </template>
         </div>
     </div>
-
 <script>
 
     const templ = (function () {
@@ -198,6 +207,8 @@
     
     // url del servidor
     const urlServidor = 'http://musick.test';
+    // objeto audio
+    // let reproductor = document.getElementById('reproductor');
     // cancionTendencia guardara la canción buscada para resaltarla en el album
     let cancionTendencia;
     const contenedor_novedades = document.getElementById('novedades');
@@ -297,9 +308,77 @@
         
     }
 
+    // Guarda la canción en la biblioteca del usuario
+    const guardarBiblioteca = (datosCancion) => {
+
+    }
+
+
+    // Reproduce la cancion que se ha pulsado en la vista y a continuación la array pasada, que puede ser la biblioteca, el album o todos los discos del author
+    const reproducirCanciones = (informacionCanciones) => {
+        const reproductor = document.getElementById('reproductor');
+        console.log(reproductor);
+        reproductor.play();
+        reproductor.addEventListener('ended', cambiarCancion);
+    }
+    
+    const cambiarCancion = () => {
+        console.log('cambiarCancion');
+        // Para hacer pruebas, del servidor deberá llegar un objeto de este tipo para poder reproducir las canciones
+        let arrayCanciones = { 
+            "cancion_1" : {
+                nombreArtista : "camaron",
+                nombreAlbum : "reencuentro",
+                nombreCancion : "soy_fraguero"
+            },
+            "cancion_2" : {
+                nombreArtista : "la_excepcion",
+                nombreAlbum : "aguantando_el_tiron",
+                nombreCancion : "la_puerta_abierta"
+            },
+            "cancion_3" : {
+                nombreArtista : "los_delinquentes",
+                nombreAlbum : "extras",
+                nombreCancion : "chinchetas_en_el_aire"
+            },
+            "cancion_4" : {
+                nombreArtista : "arce",
+                nombreAlbum : "lucifer",
+                nombreCancion : "carpe_diem"
+            }
+        };
+        arrayCanciones = Object.values(arrayCanciones);
+        console.log(Object.values(arrayCanciones));
+        const reproductor = document.getElementById('reproductor');
+        console.log(reproductor);
+        const cancionFinalizada = reproductor.currentSrc.split('/')
+                                                        .filter((v,p) => p > 3)
+                                                        .map((v,p) => (p == 3) ? v : v.split('.')[0]);
+        for (let i = 0; i < Object.keys(arrayCanciones).length; i++) {
+            if (arrayCanciones[i].nombreArtista == cancionFinalizada[0] &&
+                arrayCanciones[i].nombreAlbum == cancionFinalizada[1] &&
+                arrayCanciones[i].nombreCancion == cancionFinalizada[2]) {
+                    console.log(i);
+                    console.log(arrayCanciones[i]);
+                    console.log(arrayCanciones[+i + 1]);
+                    // console.log(urlServidor + '/' + Object.values(arrayCanciones[+i + 1]).join('/') + '.mp3');
+                    // console.log(Object.values(arrayCanciones[+i + 1].join('/'));
+                    reproductor.removeAttribute('src');
+                    reproductor.setAttribute('src', urlServidor + '/' + Object.values(arrayCanciones[+i + 1]).join('/') + '.mp3');
+                    reproductor.play();
+            }
+        }
+        
+        console.log(cancionFinalizada);
+        
+    }
+    // window.onload(reproducirCanciones());
+    // reproducirCanciones(arrayCanciones);
 
     // pedirDatos('http://musick.test/autor/camaron/reencuentro',mostrarArtista);
-    // pedirDatos('http://musick.test/autor/camaron',mostrarArtista);
+    // pedirDatos('http://musick.test/autor/camaron',mostrarArtista);    
+    // pedirDatos('http://musick.test/autor/camaron/reencuentro/caminito_de_totana',guardarBiblioteca);
+    // pedirDatos('http://musick.test/autor/camaron/reencuentro/caminito_de_totana',reproducirCancion);
     
   /*
   ** Función para pedir los datos al servidor CORS
