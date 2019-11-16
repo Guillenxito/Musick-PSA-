@@ -201,6 +201,16 @@
             </div>
         </div> -->
 
+    <!-- biblioteca -->
+    <div class="container text-center" id="bibl">
+        <a name="album"></a>
+        <div class="row text-center" id="biblioteca">
+            <template id="template-biblioteca">
+                  <button type="button" class="list-group-item list-group-item-action" data-id="¡¡¡id-song!!!">¡¡¡titulo!!!</button>
+            </template>
+        </div>
+    </div>
+
 <script>
 
 /* ----- VARIABLES ----- */
@@ -471,9 +481,16 @@
 
         // contenedor_album_info.style.display="block";
     }
+<<<<<<< HEAD
+
+
+    // Muestra la información del autor ???
+    const mostrarInformacionAuthor = (array) => {
+=======
     
     // Muestra los discos del author
     const mostrarAlbumesDelAuthor = (array) => {
+>>>>>>> a42b53697bad81779e1ad7c00eaacce9dc0f7609
         console.log('PINTANDO ... DATOS AUTOR');
         console.log(array);
         console.log(array.albumes);
@@ -484,10 +501,14 @@
         contenedor_albumes_titulos.innerHTML += `<div class="list-group" id="lista-discos">${res}</div>`;
 
     }
+<<<<<<< HEAD
+    /* ----- OCULTAR ----- */
+=======
 
 /* ----- FIN MOSTRAR ----- */
 
 /* ----- OCULTAR ----- */
+>>>>>>> a42b53697bad81779e1ad7c00eaacce9dc0f7609
 
     // Oculta todos los contenidos de la página para poder mostrar la información nueva correctamente
     const ocultarTodo = () => {
@@ -512,12 +533,23 @@
     const ocultarAuthor = () => {
         const author = document.getElementById('author');
         author.setAttribute('style','display:none');
+
     }
 
 
 /* ----- FIN OCULTAR ----- */
 
 /* ----- PENDIENTE DE HACER ----- */
+
+    // Muestra la biblioteca
+     function mostrarBiblioteca(informacionBiblioteca){
+        informacionAlbum = JSON.parse(informacionBiblioteca);
+        console.log('INFORMACION Biblioteca --->>>',informacionBiblioteca);
+        //informacionBiblioteca = modificarRespuestaAlbum(informacionBiblioteca);
+        //borrarHome();
+        //albumPortada(informacionAlbum);
+       // album(informacionAlbum);        
+    }
 
     // Guarda la canción en la biblioteca del usuario
     const guardarBiblioteca = (datosCancion) => {
@@ -598,6 +630,7 @@
     const ponerEventoHome = () => {
         const cuerpo = document.getElementById('home');
         cuerpo.addEventListener('click', gestionarEventoHome);
+
     }
 
     // Falta ver que hacemos con los estilos, si llevan a una nueva página o no.
@@ -608,6 +641,7 @@
             let texto;
             switch (evt.target.className) {
                 case 'card m-2 text-left flex-fill':
+
                     texto = evt.target.firstChild.firstChild.innerHTML;
                     break;
                 case 'card-header bg-dark': 
@@ -619,6 +653,7 @@
                 case 'card-title text-light font-weight-light font-italic':
                     texto = evt.target.parentNode.parentNode.id;
                     break;
+                
             }
             const buscado = (texto) 
                             ? texto.split("+")
@@ -648,8 +683,13 @@
         }
     }
 
+<<<<<<< HEAD
+
+    /* ----- FUNCIONES EXTRA ----- */
+=======
 /* ----- FIN PUESTA Y GESTION DE LOS EVENTOS ----- */
 
+>>>>>>> a42b53697bad81779e1ad7c00eaacce9dc0f7609
 
 /* ----- FUNCIONES EXTRA ----- */
 

@@ -202,4 +202,11 @@ class HomeController extends Controller
         return json_decode(json_encode($datos), true);
     }
 
+    public function bibliotecaJSON() {
+
+        $playList = DB::table('playLists')->where('id_user', '=',auth()->id())->get();
+      
+        return json_decode(json_encode($playList), true);
+    }
+
 }
