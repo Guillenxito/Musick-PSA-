@@ -525,7 +525,6 @@
         contenedor_biblioteca.style.display="block";   
     }
 
-    
     // Muestra los discos del author
     const mostrarAlbumesDelAuthor = (array) => {
         console.log('PINTANDO ... DATOS AUTOR');
@@ -542,6 +541,10 @@
 /* ----- FIN MOSTRAR ----- */
 
 /* ----- OCULTAR ----- */
+<<<<<<< HEAD
+=======
+
+>>>>>>> e5c850a75e7cdc46c2ef2599e7d56f1392b51db6
     // Oculta todos los contenidos de la página para poder mostrar la información nueva correctamente
     const ocultarTodo = () => {
         ocultarHome();
@@ -712,10 +715,15 @@
         }
     }
 
+<<<<<<< HEAD
 
 /* ----- FIN PUESTA Y GESTION DE LOS EVENTOS ----- */
 
 
+=======
+/* ----- FIN PUESTA Y GESTION DE LOS EVENTOS ----- */
+
+>>>>>>> e5c850a75e7cdc46c2ef2599e7d56f1392b51db6
 /* ----- FUNCIONES EXTRA ----- */
 
     //  Pide los datos al servidor CORS
