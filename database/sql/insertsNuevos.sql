@@ -5,7 +5,7 @@
 -- Server version	5.7.27-0ubuntu0.18.04.1
 
 /* --- authors --- */
-INSERT INTO authors (nombre, informacion) VALUES('camaron','Fue un cantaor gitano español considerado una de las principales figuras del flamenco.');
+INSERT INTO authors (nombre, informacion) VALUES('camaron','José Monje Cruz​​, conocido artísticamente como Camarón de la Isla o simplemente Camarón, fue un cantaor gitano español considerado una de las principales figuras del flamenco.​ En el 2000, le fue concedida a título póstumo la Llave de Oro del Cante.');
 INSERT INTO authors (nombre, informacion) VALUES('la_excepcion', "La excepción que confirma la regla, fue un grupo español de rap originario del barrio de Pan Bendito, en el distrito de Carabanchel, Madrid. Estuvo compuesto por los MC's El Langui y Gitano Antón  y por el DJ La Dako Style . ");
 INSERT INTO authors (nombre, informacion) VALUES('los_delinquentes', 'Los Delinqüentes fue un grupo musical andaluz, originario de Jerez de la Frontera (Cádiz), formado en 1998 por Miguel Ángel Benítez Gómez "Er Migue" y Marcos del Ojo "Er Canijo de Jeré", a los que se uniría posteriormente Diego Pozo "Er Ratón".');
 INSERT INTO authors (nombre, informacion) VALUES('bad_bunny','Benito Antonio Martínez Ocasio (San Juan, Puerto Rico, 10 de marzo de 1994), más conocido por su nombre artístico Bad Bunny, es un cantante puertorriqueño de trap y reguetón.');
