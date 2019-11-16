@@ -49,7 +49,7 @@ Route::post('biblioteca/AddSong', 'PlaylistController@store');
     // Album
     Route::get('/autor/{artist}/{album}', 'HomeController@albumJSON');
     // Biblioteca
-    Route::get('/biblioteca', 'HomeController@bibliotecaJSON');
+    Route::get('/bibliotecaUsuario', 'HomeController@bibliotecaJSON');
 
 /* Intentos sin form y con una peticion ajax por post
 Route::middleware('auth:api')->post('biblioteca/AddSong', 'BibliotecaController@AddSong');

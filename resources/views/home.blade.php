@@ -197,10 +197,15 @@
 
     <!-- biblioteca -->
     <div class="container text-center" id="bibl">
-        <a name="album"></a>
-        <div class="row text-center" id="biblioteca">
+        <a name="Biblioteca"></a>
+        <div class="row text-center" id="contenedor_biblioteca">
             <template id="template-biblioteca">
-                  <button type="button" class="list-group-item list-group-item-action" data-id="¡¡¡id-song!!!">¡¡¡titulo!!!</button>
+                  <button type="button" class="list-group-item list-group-item-action" data-id="¡¡¡id-list!!!">
+                    <span>¡¡¡posicionCancionAlbum!!!</span>
+                    <span>¡¡¡titulo!!!</span>
+                    <span>¡¡¡nombreAlbum!!!</span>
+                    <span>¡¡¡nombreAuthor!!!</span>
+                  </button>
             </template>
         </div>
     </div>
@@ -233,6 +238,7 @@
     const contenedor_album_autor = document.querySelectorAll('album_autor');
     const contenedor_album_portada = document.querySelectorAll('album_portada');
     const divEstilos = document.querySelectorAll('.estilos')[0];
+    const contenedor_biblioteca =  document.getElementById('contenedor_biblioteca');
     // const listaUsuarios = document.querySelector(".lista-recomendados");
     // const template = document.getElementById("template-recomendados");
 
@@ -353,6 +359,28 @@
         respuesta['album'] = album;        
         respuesta['canciones'] = canciones;
         respuesta['autor'] = autor;
+        console.log('respuesta --->>> ',respuesta);
+        return respuesta;
+    }
+
+    // Trata la respuesta de la biblioteca
+    const modificarRespuestaBiblioteca = (array) => {
+            console.log('MODIFICAR RESPUESTA BIBLIOTECA ---->>>> ', array);
+        let respuesta = new Array();      
+        let canciones = new Array();
+        let posicionCancionAlbum = 1;
+        array.forEach(function(cancion) {
+            respuesta.push({
+                "titulo" : (cancion.titulo.charAt(0).toUpperCase() + cancion.titulo.slice(1)).replace(/_/g,' '),
+                "titulo_" : cancion.titulo,
+                "nombreAlbum" : (cancion.nombreAlbum.charAt(0).toUpperCase() + cancion.nombreAlbum.slice(1)).replace(/_/g,' '),
+                "nombreAlbum_" : cancion.nombreAlbum,
+                "nombreAuthor_" : cancion.nombreAuthor,
+                "nombreAuthor" : (cancion.nombreAuthor.charAt(0).toUpperCase() + cancion.nombreAuthor.slice(1)).replace(/_/g,' '),
+                "id_list" : cancion.id_list,
+                "posicionCancionAlbum" : posicionCancionAlbum++
+            });
+        });    
         console.log('respuesta --->>> ',respuesta);
         return respuesta;
     }
@@ -485,16 +513,25 @@
 
         // contenedor_album_info.style.display="block";
     }
-<<<<<<< HEAD
 
+     // Muestra la biblioteca
+    function mostrarBiblioteca(informacionBiblioteca){
+        array = modificarRespuestaBiblioteca(JSON.parse(informacionBiblioteca));
 
-    // Muestra la información del autor ???
-    const mostrarInformacionAuthor = (array) => {
-=======
+        ocultarTodo();
+
+        const patron = document.getElementById('template-biblioteca').innerHTML;
+        
+        const res = templ.rellenar(patron, array);
+        
+        contenedor_biblioteca.innerHTML += `<div class="list-group">${res}</div>`;
+
+        contenedor_biblioteca.style.display="block";   
+    }
+
     
     // Muestra los discos del author
     const mostrarAlbumesDelAuthor = (array) => {
->>>>>>> a42b53697bad81779e1ad7c00eaacce9dc0f7609
         console.log('PINTANDO ... DATOS AUTOR');
         console.log(array);
         console.log(array.albumes);
@@ -505,15 +542,10 @@
         contenedor_albumes_titulos.innerHTML += `<div class="list-group" id="lista-discos">${res}</div>`;
 
     }
-<<<<<<< HEAD
-    /* ----- OCULTAR ----- */
-=======
 
 /* ----- FIN MOSTRAR ----- */
 
 /* ----- OCULTAR ----- */
->>>>>>> a42b53697bad81779e1ad7c00eaacce9dc0f7609
-
     // Oculta todos los contenidos de la página para poder mostrar la información nueva correctamente
     const ocultarTodo = () => {
         ocultarHome();
@@ -539,21 +571,9 @@
         author.setAttribute('style','display:none');
 
     }
-
-
 /* ----- FIN OCULTAR ----- */
 
 /* ----- PENDIENTE DE HACER ----- */
-
-    // Muestra la biblioteca
-     function mostrarBiblioteca(informacionBiblioteca){
-        informacionAlbum = JSON.parse(informacionBiblioteca);
-        console.log('INFORMACION Biblioteca --->>>',informacionBiblioteca);
-        //informacionBiblioteca = modificarRespuestaAlbum(informacionBiblioteca);
-        //borrarHome();
-        //albumPortada(informacionAlbum);
-       // album(informacionAlbum);        
-    }
 
     // Guarda la canción en la biblioteca del usuario
     const guardarBiblioteca = (datosCancion) => {
@@ -634,18 +654,27 @@
     const ponerEventoHome = () => {
         const cuerpo = document.getElementById('home');
         cuerpo.addEventListener('click', gestionarEventoHome);
+        const biblio = document.querySelector("#biblioteca");
+        biblio.addEventListener('click',gestionarEventosNav);
+    }
 
+    const gestionarEventosNav = (evt) => {
+         pedirDatos("bibliotecaUsuario",mostrarBiblioteca);
+      
     }
 
     // Falta ver que hacemos con los estilos, si llevan a una nueva página o no.
     // Gestiona el evento de home
     const gestionarEventoHome = (evt) => {
+     console.log("EVENTOS");
         // Mucho cuidados con cambiar o añadir cualquier clase en el template puede dejar de funcionar.
         if (evt.target !== evt.currentTarget) {
             let texto;
             switch (evt.target.className) {
+               case 'biblioteca':
+                    console.log("BIBLIOTECA");
+                    break;
                 case 'card m-2 text-left flex-fill':
-
                     texto = evt.target.firstChild.firstChild.innerHTML;
                     break;
                 case 'card-header bg-dark': 
@@ -687,13 +716,9 @@
         }
     }
 
-<<<<<<< HEAD
 
-    /* ----- FUNCIONES EXTRA ----- */
-=======
 /* ----- FIN PUESTA Y GESTION DE LOS EVENTOS ----- */
 
->>>>>>> a42b53697bad81779e1ad7c00eaacce9dc0f7609
 
 /* ----- FUNCIONES EXTRA ----- */
 
