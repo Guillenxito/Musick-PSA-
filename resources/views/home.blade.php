@@ -147,30 +147,36 @@
     
         <!-- album -->
         <div class="container text-center" id="alb">
-            <div class="row text-center" id="album_autor">
+            <div class="row text-center card" id="album_autor">
                 <template id="template-album-portada"> 
-                    <div class="card text-center h1 titulo">¡¡¡autor.nombreAutor!!!</div>
+                    <div class="card-header bg-dark text-light text-center h1 titulo">¡¡¡nombreAutor!!!</div>
+                    <img class="card-img-top border rounded col-12 col-lg-6 p-0" src="{{ asset('img/artistas/¡¡¡nombreAutor_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap"> 
                     <!--<div class="card text-center h3 titulo">¡¡¡autor.informacion!!!</div>-->
-                    <img class="card-img-top" src="{{ asset('img/artistas/¡¡¡autor.nombreAutor_!!!/¡¡¡album.nombreAlbum_!!!.png') }}" alt="Card image cap"> 
-                    <div class="card text-center h1 titulo">¡¡¡album.nombreAlbum!!!</div>
+                    <div class="card-header bg-dark text-light text-center h1 titulo">¡¡¡nombreAlbum!!!</div>
                 </template>
             </div>
-            <div class="row text-center" id="album">
-                <template id="template-album">
+            <div class="row text-center" id="album_canciones">
+                <template id="template-album-canciones">
                     <button class="list-group-item list-group-item-action d-flex">
                         <div class="pr-5">
                             ¡¡¡posicionCancionAlbum!!!
                         </div>
                         <div class="text-left flex-grow-1">
                             ¡¡¡titulo!!!
-                        </div>                    
-                        <div id="¡¡¡id_cancion!!!_play">
+                        </div>
+                        <div id="play_¡¡¡id_cancion!!!" class="col-1">
+                            <i class="material-icons">
+                                play_circle_outline
+                            </i>
                             <!-- icono reproducir cancion -->
                             <!-- <i class="material-icons playsong">
                             <svg viewBox="0 0 8 8"><use xlink:href="#play-circle"></use></svg>
                             </i> -->
                         </div>
-                        <div id="¡¡¡id_cancion!!!_biblioteca">
+                        <div id="biblioteca_¡¡¡id_cancion!!!" class="col-1">
+                            <i class="material-icons">
+                                playlist_add
+                            </i>
                             <!-- icono añadir a la biblioteca -->
                             <!-- <i class="material-icons addsong" id="¡¡¡id_cancion!!!">
                                 playlist_add
@@ -220,7 +226,8 @@
     const contenedor_albumes_titulos = document.getElementById('albumes_titulos');
     const contenedor_album  = document.getElementById('album');
     const titulos = document.querySelectorAll('.titulo');
-    const contenedor_album_autor = document.querySelectorAll('album_autor');
+    const contenedor_album_autor = document.getElementById('album_autor');
+    const contenedor_album_canciones = document.getElementById('album_canciones');
     const contenedor_album_portada = document.querySelectorAll('album_portada');
     const divEstilos = document.querySelectorAll('.estilos')[0];
     // const listaUsuarios = document.querySelector(".lista-recomendados");
@@ -321,7 +328,10 @@
         album.push({
             "id_album" : array.album.id_album,
             "nombreAlbum_" : array.album.nombreAlbum,
-            "nombreAlbum" : (array.album.nombreAlbum).replace(/_/g,' ').toUpperCase()
+            "nombreAlbum" : (array.album.nombreAlbum).replace(/_/g,' ').toUpperCase(),
+            "nombreAutor_" : array.autor.nombreAutor,
+            "nombreAutor" : (array.autor.nombreAutor).replace(/_/g,' ').toUpperCase(),
+            "informacion" : array.autor.informacion
         });
         let canciones = new Array();
         let posicionCancionAlbum = 1;
@@ -330,19 +340,19 @@
                 "id_album" : cancion.id_album,
                 "id_cancion" : cancion.id_song,
                 "titulo_" : cancion.titulo,
-                "titulo" : (cancion.titulo).replace(/_/g,' ').toUpperCase(),
+                "titulo" : (cancion.titulo.charAt(0).toUpperCase() + cancion.titulo.slice(1)).replace(/_/g,' '),
                 "posicionCancionAlbum" : posicionCancionAlbum++
             });
         });
-        let autor = new Array();
-        autor.push({
-            "nombreAutor_" : array.autor.nombreAutor,
-            "nombreAutor" : (array.autor.nombreAutor).replace(/_/g,' ').toUpperCase(),
-            "informacion" : array.autor.informacion
-        });
+        // let autor = new Array();
+        // autor.push({
+        //     "nombreAutor_" : array.autor.nombreAutor,
+        //     "nombreAutor" : (array.autor.nombreAutor).replace(/_/g,' ').toUpperCase(),
+        //     "informacion" : array.autor.informacion
+        // });
         respuesta['album'] = album;        
         respuesta['canciones'] = canciones;
-        respuesta['autor'] = autor;
+        // respuesta['autor'] = autor;
         console.log('respuesta --->>> ',respuesta);
         return respuesta;
     }
@@ -406,7 +416,7 @@
         contenedor_tendencias.innerHTML += `${res}</div>`;
     }
 
-    // Muestra la información del artista con todos sus albumes ???
+    // Muestra la información del artista con todos sus albumes 
     const mostrarAuthor = (informacionArtista) => {
         console.log('*****mostrarAuthor');
         informacionArtista = JSON.parse(informacionArtista);
@@ -416,62 +426,48 @@
         ocultarTodo();
         mostrarInformacionAuthor(informacionArtista);
         mostrarAlbumesDelAuthor(informacionArtista);
-        document.getElementById('author').setAttribute('style', 'display: block');
+        // document.getElementById('author').setAttribute('style', 'display: block');
         document.getElementById('albumes_titulos').removeAttribute('style');
         document.getElementById('author').setAttribute('style', 'display: contents');
         document.getElementById('lista-discos').setAttribute('style', 'display: contents');
     }
 
-    // Muestra un album ???
+    // Muestra un album con todas sus canciones
     const mostrarAlbum = (informacionAlbum) => {
         informacionAlbum = JSON.parse(informacionAlbum);
-        console.log('INFORMACION ALBUM --->>>',informacionAlbum);
         informacionAlbum = modificarRespuestaAlbum(informacionAlbum);
         ocultarTodo();
         mostrarAlbumPortada(informacionAlbum);
         mostrarCancionesAlbum(informacionAlbum);  
+        document.getElementById('album').setAttribute('style', 'display: block');
     }
 
-    /*****CANCIONES POR ALBUM ??? ****/
+    // Muestra el nombre del autor, la imagen del album y el nombre del album
+    const mostrarAlbumPortada = (array) => {
+        const patron = document.getElementById('template-album-portada').innerHTML;
+        const res = templ.rellenar(patron, array.album);
+        contenedor_album_autor.innerHTML += res;
+    }
+
+    // Muestra todas las canciones del album
     const mostrarCancionesAlbum = (array) => {
-        console.log('PINTANDO ... CANCIONES');
-        console.log(array.canciones);
-        const patron = document.getElementById('template-album').innerHTML;
-        
+        const patron = document.getElementById('template-album-canciones').innerHTML;        
         const res = templ.rellenar(patron, array.canciones);
         
-        contenedor_album.innerHTML += `<div class="list-group">${res}</div>`;
-
-        contenedor_album.style.display="block";
+        contenedor_album_canciones.innerHTML += `<div class="list-group">${res}</div>`;
+        contenedor_album_canciones.style.display="block";
     }
 
-    // ???
-    const mostrarAlbumPortada = (array) => {
-        console.log('PINTANDO ... DATOS ALBUM');
-        console.log(array);
-        const patron = document.getElementById('template-album-portada').innerHTML;
-        
-        const res = templ.rellenar(patron, array);
-        
-        contenedor_album.innerHTML += res;
-
-        contenedor_album.style.display="block";
-    }
 
     // Muestra la informacion del author
     const mostrarInformacionAuthor = (array) => {
-        console.log('*****mostrarInformacionAuthor');
         console.log('PINTANDO ... informacion AUTOR');
-        console.log('array.autor',array.autor);
         const patron = document.getElementById('template-author-info').innerHTML;
         console.log('patron',patron);
         
         const res = templ.rellenar(patron, array.autor);
-        console.log('res',res);
-        console.log('contenedor_album_info',contenedor_album_info);
         
         contenedor_album_info.innerHTML += res;
-        console.log('contenedor_album_info',contenedor_album_info);
 
         // contenedor_album_info.style.display="block";
     }
