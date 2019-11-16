@@ -27,7 +27,7 @@
         <!-- tendencias -->
         <div class="container text-center mb-5 mt-5 pt-5" id="ten">
             <a name="tendencias"></a>
-            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto animated bounce infinite">Tendencias</div>
+            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto animated bounce infinite slow">Tendencias</div>
             <div class="row text-center" id="tendencias">
                 <template id="template-tendencias">
                     <div class="card m-2 text-left flex-fill" style="width: 16rem;" id="¡¡¡nombreArtista_!!!+¡¡¡nombreAlbum_!!!+¡¡¡nombreCancion_!!!">
@@ -47,13 +47,13 @@
         <!-- recomendados -->
         <div class="container text-center mb-5" id="rec">
             <a name="recomendados"></a>
-            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto animated bounce infinite">Recomendados</div>
+            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto animated bounce infinite slow">Recomendados</div>
             <div class="row text-center" id="recomendados">
                 <template id="template-recomendados">
                     <div class="card m-2 text-left flex-fill" style="width: 16rem;" id="¡¡¡nombreAuthor_!!!+¡¡¡nombreAlbum_!!!">
                         <div class="card-header bg-dark">
-                        <h5 class="card-title text-light font-weight-bold">¡¡¡nombreAuthor!!!</h5>
-                        <h6 class="card-title text-light font-weight-light">¡¡¡nombreAlbum!!!</h6>
+                            <h5 class="card-title text-light font-weight-bold">¡¡¡nombreAuthor!!!</h5>
+                            <h6 class="card-title text-light font-weight-light">¡¡¡nombreAlbum!!!</h6>
                         </div>
                         <img class="card-img-top w-100 h-100" src="{{ asset('img/artistas/¡¡¡nombreAuthor_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap">
                     </div>
@@ -95,7 +95,7 @@
         <!-- novedades -->
         <div class="container text-center mb-5" id="nov">
             <a name="novedades"></a>
-            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto animated bounce infinite">Novedades</div>
+            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto animated bounce infinite slow">Novedades</div>
             <div class="row text-center" id="novedades">
                 <template id="template-novedades">
                     <div class="card m-2 text-left flex-fill" style="width: 16rem;" id="¡¡¡nombreAuthor_!!!">
@@ -115,20 +115,26 @@
     <section id="author">
 
         <!-- albumesAutor -->
-        <div class="container text-center" id="albs">
-            <div class="text-center" id="albumes_info">
-                <template id="template-albumes-info" class="row">  
-                    <img class="card-img-top w-25 border border-dark rounded animated bounce" src="{{ asset('img/artistas/¡¡¡nombreAutor_!!!/¡¡¡nombreAutor_!!!.png') }}" alt="Card image cap"> 
-                    <div class="card text-center h1 titulo">¡¡¡nombreAutor!!!</div>
-                    <div class="card text-center h3 titulo">¡¡¡informacion!!!</div>
-                    <div class="card text-center h3 titulo bg-dark text-light" data-toggle="collapse" href="#albumes_titulos" >
+        <div class="container" id="albs">
+            <div id="albumes_info" class="row">
+                <template id="template-author-info" class="row">  
+                    <div class="flex-fill col-12 col-lg-6 w-100 h-100 m-auto animated fadeInLeft slow">
+                        <img class="border border-dark rounded" src="{{ asset('img/artistas/¡¡¡nombreAutor_!!!/¡¡¡nombreAutor_!!!.png') }}" alt="Card image cap"> 
+                    </div>
+                    <div class="card rounded flex-fill col-12 col-lg-6 p-0 animated fadeInRight slow">
+                        <div class="card-header bg-dark h1 titulo w-100">
+                            <div class="card-title text-light font-weight-bold">¡¡¡nombreAutor!!!</div>
+                        </div>
+                        <div class="card-text h3 titulo p-5">¡¡¡informacion!!!</div>
+                    </div>
+                    <div class="card text-center h3 titulo bg-dark text-light col-12 mt-3 mt-md-5" data-toggle="collapse" href="#albumes_titulos" >
                         Discos
                     </div>
                 </template>
             </div>
             <div class="row text-center collapse" id="albumes_titulos">
-                <template id="template-albumes-canciones">
-                    <button class="list-group-item list-group-item-action">¡¡¡nombreAlbum!!!</button>
+                <template id="template-author-discos">
+                    <button class="list-group-item list-group-item-action h5 rounded">¡¡¡nombreAlbum!!!</button>
                 </template>
             </div>
         </div>
@@ -179,15 +185,15 @@
     <!-- Fin seccion album -->
 
        <!-- author ??? -->
-        <div class="container text-center" id="alb">
+        <!-- <div class="container text-center" id="alb">
             <a name="album"></a>
             <div class="card text-center h1 titulo">¡¡¡nb_author!!!</div>
             <div class="row text-center" id="album">
-                <template id="template-album">
+                <template id="template-album-cabecera">
                     <button type="button" class="list-group-item list-group-item-action">¡¡¡informacion!!!</button>
                 </template>
             </div>
-        </div>
+        </div> -->
 
     <!-- biblioteca -->
     <div class="container text-center" id="bibl">
@@ -200,6 +206,8 @@
     </div>
 
 <script>
+
+/* ----- VARIABLES ----- */
 
     // objeto audio, ¿¿¿ no lo encuentra porque pertenece al footer ??? 
     let reproductor = document.getElementById('reproductor');
@@ -227,8 +235,10 @@
     const divEstilos = document.querySelectorAll('.estilos')[0];
     // const listaUsuarios = document.querySelector(".lista-recomendados");
     // const template = document.getElementById("template-recomendados");
-    
-    /* ----- TRATAR DATOS JSON ----- */
+
+/* ----- FIN VARIABLES ----- */
+
+/* ----- TRATAR DATOS JSON ----- */
 
     // Trata la respuesta de home
     const modificarRespuestaHome = (array) => {
@@ -281,13 +291,14 @@
 
     // Trata la respuesta del author 
     const modificarRespuestaAuthor = (array) => {
+        console.log('/////modificarRespuestaAuhor');
         let respuesta = new Array();      
         let albumes = new Array();
         array.albums.forEach(function(album) {
             albumes.push({
                 "id_album" : album.id_album,
                 "nombreAlbum_" : album.nombreAlbum,
-                "nombreAlbum" : (album.nombreAlbum).replace(/_/g,' ').toUpperCase()
+                "nombreAlbum" : (album.nombreAlbum.charAt(0).toUpperCase() + album.nombreAlbum.slice(1)).replace(/_/g,' ')
             });
         });
         let canciones = new Array();
@@ -346,7 +357,9 @@
         return respuesta;
     }
 
-    /* ----- MOSTRAR ----- */
+/* ----- FIN TRATAR DATOS JSON ----- */
+
+/* ----- MOSTRAR ----- */
 
     // Muestra el home principal
     const mostrarHome = () => {
@@ -355,10 +368,10 @@
         informacionHome = modificarRespuestaHome(Array(<?php echo json_encode($categorias); ?>));
 
         ocultarTodo();
-        mostrarNovedadesHome();
-        mostrarRecomendadosHome(); 
-        // mostrarEstilosHome(); 
         mostrarTendenciasHome();
+        mostrarRecomendadosHome(); 
+        // mostrarEstilosHome();
+        mostrarNovedadesHome();
         const home = document.getElementById('home');
         home.setAttribute('style','display:visibility');
         contenedor_album.setAttribute('style','display:none');
@@ -403,15 +416,20 @@
         contenedor_tendencias.innerHTML += `${res}</div>`;
     }
 
-
     // Muestra la información del artista con todos sus albumes ???
     const mostrarAuthor = (informacionArtista) => {
+        console.log('*****mostrarAuthor');
         informacionArtista = JSON.parse(informacionArtista);
-        console.log('INFORMACION ARTISTA --->>>',informacionArtista);
+        console.log('INFORMACION ARTISTA OBJETO --->>>',informacionArtista);
         informacionArtista = modificarRespuestaAuthor(informacionArtista);
+        console.log("INFORMACION ARTISTA ARRAY --->>> ", informacionArtista);
         ocultarTodo();
         mostrarInformacionAuthor(informacionArtista);
         mostrarAlbumesDelAuthor(informacionArtista);
+        document.getElementById('author').setAttribute('style', 'display: block');
+        document.getElementById('albumes_titulos').removeAttribute('style');
+        document.getElementById('author').setAttribute('style', 'display: contents');
+        document.getElementById('lista-discos').setAttribute('style', 'display: contents');
     }
 
     // Muestra un album ???
@@ -450,33 +468,51 @@
         contenedor_album.style.display="block";
     }
 
-    /**** albumes POR AUTOR ??? ***/
-    const mostrarAlbumesDelAuthor = (array) => {
-        console.log('PINTANDO ... albumes AUTOR');
-        console.log(array);
-        const patron = document.getElementById('template-albumes-info').innerHTML;
+    // Muestra la informacion del author
+    const mostrarInformacionAuthor = (array) => {
+        console.log('*****mostrarInformacionAuthor');
+        console.log('PINTANDO ... informacion AUTOR');
+        console.log('array.autor',array.autor);
+        const patron = document.getElementById('template-author-info').innerHTML;
+        console.log('patron',patron);
         
         const res = templ.rellenar(patron, array.autor);
+        console.log('res',res);
+        console.log('contenedor_album_info',contenedor_album_info);
         
-       contenedor_album_info.innerHTML += res;
+        contenedor_album_info.innerHTML += res;
+        console.log('contenedor_album_info',contenedor_album_info);
 
-        contenedor_album_info.style.display="block";
+        // contenedor_album_info.style.display="block";
     }
+<<<<<<< HEAD
 
 
     // Muestra la información del autor ???
     const mostrarInformacionAuthor = (array) => {
+=======
+    
+    // Muestra los discos del author
+    const mostrarAlbumesDelAuthor = (array) => {
+>>>>>>> a42b53697bad81779e1ad7c00eaacce9dc0f7609
         console.log('PINTANDO ... DATOS AUTOR');
         console.log(array);
-        const patron = document.getElementById('template-albumes-canciones').innerHTML;
+        console.log(array.albumes);
+        const patron = document.getElementById('template-author-discos').innerHTML;
         
         const res = templ.rellenar(patron, array.albumes);
         
-        contenedor_albumes_titulos.innerHTML += `<div class="list-group">${res}</div>`;
+        contenedor_albumes_titulos.innerHTML += `<div class="list-group" id="lista-discos">${res}</div>`;
 
-        contenedor_albumes_titulos.style.display="block";
     }
+<<<<<<< HEAD
     /* ----- OCULTAR ----- */
+=======
+
+/* ----- FIN MOSTRAR ----- */
+
+/* ----- OCULTAR ----- */
+>>>>>>> a42b53697bad81779e1ad7c00eaacce9dc0f7609
 
     // Oculta todos los contenidos de la página para poder mostrar la información nueva correctamente
     const ocultarTodo = () => {
@@ -503,8 +539,11 @@
         author.setAttribute('style','display:none');
 
     }
-    
-    /* ----- PENDIENTE DE HACER ----- */
+
+
+/* ----- FIN OCULTAR ----- */
+
+/* ----- PENDIENTE DE HACER ----- */
 
     // Muestra la biblioteca
      function mostrarBiblioteca(informacionBiblioteca){
@@ -586,8 +625,10 @@
 
     // pedirDatos('http://musick.test/autor/camaron/reencuentro/caminito_de_totana',guardarBiblioteca);
     // pedirDatos('http://musick.test/autor/camaron/reencuentro/caminito_de_totana',reproducirCancion);
-    
-    /* ----- PUESTA Y GESTION DE LOS EVENTOS ----- */
+
+/* ----- FIN PENDIENTE DE HACER ----- */
+
+/* ----- PUESTA Y GESTION DE LOS EVENTOS ----- */
 
     // Pone el evento para home
     const ponerEventoHome = () => {
@@ -646,10 +687,17 @@
         }
     }
 
+<<<<<<< HEAD
 
     /* ----- FUNCIONES EXTRA ----- */
+=======
+/* ----- FIN PUESTA Y GESTION DE LOS EVENTOS ----- */
 
-    //  Función para pedir los datos al servidor CORS
+>>>>>>> a42b53697bad81779e1ad7c00eaacce9dc0f7609
+
+/* ----- FUNCIONES EXTRA ----- */
+
+    //  Pide los datos al servidor CORS
     function pedirDatos(peticion, callback) {
         let xhr = new XMLHttpRequest();
 
@@ -663,7 +711,7 @@
             }
         } 
         });
-        console.log(`${urlServidor}/${peticion}`);
+        // console.log(`${urlServidor}/${peticion}`);
 
         xhr.open('GET', `${urlServidor}/${peticion}`);
         xhr.send(null);
@@ -708,14 +756,16 @@
             rellenar
         };
 
-    })(); 
+    })();
+
+/* ----- FIN FUNCIONES EXTRA ----- */
 
     mostrarHome();
     ponerEventoHome();
 
     /*SE NECESITA UN BORRAR ALBUM Y BORRAR AUTORALBUMS*/
 
-    /*********************************************************************** 
+/*********************************************************************** 
     Tareas sábado:
         - Hacer bien las consultas a la base de datos.
         - Los datos de la primera vez al home tienen que cargarse por JSON porque sino cada vez que queramos 
@@ -729,12 +779,12 @@
         - Revisar todo lo que tenga '???'.
         - ¿¿¿ Los scripts de abajo sirven para algo ???.
 
-    ************************************************************************/
+************************************************************************/
 
 </script>
 
-<!-- <script src="{{ asset('js/handlerTemplate.js') }}"></script> -->
-<!-- <script src="{{ asset('js/fillerData.js') }}"></script> -->
+    <!-- <script src="{{ asset('js/handlerTemplate.js') }}"></script> -->
+    <!-- <script src="{{ asset('js/fillerData.js') }}"></script> -->
     <!-- <script src="{{ asset('js/player.js') }}" rel="text/javascript"></script>
     <script src="{{ asset('js/jquery.min.js') }}" rel="text/javascript"></script> -->
 

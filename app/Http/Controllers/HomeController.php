@@ -12,8 +12,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth');
     }
 
@@ -22,31 +21,29 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
+    public function index() {
         return view('home');
     } 
     
-    public function home()
-    {
+    public function home() {
 
          $categorias = [];
         /***************************** CONSULTA NOVEDADES **************************************/
         $novedades = DB::table('songs')
-                                 ->join('authors','songs.id_author', '=', 'authors.id_author')
-                                 ->join('albums','songs.id_album','=','albums.id_album')
-                                 ->select('authors.nombre AS artista','albums.nombre')
-                                 ->orderBy('albums.created_at', 'ASC')
-                                 ->take(6)
-                                 ->get();
+                         ->join('authors','songs.id_author', '=', 'authors.id_author')
+                         ->join('albums','songs.id_album','=','albums.id_album')
+                         ->select('authors.nombre AS artista','albums.nombre')
+                         ->orderBy('albums.created_at', 'ASC')
+                         ->take(6)
+                         ->get();
 
 
         /*************************** CONSULTA RECOMENDACIONES *************************/
         $JournalStyle = DB::table('journals')
-                        ->join('songs', 'journals.id_song', '=', 'songs.id_song')
-                        ->select('songs.id_style')
-                        ->take(6)
-                        ->get();
+                            ->join('songs', 'journals.id_song', '=', 'songs.id_song')
+                            ->select('songs.id_style')
+                            ->take(6)
+                            ->get();
 
         $JournalStyle = json_decode(json_encode($JournalStyle), true);
 
@@ -66,13 +63,13 @@ class HomeController extends Controller
         foreach($countStyles as $key => $value)
         {
            $recomendacion = DB::table('songs')
-                                 ->join('albums','songs.id_album','=','albums.id_album')
-                                 ->join('authors','songs.id_author','=','authors.id_author')
-                                 ->select('albums.nombre AS nombreAlbum','authors.nombre AS artista')
-                                 ->where('songs.id_style','=',$key)
-                                 ->distinct('albums.id_album')
-                                 ->take($value)
-                                 ->get();
+                                ->join('albums','songs.id_album','=','albums.id_album')
+                                ->join('authors','songs.id_author','=','authors.id_author')
+                                ->select('albums.nombre AS nombreAlbum','authors.nombre AS artista')
+                                ->where('songs.id_style','=',$key)
+                                ->distinct('albums.id_album')
+                                ->take($value)
+                                ->get();
 
 
             array_push($recomendaciones,$recomendacion);
@@ -80,9 +77,9 @@ class HomeController extends Controller
         
         /******************** CONSULTA TENDENCIAS ***************************/
         $JournalIdSongs = DB::table('journals')
-                         ->join('songs', 'journals.id_song', '=', 'songs.id_song')
-                         ->select('songs.id_song')
-                         ->get();
+                              ->join('songs', 'journals.id_song', '=', 'songs.id_song')
+                              ->select('songs.id_song')
+                              ->get();
 
         $JournalIdSongs = json_decode(json_encode($JournalIdSongs), true);
         $countIdSong = array();
@@ -104,11 +101,11 @@ class HomeController extends Controller
         foreach($countIdSongSix as $key => $value)
         {
            $tendencia = DB::table('songs')
-                                 ->join('albums','songs.id_album','=','albums.id_album')
-                                 ->join('authors','songs.id_author','=','authors.id_author')
-                                 ->select('songs.id_song','songs.titulo','songs.id_album','albums.nombre','authors.nombre AS artista')
-                                 ->where('songs.id_song','=',$key)
-                                 ->get();
+                            ->join('albums','songs.id_album','=','albums.id_album')
+                            ->join('authors','songs.id_author','=','authors.id_author')
+                            ->select('songs.id_song','songs.titulo','songs.id_album','albums.nombre','authors.nombre AS artista')
+                            ->where('songs.id_song','=',$key)
+                            ->get();
 
             array_push($tendencias,$tendencia[0]);
         }
@@ -130,22 +127,37 @@ class HomeController extends Controller
 
     public function albumJSON($author,$album) {
 
-        $id_author = DB::table('authors')->select('id_author')->where('nombre', '=', $author)->get();
-        $id_album = DB::table('albums')->select('id_album')->where('nombre', '=', $album)->get();
+        $id_author = DB::table('authors')
+                        ->select('id_author')
+                        ->where('nombre', '=', $author)
+                        ->get();
+        $id_album = DB::table('albums')
+                        ->select('id_album')
+                        ->where('nombre', '=', $album)
+                        ->get();
 
         $id_author = $id_author[0]->id_author;
         $id_album = $id_album[0]->id_album;
 
         // id_song, titulo, id_album, id_author, id_style
-        $temp = DB::table('songs')->select('id_song', 'titulo', 'id_album', 'id_author', 'id_style')->where('id_album', '=', $id_album)->get();
+        $temp = DB::table('songs')
+                    ->select('id_song', 'titulo', 'id_album', 'id_author', 'id_style')
+                    ->where('id_album', '=', $id_album)
+                    ->get();
         $datos['canciones'] = json_decode(json_encode($temp), true);
         
         // id_song, titulo, id_album, id_author, id_style
-        $temp = DB::table('albums')->select('id_album', 'nombre AS nombreAlbum', 'created_at')->where('id_album', '=', $id_album)->get();
+        $temp = DB::table('albums')
+                    ->select('id_album', 'nombre AS nombreAlbum', 'created_at')
+                    ->where('id_album', '=', $id_album)
+                    ->get();
         $datos['album'] = json_decode(json_encode($temp[0]), true);
 
         // id_author, nombre, informacion,
-        $temp =  DB::table('authors')->select('id_author', 'nombre AS nombreAutor', 'informacion')->where('id_author', '=', $datos['canciones'][0]['id_author'])->get();
+        $temp =  DB::table('authors')
+                     ->select('id_author', 'nombre AS nombreAutor', 'informacion')
+                     ->where('id_author', '=', $datos['canciones'][0]['id_author'])
+                     ->get();
         $datos['autor'] = json_decode(json_encode($temp[0]), true);
         
         return json_decode(json_encode($datos), true);
@@ -154,22 +166,37 @@ class HomeController extends Controller
 
     public function authorJSON($author) {
 
-        $id_author = DB::table('authors')->select('id_author')->where('nombre', '=', $author)->get();
+        $id_author = DB::table('authors')
+                         ->select('id_author')
+                         ->where('nombre', '=', $author)
+                         ->get();
         
-        $id_author = $id_author[0]->id_author;
+        $id_author = $id_author[0] -> id_author;
 
         // id_song, titulo, id_album, id_author, id_style
-        $temp = DB::table('songs')->select('id_album', 'titulo')->where('id_author', '=', $id_author)->get();
+        $temp = DB::table('songs')
+                    ->select('id_album', 'titulo')
+                    ->where('id_author', '=', $id_author)
+                    ->get();
         $datos['canciones'] = json_decode(json_encode($temp), true);
 
         // id_song, titulo, id_album, id_author, id_style
-        $ids = DB::table('songs')->where('id_author', '=', $id_author)->get();
+        $ids = DB::table('songs')
+                   ->select('id_album')
+                   ->where('id_author', '=', $id_author)
+                   ->get();
         $ids = json_decode(json_encode($ids), true);
-        $temp = DB::table('albums')->select('id_album','nombre AS nombreAlbum')->whereIn('id_album', $ids)->get();
+        $temp = DB::table('albums')
+                    ->select('id_album','nombre AS nombreAlbum')
+                    ->whereIn('id_album', $ids)
+                    ->get();
         $datos['albums'] = json_decode(json_encode($temp), true);
 
         // id_author, nombre, informacion
-        $temp =  DB::table('authors')->select('nombre AS nombreAutor','informacion')->where('id_author', '=', $id_author)->get();
+        $temp =  DB::table('authors')
+                     ->select('nombre AS nombreAutor','informacion')
+                     ->where('id_author', '=', $id_author)
+                     ->get();
         $datos['autor'] = json_decode(json_encode($temp[0]), true);
 
         return json_decode(json_encode($datos), true);
@@ -181,4 +208,5 @@ class HomeController extends Controller
       
         return json_decode(json_encode($playList), true);
     }
+
 }
