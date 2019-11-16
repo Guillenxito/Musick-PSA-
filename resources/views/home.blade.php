@@ -481,16 +481,10 @@
 
         // contenedor_album_info.style.display="block";
     }
-<<<<<<< HEAD
 
-
-    // Muestra la información del autor ???
-    const mostrarInformacionAuthor = (array) => {
-=======
     
     // Muestra los discos del author
     const mostrarAlbumesDelAuthor = (array) => {
->>>>>>> a42b53697bad81779e1ad7c00eaacce9dc0f7609
         console.log('PINTANDO ... DATOS AUTOR');
         console.log(array);
         console.log(array.albumes);
@@ -501,14 +495,10 @@
         contenedor_albumes_titulos.innerHTML += `<div class="list-group" id="lista-discos">${res}</div>`;
 
     }
-<<<<<<< HEAD
-    /* ----- OCULTAR ----- */
-=======
 
 /* ----- FIN MOSTRAR ----- */
 
 /* ----- OCULTAR ----- */
->>>>>>> a42b53697bad81779e1ad7c00eaacce9dc0f7609
 
     // Oculta todos los contenidos de la página para poder mostrar la información nueva correctamente
     const ocultarTodo = () => {
@@ -683,13 +673,7 @@
         }
     }
 
-<<<<<<< HEAD
-
-    /* ----- FUNCIONES EXTRA ----- */
-=======
 /* ----- FIN PUESTA Y GESTION DE LOS EVENTOS ----- */
-
->>>>>>> a42b53697bad81779e1ad7c00eaacce9dc0f7609
 
 /* ----- FUNCIONES EXTRA ----- */
 
