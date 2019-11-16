@@ -9,6 +9,9 @@
     @yield('meta')
     <title>Document</title>
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/mdb.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('fonts/open-iconic.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bahianita|Emilys+Candy&display=swap" rel="stylesheet"> 
     @yield('styles')
     <!-- <style>*{outline:1px solid red;</style> -->
 </head>
@@ -17,7 +20,7 @@
         @include('layouts.navbar')
     </div>
 
-    <div class="cuerpo my-5 py-5" id="cuerpo">
+    <div class="cuerpo" id="cuerpo">
         @yield('cuerpo')
     </div>
 
@@ -27,7 +30,7 @@
     <script src="{{ asset('js/jquery-3.3.1.slim.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script src="{{ asset('js/mdb.min.js') }}"></script>
     @yield('scripts')
 </body>
 </html>
