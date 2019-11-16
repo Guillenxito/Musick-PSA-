@@ -35,8 +35,7 @@ Auth::routes();//Con esto se pide autentificacion para todas las paginas.
 
 // Route::get('/autor/{artist}', 'AlbumController@showArtist');
 // Route::get('/autor/{artist}/{album}', 'AlbumController@showAlbum');
-Route::get('/autor/{artist}', 'HomeController@authorJSON');
-Route::get('/autor/{artist}/{album}', 'HomeController@albumJSON');
+
 
 
 
@@ -44,6 +43,13 @@ Route::post('biblioteca/AddSong', 'PlaylistController@store');
 // Route::get('biblioteca/AddSong', 'PlaylistController@store'); para probar facil
 
 
+/**** RUTAS HOME ****/
+    // Autor
+    Route::get('/autor/{artist}', 'HomeController@authorJSON');
+    // Album
+    Route::get('/autor/{artist}/{album}', 'HomeController@albumJSON');
+    // Biblioteca
+    Route::get('/biblioteca', 'HomeController@bibliotecaJSON');
 
 /* Intentos sin form y con una peticion ajax por post
 Route::middleware('auth:api')->post('biblioteca/AddSong', 'BibliotecaController@AddSong');

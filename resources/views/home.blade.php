@@ -143,6 +143,16 @@
         </div>
     </div>
 
+    <!-- biblioteca -->
+    <div class="container text-center" id="bibl">
+        <a name="album"></a>
+        <div class="row text-center" id="biblioteca">
+            <template id="template-biblioteca">
+                  <button type="button" class="list-group-item list-group-item-action" data-id="¡¡¡id-song!!!">¡¡¡titulo!!!</button>
+            </template>
+        </div>
+    </div>
+
 <script>
 
     const templ = (function () {
@@ -326,6 +336,7 @@
     const contenedor_album_autor = document.querySelectorAll('album_autor');
     const contenedor_album_portada = document.querySelectorAll('album_portada');
     const divEstilos = document.querySelectorAll('.estilos')[0];
+    const contenedor_biblioteca = document.getElementById('biblioteca');
     // const listaUsuarios = document.querySelector(".lista-recomendados");
     // const template = document.getElementById("template-recomendados");
     
@@ -393,7 +404,7 @@
     }
 
     const albumesTitulos = (array) => {
-       console.log('PINTANDO ... DATOS AUTOR');
+        console.log('PINTANDO ... DATOS AUTOR');
         console.log(array);
         const patron = document.getElementById('template-albumes-canciones').innerHTML;
         
@@ -403,6 +414,21 @@
 
         contenedor_albumes_titulos.style.display="block";
     }
+
+    /** BIBLIOTECA **/
+
+    const biblioteca = (array) => {
+        console.log('PINTANDO ... DATOS AUTOR');
+        console.log(array);
+        const patron = document.getElementById('template-biblioteca').innerHTML;
+        
+        const res = templ.rellenar(patron, array);
+        
+        contenedor_biblioteca.innerHTML += `<div class="list-group">${res}</div>`;
+
+        contenedor_biblioteca.style.display="block";
+    }
+
     // estilos
     const estilos = array => {
         const patron1 = document.getElementById('template-estilos-1').innerHTML;
@@ -451,11 +477,21 @@
     // Muestra un album
     function mostrarAlbum(informacionAlbum){
         informacionAlbum = JSON.parse(informacionAlbum);
-        console.log('INFORMACION ARTISTA --->>>',informacionAlbum);
+        console.log('INFORMACION ALBUM --->>>',informacionAlbum);
         informacionAlbum = modificarRespuestaAlbum(informacionAlbum);
         borrarHome();
         albumPortada(informacionAlbum);
         album(informacionAlbum);        
+    }
+
+    // Muestra la biblioteca
+     function mostrarBiblioteca(informacionBiblioteca){
+        informacionAlbum = JSON.parse(informacionBiblioteca);
+        console.log('INFORMACION Biblioteca --->>>',informacionBiblioteca);
+        //informacionBiblioteca = modificarRespuestaAlbum(informacionBiblioteca);
+        //borrarHome();
+        //albumPortada(informacionAlbum);
+       // album(informacionAlbum);        
     }
 
     // Guarda la canción en la biblioteca del usuario
@@ -556,6 +592,8 @@
     const ponerEvento = () => {
         const cuerpo = document.getElementById('cuerpo');
         cuerpo.addEventListener('click', gestionarEvento);
+        const navbar = document.querySelector("body > div.cabecera > header > nav");
+        navbar.addEventListener('click', gestionarEvento);
     }
 
     // Falta ver que hacemos con los estilos, si llevan a una nueva página o no.
@@ -564,6 +602,10 @@
         if (evt.target !== evt.currentTarget) {
             let texto;
             switch (evt.target.className) {
+              case 'biblioteca':
+              console.log('BIBLIOTECA');
+                    texto = evt.target.firstChild.firstChild.innerHTML;
+                    break;
                 case 'card m-2 text-left flex-fill': 
                     texto = evt.target.firstChild.firstChild.innerHTML;
                     break;
@@ -576,6 +618,7 @@
                 case 'card-img-top':                    
                     texto = evt.target.previousElementSibling.firstElementChild.innerHTML;
                     break;
+                
             }
             const buscado = (texto) 
                             ? texto.split("<br>")
@@ -604,8 +647,6 @@
             }
         }
     }
-
-    /*******************************PARTE DE MOSTRAR ALBUM*************************/
 
     ponerEvento();
     mostrarHome();
