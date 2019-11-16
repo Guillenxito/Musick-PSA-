@@ -12,6 +12,8 @@
     <link href="{{ asset('css/mdb.min.css') }}" rel="stylesheet">
     <link href="{{ asset('fonts/open-iconic.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Bahianita|Emilys+Candy&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     @yield('styles')
     <!-- <style>*{outline:1px solid red;</style> -->
 </head>
