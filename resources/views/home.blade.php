@@ -109,7 +109,7 @@
                         </div>
                         <div class="card-text h3 titulo p-5">¡¡¡informacion!!!</div>
                     </div>
-                    <div class="card text-center h2 titulo bg-dark text-light col-12 mt-3 mt-md-5 animated fadeInUp slow delay-1s" data-toggle="collapse" href="#albumes_titulos" id="¡¡¡nombreAutor_!!!" >
+                    <div class="card text-center h2 titulo bg-dark text-light col-12 mt-3 mt-md-5 animated fadeInUp slow delay-1s" data-toggle="collapse" href="#albumes_titulos" id="desplegableAlbumnes" >
                         Discos
                     </div>
                 </template>
@@ -477,8 +477,9 @@
     }
 
      // Muestra la biblioteca
-     function mostrarBiblioteca(informacionBiblioteca){
+    function mostrarBiblioteca(informacionBiblioteca){
         array = modificarRespuestaBiblioteca(JSON.parse(informacionBiblioteca));
+        borrarBiblioteca();
         ocultarTodo();
         const patron = document.getElementById('template-biblioteca').innerHTML;        
         const res = templ.rellenar(patron, array);        
@@ -507,10 +508,62 @@
         home.setAttribute('style','display:none');
     }
 
+    // Mostrar Home Ocultado
+    const mostartHomeExistente = () => {
+        const home = document.getElementById('home');
+        home.setAttribute('style','display:block');
+    }
+
+    // Borrar Home
+    const borrarHome = () => {
+        borrarHomeTendencias();
+        borrarHomeRecomendados();
+        borrarHomeNoveades();
+        setTimeout(window.scrollTo(0, -100), 100);
+    }
+    const borrarHomeTendencias = () => {
+        const tendencias = document.querySelector("#tendencias").children;
+        let counter = 0;
+        tendencias.forEach(function(element){
+            if(counter > 1)
+                element.remove();
+            counter++;
+        })
+    }
+    const borrarHomeRecomendados = () => {
+        const tendencias = document.querySelector("#recomendados").children;
+        let counter = 0;
+        tendencias.forEach(function(element){
+            if(counter > 1)
+                element.remove();
+            counter++;
+        })
+    }
+    const borrarHomeNoveades = () => {
+        const tendencias = document.querySelector("#novedades").children;
+        let counter = 0;
+        tendencias.forEach(function(element){
+            if(counter > 1)
+                element.remove();
+            counter++;
+        })
+    }
+
+
     // Oculta el album
     const ocultarAlbum = () => {
         const album = document.getElementById('album');
         album.setAttribute('style','display:none');
+    }
+
+    // Borrar el album
+    const borrarAlbum = () => {
+        const albumInfo = document.querySelector("#album_autor");
+        const albumCanciones= document.querySelector("#album_canciones");
+        if(albumInfo && albumCanciones){
+            albumInfo.remove();
+            albumCanciones.remove();
+        }
     }
 
     // Oculta el author
@@ -519,10 +572,32 @@
         author.setAttribute('style','display:none');
     }
 
+    // Borrar el author
+    const borrarAuthor = () => {
+        const authorFoto = document.querySelector("#albumes_info > div.flex-fill.col-12.col-md-6.animated.fadeInLeft.slow");
+        const authorInfo = document.querySelector("#albumes_info > div.card.rounded.flex-fill.col-12.col-md-6.p-0.animated.fadeInRight.slow")
+        const auhorAlbums = document.querySelector("#lista_discos");
+        const auhorDesplegableAlbums = document.querySelector("#desplegableAlbumnes");
+        if(authorFoto && authorInfo && auhorAlbums){
+            authorFoto.remove();
+            authorInfo.remove();
+            auhorAlbums.remove();
+            desplegableAlbumnes.remove();
+        }
+    }
+
     // Oculta la biblioteca
     const ocultarBiblioteca = () => {
         const biblioteca = document.getElementById('biblioteca');
         biblioteca.setAttribute('style','display:none');
+    }
+
+    // Borrar la biblioteca
+    const borrarBiblioteca = () => {
+        const biblioteca = document.querySelector("#contenedor_biblioteca > div");
+        if(biblioteca){
+            biblioteca.remove();
+        }
     }
     
 /* ----- FIN OCULTAR ----- */
@@ -695,11 +770,17 @@
                 case 'biblioteca':
                     pedirDatos('/bibliotecaUsuario', mostrarBiblioteca)
                     break;
-                case '':
+                case 'tendencias':
+                    borrarBiblioteca();
+                    mostartHomeExistente();
                     break;
-                case '':
+                case 'recomendados':
+                    borrarBiblioteca();
+                    mostartHomeExistente();
                     break;
-                case '':
+                case 'novedades':
+                    borrarBiblioteca();
+                    mostartHomeExistente();
                     break;
             }
         }
