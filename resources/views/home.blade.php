@@ -383,7 +383,8 @@
         setTimeout(window.scrollTo(0, -100), 100);
         // Esto hay que cambiarlo para pedirlo por javascript porque sino cuando volvamos a HOME se volvera a cargar la página.
         informacionHome = modificarRespuestaHome(Array(<?php echo json_encode($categorias); ?>));
-        ocultarTodo();
+        //ocultarTodo();
+        borrarAlbum();
         mostrarTendenciasHome();
         mostrarRecomendadosHome(); 
         // mostrarEstilosHome();
@@ -429,7 +430,9 @@
     const mostrarAuthor = (informacionArtista) => {
         informacionArtista = JSON.parse(informacionArtista);
         informacionArtista = modificarRespuestaAuthor(informacionArtista);
-        ocultarTodo();
+        ocultarHome();
+        borrarAlbum();
+       // borrarAuthor();
         mostrarInformacionAuthor(informacionArtista);
         mostrarAlbumesDelAuthor(informacionArtista);
         document.getElementById('author').setAttribute('style', 'display: contents');
@@ -441,7 +444,9 @@
     const mostrarAlbum = (informacionAlbum) => {
         informacionAlbum = JSON.parse(informacionAlbum);
         informacionAlbum = modificarRespuestaAlbum(informacionAlbum);
-        ocultarTodo();
+        ocultarHome();
+        borrarAlbum();
+        borrarAuthor();
         mostrarAlbumPortada(informacionAlbum);
         mostrarCancionesAlbum(informacionAlbum);  
         document.getElementById('album').setAttribute('style', 'display: block');
@@ -558,11 +563,14 @@
 
     // Borrar el album
     const borrarAlbum = () => {
-        const albumInfo = document.querySelector("#album_autor");
-        const albumCanciones= document.querySelector("#album_canciones");
-        if(albumInfo && albumCanciones){
-            albumInfo.remove();
-            albumCanciones.remove();
+        const albumPortada = document.querySelector("#album_autor > div.card.col-12.px-0");
+        const albumCanciones = document.querySelector("#album_canciones > div");
+        const albumTitulo = document.querySelector("#album_autor > div:nth-child(3)");
+ 
+        if(albumPortada && albumCanciones){
+           albumPortada.remove();
+           albumCanciones.remove();
+           albumTitulo.remove();
         }
     }
 
@@ -578,6 +586,7 @@
         const authorInfo = document.querySelector("#albumes_info > div.card.rounded.flex-fill.col-12.col-md-6.p-0.animated.fadeInRight.slow")
         const auhorAlbums = document.querySelector("#lista_discos");
         const auhorDesplegableAlbums = document.querySelector("#desplegableAlbumnes");
+
         if(authorFoto && authorInfo && auhorAlbums){
             authorFoto.remove();
             authorInfo.remove();
@@ -772,14 +781,23 @@
                     break;
                 case 'tendencias':
                     borrarBiblioteca();
+                    borrarAlbum();
+                    borrarAuthor();
+                    //borrarHome();
                     mostartHomeExistente();
                     break;
                 case 'recomendados':
                     borrarBiblioteca();
+                    borrarAlbum();
+                    borrarAuthor();
+                   // borrarHome();
                     mostartHomeExistente();
                     break;
                 case 'novedades':
                     borrarBiblioteca();
+                    borrarAlbum();
+                    borrarAuthor();
+                    //borrarHome();
                     mostartHomeExistente();
                     break;
             }
