@@ -9,7 +9,7 @@
         <!-- tendencias -->
         <div class="container text-center mb-5" id="ten">
             <a name="tendencias"></a>
-            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto rounded animated fadeInDown slow">Tendencias</div>
+            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto animated fadeInDown slow">Tendencias</div>
             <div class="row text-center" id="tendencias">
                 <template id="template-tendencias">
                     <div class="card m-2 text-left flex-fill animated fadeInUp slow delay-1s" style="width: 16rem;" id="¡¡¡nombreArtista_!!!+¡¡¡nombreAlbum_!!!+¡¡¡nombreCancion_!!!">
@@ -29,10 +29,10 @@
         <!-- recomendados -->
         <div class="container text-center mb-5" id="rec">
             <a name="recomendados"></a>
-            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto">Recomendados</div>
+            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto animated fadeInDown slow">Recomendados</div>
             <div class="row text-center" id="recomendados">
                 <template id="template-recomendados">
-                    <div class="card m-2 text-left flex-fill" style="width: 16rem;" id="¡¡¡nombreAuthor_!!!+¡¡¡nombreAlbum_!!!">
+                    <div class="card m-2 text-left flex-fill animated fadeInUp slow delay-1s" style="width: 16rem;" id="¡¡¡nombreAuthor_!!!+¡¡¡nombreAlbum_!!!">
                         <div class="card-header bg-dark">
                             <h5 class="card-title text-light font-weight-bold">¡¡¡nombreAuthor!!!</h5>
                             <h6 class="card-title text-light font-weight-light">¡¡¡nombreAlbum!!!</h6>
@@ -77,10 +77,10 @@
         <!-- novedades -->
         <div class="container text-center mb-5" id="nov">
             <a name="novedades"></a>
-            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto">Novedades</div>
+            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto animated fadeInDown slow">Novedades</div>
             <div class="row text-center" id="novedades">
                 <template id="template-novedades">
-                    <div class="card m-2 text-left flex-fill" style="width: 16rem;" id="¡¡¡nombreAuthor_!!!">
+                    <div class="card m-2 text-left flex-fill animated fadeInUp slow delay-1s" style="width: 16rem;" id="¡¡¡nombreAuthor_!!!">
                         <div class="card-header bg-dark">
                             <h5 class="card-title text-light font-weight-bold">¡¡¡nombreAuthor!!!</h5>
                         </div>
@@ -100,10 +100,10 @@
         <div class="container" id="albs">
             <div id="albumes_info" class="row">
                 <template id="template-author-info">  
-                    <div class="flex-fill col-12 col-md-6 animated fadeInLeft slow">
-                        <img class="border border-dark rounded" src="{{ asset('img/artistas/¡¡¡nombreAutor_!!!/¡¡¡nombreAutor_!!!.png') }}" alt="Card image cap"> 
+                    <div class="flex-fill col-12 col-md-4 animated fadeInLeft slow">
+                        <img class="border border-dark rounded col-12 p-0" src="{{ asset('img/artistas/¡¡¡nombreAutor_!!!/¡¡¡nombreAutor_!!!.png') }}" alt="Card image cap"> 
                     </div>
-                    <div class="card rounded flex-fill col-12 col-md-6 p-0 animated fadeInRight slow">
+                    <div class="card rounded flex-fill col-12 col-md-8 p-0 animated fadeInRight slow">
                         <div class="card-header bg-dark h1 titulo w-100">
                             <div class="card-title text-light font-weight-bold" id="nombreAutor">¡¡¡nombreAutor!!!</div>
                         </div>
@@ -133,15 +133,29 @@
                 <template id="template-album-portada"> 
                     <div class="card col-12 px-0">
                         <div class="card-header bg-dark text-light text-center h1 titulo">¡¡¡nombreAutor!!!</div>
-                        <img class="flex-fill card-img-top border rounded col-12 col-lg-6 p-0 animated fadeInLeft slow" src="{{ asset('img/artistas/¡¡¡nombreAutor_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap"> 
-                        <div class="flex-fill card-text-right text-center h3 titulo col-12 col-lg-6 animated fadeInRight slow">¡¡¡autor.informacion!!!</div>
+                        <img class="flex-fill card-img-top border rounded col-12 col-lg-4 p-0 animated fadeInLeft slow" src="{{ asset('img/artistas/¡¡¡nombreAutor_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap"> 
+                        <div class="flex-fill card-text-right col-12 col-lg-8 animated fadeInRight slow">
+                            <div class="h3">
+                                ¡¡¡autor.informacion!!!
+                            </div>
+                            <div id="play_¡¡¡id_cancion!!!" class="col-1">
+                                <i class="material-icons">
+                                    play_circle_outline
+                                </i>
+                            </div>
+                            <div id="biblioteca_¡¡¡id_cancion!!!" class="col-1">
+                                <i class="material-icons">
+                                    playlist_add
+                                </i>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-header bg-dark text-light text-center col-12 mt-3 h1 titulo animated fadeInUp slow delay-1s">¡¡¡nombreAlbum!!!</div>
                 </template>
             </div>
             <div class="row text-center animated fadeInUp slow delay-2s" id="album_canciones">
                 <template id="template-album-canciones">
-                    <button class="list-group-item list-group-item-action d-flex h4">
+                    <button class="list-group-item list-group-item-action d-flex h4" id="¡¡¡titulo_!!!">
                         <div class="numeroCancion">
                             ¡¡¡posicionCancionAlbum!!!
                         </div>
@@ -152,19 +166,11 @@
                             <i class="material-icons">
                                 play_circle_outline
                             </i>
-                            <!-- icono reproducir cancion -->
-                            <!-- <i class="material-icons playsong">
-                            <svg viewBox="0 0 8 8"><use xlink:href="#play-circle"></use></svg>
-                            </i> -->
                         </div>
                         <div id="biblioteca_¡¡¡id_cancion!!!" class="col-1">
                             <i class="material-icons">
                                 playlist_add
                             </i>
-                            <!-- icono añadir a la biblioteca -->
-                            <!-- <i class="material-icons addsong" id="¡¡¡id_cancion!!!">
-                                playlist_add
-                            </i> -->
                         </div>                
                     </button>
                 </template>
@@ -178,14 +184,25 @@
     <section id="biblioteca">
         <div class="container text-center" id="bibl">
             <!-- <a name="Biblioteca"></a> -->
-            <div class="row text-center" id="contenedor_biblioteca">
+            <div class="card-header bg-dark text-light text-center col-12 mt-3 h1 titulo animated fadeInDown slow delay-1s" id="titulo_biblioteca">BIBLIOTECA</div>
+            <div class="text-center animated fadeInUp slow delay-1s" id="contenedor_biblioteca">
                 <template id="template-biblioteca">
-                    <button type="button" class="list-group-item list-group-item-action h3 col-12" data-id="¡¡¡id_list!!!-¡¡¡id_song!!!">
-                        <span>¡¡¡posicionCancionAlbum!!!</span>
-                        <span>¡¡¡titulo!!!</span>
-                        <span>¡¡¡nombreAlbum!!!</span>
-                        <!-- <span> / </span> -->
-                        <span>¡¡¡nombreAuthor!!!</span>
+                    <button type="button" class="list-group-item list-group-item-action d-flex h4" id="¡¡¡id_list!!!-¡¡¡id_song!!!">
+                        <div class="numeroCancion">¡¡¡posicionCancionAlbum!!!</div>
+                        <div class="text-left flex-grow-1">¡¡¡titulo!!!</div>
+                        <div class="nombre_album">¡¡¡nombreAlbum!!!</div>
+                        <div> / </div>
+                        <div class="nombre_autor">¡¡¡nombreAuthor!!!</div>
+                        <div id="play_¡¡¡id_song!!!" class="col-1">
+                            <i class="material-icons">
+                                play_circle_outline
+                            </i>
+                        </div>
+                        <div id="biblioteca_¡¡¡id_song!!!" class="col-1">
+                            <i class="material-icons">
+                                playlist_add
+                            </i>
+                        </div>   
                     </button>
                 </template>
             </div>
@@ -437,6 +454,7 @@
         mostrarAlbumesDelAuthor(informacionArtista);
         document.getElementById('author').setAttribute('style', 'display: contents');
         document.getElementById('lista_discos').setAttribute('style', 'display: contents');
+        document.getElementById('albumes_titulos').classList.remove('show');
         ponerEventoAuthor();
     }
 
@@ -448,8 +466,10 @@
         borrarAlbum();
         borrarAuthor();
         mostrarAlbumPortada(informacionAlbum);
-        mostrarCancionesAlbum(informacionAlbum);  
+        mostrarCancionesAlbum(informacionAlbum);
         document.getElementById('album').setAttribute('style', 'display: block');
+        if (cancionTendencia) 
+            document.getElementById(cancionTendencia).classList.add('active');
     }
 
     // Muestra el nombre del autor, la imagen del album y el nombre del album
@@ -491,6 +511,7 @@
         contenedor_biblioteca.innerHTML += `<div class="list-group">${res}</div>`;
         // contenedor_biblioteca.style.display="block";
         document.getElementById('biblioteca').setAttribute('style', 'display: block');
+        document.getElementById('titulo_biblioteca').setAttribute('style', 'display: block');
     }
 
 
@@ -523,9 +544,10 @@
     const borrarHome = () => {
         borrarHomeTendencias();
         borrarHomeRecomendados();
-        borrarHomeNoveades();
+        borrarHomeNovedades();
         setTimeout(window.scrollTo(0, -100), 100);
     }
+
     const borrarHomeTendencias = () => {
         const tendencias = document.querySelector("#tendencias").children;
         let counter = 0;
@@ -535,6 +557,7 @@
             counter++;
         })
     }
+
     const borrarHomeRecomendados = () => {
         const tendencias = document.querySelector("#recomendados").children;
         let counter = 0;
@@ -544,7 +567,8 @@
             counter++;
         })
     }
-    const borrarHomeNoveades = () => {
+
+    const borrarHomeNovedades = () => {
         const tendencias = document.querySelector("#novedades").children;
         let counter = 0;
         tendencias.forEach(function(element){
@@ -553,7 +577,6 @@
             counter++;
         })
     }
-
 
     // Oculta el album
     const ocultarAlbum = () => {
@@ -582,8 +605,8 @@
 
     // Borrar el author
     const borrarAuthor = () => {
-        const authorFoto = document.querySelector("#albumes_info > div.flex-fill.col-12.col-md-6.animated.fadeInLeft.slow");
-        const authorInfo = document.querySelector("#albumes_info > div.card.rounded.flex-fill.col-12.col-md-6.p-0.animated.fadeInRight.slow")
+        const authorFoto = document.querySelector("#albumes_info > div.flex-fill.col-12.col-md-4.animated.fadeInLeft.slow");
+        const authorInfo = document.querySelector("#albumes_info > div.card.rounded.flex-fill.col-12.col-md-8.p-0.animated.fadeInRight.slow")
         const auhorAlbums = document.querySelector("#lista_discos");
         const auhorDesplegableAlbums = document.querySelector("#desplegableAlbumnes");
 
@@ -603,6 +626,7 @@
 
     // Borrar la biblioteca
     const borrarBiblioteca = () => {
+        const tituloBiblioteca = document.getElementById('titulo_biblioteca').setAttribute('style','display:none');
         const biblioteca = document.querySelector("#contenedor_biblioteca > div");
         if(biblioteca){
             biblioteca.remove();
@@ -722,10 +746,7 @@
             let texto;
             console.log(evt.target.className);
             switch (evt.target.className) {
-               case 'biblioteca':
-                    console.log("BIBLIOTECA");
-                    break;
-                case 'card m-2 text-left flex-fill':
+                // case 'card m-2 text-left flex-fill':
                 case 'card m-2 text-left flex-fill animated fadeInUp slow delay-1s':
                     texto = evt.target.firstChild.firstChild.innerHTML;
                     break;
@@ -756,6 +777,7 @@
                     case 2:
                         //Se mostrara todas las canciones del album buscado
                         // Se usara mostrarAlbum
+                        cancionTendencia = undefined;
                         pedirDatos('autor/' + buscado[0] + '/' + buscado[1], mostrarAlbum);
                         break;
                     case 3:
@@ -779,20 +801,9 @@
                 case 'biblioteca':
                     pedirDatos('/bibliotecaUsuario', mostrarBiblioteca)
                     break;
+                case 'home':
                 case 'tendencias':
-                    borrarBiblioteca();
-                    borrarAlbum();
-                    borrarAuthor();
-                    //borrarHome();
-                    mostartHomeExistente();
-                    break;
                 case 'recomendados':
-                    borrarBiblioteca();
-                    borrarAlbum();
-                    borrarAuthor();
-                   // borrarHome();
-                    mostartHomeExistente();
-                    break;
                 case 'novedades':
                     borrarBiblioteca();
                     borrarAlbum();
