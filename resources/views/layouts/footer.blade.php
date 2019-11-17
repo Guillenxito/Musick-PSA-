@@ -6,9 +6,9 @@ print_r($footer);
 echo "</pre>";
 */
 ?>
-<div class="container-fluid fixed-bottom bg-dark">
+<div class="container-fluid fixed-bottom bg-dark animated fadeInUp slow delay-2s">
     <div class="row">
-        <div class="col-12 p-3 text-center" id="reproductorContainer">
+        <div class="col-12 p-3 text-center">
             <?php
                 // Estos datos vendran de la base de datos
                 $nombreArtista = "camaron";

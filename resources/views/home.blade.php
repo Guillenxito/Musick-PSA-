@@ -1,23 +1,5 @@
 
 @extends('layouts.plantilla')
-<style>
-    html {
-        scroll-behavior: smooth;
-    }
-
-    #cuerpo {
-        position: relative;
-        top: 3rem;
-        font-family: 'Bahianita', cursive;
-        letter-spacing: 1.5;
-    }
-
-    h5, h6 {
-        font-family: 'Emilys Candy', cursive;
-        letter-spacing: 1.5;
-    }
-
-</style>
 
 @section('cuerpo')
 
@@ -25,19 +7,19 @@
     <section id="home">
     
         <!-- tendencias -->
-        <div class="container text-center mb-5 mt-5 pt-5" id="ten">
+        <div class="container text-center mb-5" id="ten">
             <a name="tendencias"></a>
-            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto animated bounce infinite slow">Tendencias</div>
+            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto rounded animated fadeInDown slow">Tendencias</div>
             <div class="row text-center" id="tendencias">
                 <template id="template-tendencias">
-                    <div class="card m-2 text-left flex-fill" style="width: 16rem;" id="¡¡¡nombreArtista_!!!+¡¡¡nombreAlbum_!!!+¡¡¡nombreCancion_!!!">
+                    <div class="card m-2 text-left flex-fill animated fadeInUp slow delay-1s" style="width: 16rem;" id="¡¡¡nombreArtista_!!!+¡¡¡nombreAlbum_!!!+¡¡¡nombreCancion_!!!">
                         <div class="card-header bg-dark">
                             <h5 class="card-title text-light font-weight-bold">¡¡¡nombreArtista!!!</h5>
                             <h6 class="card-title text-light font-weight-light">¡¡¡nombreAlbum!!!</h6>
                             <h6 class="card-title text-light font-weight-light font-italic">¡¡¡nombreCancion!!!</h6>
                         </div>
                         <!-- <div style="background-image:{{ asset('img/artistas/¡¡¡nombreArtista_!!!/¡¡¡nombreAlbum_!!!.png') }};"> -->
-                            <img class="card-img-top w-100 h-100" src="{{ asset('img/artistas/¡¡¡nombreArtista_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap"> 
+                            <img class="card-img-top w-100 h-100 rounded" src="{{ asset('img/artistas/¡¡¡nombreArtista_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap"> 
                         <!-- </div> -->
                     </div>
                 </template>
@@ -47,7 +29,7 @@
         <!-- recomendados -->
         <div class="container text-center mb-5" id="rec">
             <a name="recomendados"></a>
-            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto animated bounce infinite slow">Recomendados</div>
+            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto">Recomendados</div>
             <div class="row text-center" id="recomendados">
                 <template id="template-recomendados">
                     <div class="card m-2 text-left flex-fill" style="width: 16rem;" id="¡¡¡nombreAuthor_!!!+¡¡¡nombreAlbum_!!!">
@@ -95,7 +77,7 @@
         <!-- novedades -->
         <div class="container text-center mb-5" id="nov">
             <a name="novedades"></a>
-            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto animated bounce infinite slow">Novedades</div>
+            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto">Novedades</div>
             <div class="row text-center" id="novedades">
                 <template id="template-novedades">
                     <div class="card m-2 text-left flex-fill" style="width: 16rem;" id="¡¡¡nombreAuthor_!!!">
@@ -117,24 +99,24 @@
         <!-- albumesAutor -->
         <div class="container" id="albs">
             <div id="albumes_info" class="row">
-                <template id="template-author-info" class="row">  
-                    <div class="flex-fill col-12 col-lg-6 w-100 h-100 m-auto animated fadeInLeft slow">
+                <template id="template-author-info">  
+                    <div class="flex-fill col-12 col-md-6 animated fadeInLeft slow">
                         <img class="border border-dark rounded" src="{{ asset('img/artistas/¡¡¡nombreAutor_!!!/¡¡¡nombreAutor_!!!.png') }}" alt="Card image cap"> 
                     </div>
-                    <div class="card rounded flex-fill col-12 col-lg-6 p-0 animated fadeInRight slow">
+                    <div class="card rounded flex-fill col-12 col-md-6 p-0 animated fadeInRight slow">
                         <div class="card-header bg-dark h1 titulo w-100">
-                            <div class="card-title text-light font-weight-bold">¡¡¡nombreAutor!!!</div>
+                            <div class="card-title text-light font-weight-bold" id="nombreAutor">¡¡¡nombreAutor!!!</div>
                         </div>
                         <div class="card-text h3 titulo p-5">¡¡¡informacion!!!</div>
                     </div>
-                    <div class="card text-center h3 titulo bg-dark text-light col-12 mt-3 mt-md-5" data-toggle="collapse" href="#albumes_titulos" >
+                    <div class="card text-center h2 titulo bg-dark text-light col-12 mt-3 mt-md-5 animated fadeInUp slow delay-1s" data-toggle="collapse" href="#albumes_titulos" id="¡¡¡nombreAutor_!!!" >
                         Discos
                     </div>
                 </template>
             </div>
             <div class="row text-center collapse" id="albumes_titulos">
                 <template id="template-author-discos">
-                    <button class="list-group-item list-group-item-action h5 rounded">¡¡¡nombreAlbum!!!</button>
+                    <button class="list-group-item list-group-item-action h3 rounded">¡¡¡nombreAlbum!!!</button>
                 </template>
             </div>
         </div>
@@ -147,18 +129,20 @@
     
         <!-- album -->
         <div class="container text-center" id="alb">
-            <div class="row text-center card" id="album_autor">
+            <div class="row text-center" id="album_autor">
                 <template id="template-album-portada"> 
-                    <div class="card-header bg-dark text-light text-center h1 titulo">¡¡¡nombreAutor!!!</div>
-                    <img class="card-img-top border rounded col-12 col-lg-6 p-0" src="{{ asset('img/artistas/¡¡¡nombreAutor_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap"> 
-                    <!--<div class="card text-center h3 titulo">¡¡¡autor.informacion!!!</div>-->
-                    <div class="card-header bg-dark text-light text-center h1 titulo">¡¡¡nombreAlbum!!!</div>
+                    <div class="card col-12 px-0">
+                        <div class="card-header bg-dark text-light text-center h1 titulo">¡¡¡nombreAutor!!!</div>
+                        <img class="flex-fill card-img-top border rounded col-12 col-lg-6 p-0 animated fadeInLeft slow" src="{{ asset('img/artistas/¡¡¡nombreAutor_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap"> 
+                        <div class="flex-fill card-text-right text-center h3 titulo col-12 col-lg-6 animated fadeInRight slow">¡¡¡autor.informacion!!!</div>
+                    </div>
+                    <div class="card-header bg-dark text-light text-center col-12 mt-3 h1 titulo animated fadeInUp slow delay-1s">¡¡¡nombreAlbum!!!</div>
                 </template>
             </div>
-            <div class="row text-center" id="album_canciones">
+            <div class="row text-center animated fadeInUp slow delay-2s" id="album_canciones">
                 <template id="template-album-canciones">
-                    <button class="list-group-item list-group-item-action d-flex">
-                        <div class="pr-5">
+                    <button class="list-group-item list-group-item-action d-flex h4">
+                        <div class="numeroCancion">
                             ¡¡¡posicionCancionAlbum!!!
                         </div>
                         <div class="text-left flex-grow-1">
@@ -190,31 +174,24 @@
     </section>
     <!-- Fin seccion album -->
 
-       <!-- author ??? -->
-        <!-- <div class="container text-center" id="alb">
-            <a name="album"></a>
-            <div class="card text-center h1 titulo">¡¡¡nb_author!!!</div>
-            <div class="row text-center" id="album">
-                <template id="template-album-cabecera">
-                    <button type="button" class="list-group-item list-group-item-action">¡¡¡informacion!!!</button>
+    <!-- Seccion biblioteca -->
+    <section id="biblioteca">
+        <div class="container text-center" id="bibl">
+            <!-- <a name="Biblioteca"></a> -->
+            <div class="row text-center" id="contenedor_biblioteca">
+                <template id="template-biblioteca">
+                    <button type="button" class="list-group-item list-group-item-action h3 col-12" data-id="¡¡¡id_list!!!-¡¡¡id_song!!!">
+                        <span>¡¡¡posicionCancionAlbum!!!</span>
+                        <span>¡¡¡titulo!!!</span>
+                        <span>¡¡¡nombreAlbum!!!</span>
+                        <!-- <span> / </span> -->
+                        <span>¡¡¡nombreAuthor!!!</span>
+                    </button>
                 </template>
             </div>
-        </div> -->
-
-    <!-- biblioteca -->
-    <div class="container text-center" id="bibl">
-        <a name="Biblioteca"></a>
-        <div class="row text-center" id="contenedor_biblioteca">
-            <template id="template-biblioteca">
-                  <button type="button" class="list-group-item list-group-item-action" data-id="¡¡¡id-list!!!">
-                    <span>¡¡¡posicionCancionAlbum!!!</span>
-                    <span>¡¡¡titulo!!!</span>
-                    <span>¡¡¡nombreAlbum!!!</span>
-                    <span>¡¡¡nombreAuthor!!!</span>
-                  </button>
-            </template>
         </div>
-    </div>
+    </section>
+    
 
 <script>
 
@@ -388,6 +365,7 @@
                 "nombreAuthor_" : cancion.nombreAuthor,
                 "nombreAuthor" : (cancion.nombreAuthor.charAt(0).toUpperCase() + cancion.nombreAuthor.slice(1)).replace(/_/g,' '),
                 "id_list" : cancion.id_list,
+                "id_song" : cancion.id_song,
                 "posicionCancionAlbum" : posicionCancionAlbum++
             });
         });    
@@ -401,10 +379,10 @@
 
     // Muestra el home principal
     const mostrarHome = () => {
-
+        // quitarEventos();
+        setTimeout(window.scrollTo(0, -100), 100);
         // Esto hay que cambiarlo para pedirlo por javascript porque sino cuando volvamos a HOME se volvera a cargar la página.
         informacionHome = modificarRespuestaHome(Array(<?php echo json_encode($categorias); ?>));
-
         ocultarTodo();
         mostrarTendenciasHome();
         mostrarRecomendadosHome(); 
@@ -413,61 +391,50 @@
         const home = document.getElementById('home');
         home.setAttribute('style','display:visibility');
         contenedor_album.setAttribute('style','display:none');
-    }    
+        ponerEventoHome();
+    }
     
     // Muestra la información de novedades del home
     const mostrarNovedadesHome = array => {
-        const patron = document.getElementById('template-novedades').innerHTML;
-        
+        const patron = document.getElementById('template-novedades').innerHTML;        
         const res = templ.rellenar(patron, informacionHome.novedades);
-
         contenedor_novedades.innerHTML += `${res}</div>`;
     }
 
     // Muestra la información de recomendados del home
     const mostrarRecomendadosHome = array => {
-        const patron = document.getElementById('template-recomendados').innerHTML;
-        
+        const patron = document.getElementById('template-recomendados').innerHTML;        
         const res = templ.rellenar(patron, informacionHome.recomendados);
-
         contenedor_recomendados.innerHTML += `${res}</div>`;
     }    
     
     // Muestra la información de estilos del home
     const mostrarEstilosHome = array => {
         const patron1 = document.getElementById('template-estilos-1').innerHTML;
-        const patron2 = document.getElementById('template-estilos-2').innerHTML;
-        
+        const patron2 = document.getElementById('template-estilos-2').innerHTML;        
         const res1 = templ.rellenar(patron1, informacionHome.estilos);
         const res2 = templ.rellenar(patron2, informacionHome.estilos);
-
         contenedor_estilos_1.innerHTML += `${res1}</div>`;
         contenedor_estilos_2.innerHTML += `${res2}</div>`;
     }
 
     // Muestra la información de tendencias del home
     const mostrarTendenciasHome = array => {
-        const patron = document.getElementById('template-tendencias').innerHTML;
-        
+        const patron = document.getElementById('template-tendencias').innerHTML;        
         const res = templ.rellenar(patron, informacionHome.tendencias);
-
         contenedor_tendencias.innerHTML += `${res}</div>`;
     }
 
     // Muestra la información del artista con todos sus albumes 
     const mostrarAuthor = (informacionArtista) => {
-        console.log('*****mostrarAuthor');
         informacionArtista = JSON.parse(informacionArtista);
-        console.log('INFORMACION ARTISTA OBJETO --->>>',informacionArtista);
         informacionArtista = modificarRespuestaAuthor(informacionArtista);
-        console.log("INFORMACION ARTISTA ARRAY --->>> ", informacionArtista);
         ocultarTodo();
         mostrarInformacionAuthor(informacionArtista);
         mostrarAlbumesDelAuthor(informacionArtista);
-        // document.getElementById('author').setAttribute('style', 'display: block');
-        document.getElementById('albumes_titulos').removeAttribute('style');
         document.getElementById('author').setAttribute('style', 'display: contents');
-        document.getElementById('lista-discos').setAttribute('style', 'display: contents');
+        document.getElementById('lista_discos').setAttribute('style', 'display: contents');
+        ponerEventoAuthor();
     }
 
     // Muestra un album con todas sus canciones
@@ -490,53 +457,36 @@
     // Muestra todas las canciones del album
     const mostrarCancionesAlbum = (array) => {
         const patron = document.getElementById('template-album-canciones').innerHTML;        
-        const res = templ.rellenar(patron, array.canciones);
-        
+        const res = templ.rellenar(patron, array.canciones);        
         contenedor_album_canciones.innerHTML += `<div class="list-group">${res}</div>`;
         contenedor_album_canciones.style.display="block";
     }
 
-
     // Muestra la informacion del author
     const mostrarInformacionAuthor = (array) => {
-        console.log('PINTANDO ... informacion AUTOR');
         const patron = document.getElementById('template-author-info').innerHTML;
-        console.log('patron',patron);
-        
         const res = templ.rellenar(patron, array.autor);
-        
         contenedor_album_info.innerHTML += res;
-
-        // contenedor_album_info.style.display="block";
-    }
-
-     // Muestra la biblioteca
-    function mostrarBiblioteca(informacionBiblioteca){
-        array = modificarRespuestaBiblioteca(JSON.parse(informacionBiblioteca));
-
-        ocultarTodo();
-
-        const patron = document.getElementById('template-biblioteca').innerHTML;
-        
-        const res = templ.rellenar(patron, array);
-        
-        contenedor_biblioteca.innerHTML += `<div class="list-group">${res}</div>`;
-
-        contenedor_biblioteca.style.display="block";   
     }
 
     // Muestra los discos del author
     const mostrarAlbumesDelAuthor = (array) => {
-        console.log('PINTANDO ... DATOS AUTOR');
-        console.log(array);
-        console.log(array.albumes);
-        const patron = document.getElementById('template-author-discos').innerHTML;
-        
-        const res = templ.rellenar(patron, array.albumes);
-        
-        contenedor_albumes_titulos.innerHTML += `<div class="list-group" id="lista-discos">${res}</div>`;
-
+        const patron = document.getElementById('template-author-discos').innerHTML;        
+        const res = templ.rellenar(patron, array.albumes);        
+        contenedor_albumes_titulos.innerHTML += `<div class="list-group" id="lista_discos">${res}</div>`;
     }
+
+     // Muestra la biblioteca
+     function mostrarBiblioteca(informacionBiblioteca){
+        array = modificarRespuestaBiblioteca(JSON.parse(informacionBiblioteca));
+        ocultarTodo();
+        const patron = document.getElementById('template-biblioteca').innerHTML;        
+        const res = templ.rellenar(patron, array);        
+        contenedor_biblioteca.innerHTML += `<div class="list-group">${res}</div>`;
+        // contenedor_biblioteca.style.display="block";
+        document.getElementById('biblioteca').setAttribute('style', 'display: block');
+    }
+
 
 /* ----- FIN MOSTRAR ----- */
 
@@ -546,7 +496,9 @@
     const ocultarTodo = () => {
         ocultarHome();
         ocultarAuthor(); 
-        ocultarAlbum(); 
+        ocultarAlbum();
+        ocultarBiblioteca();
+        setTimeout(window.scrollTo(0, -100), 100);
     }
 
     // Oculta el home principal
@@ -565,8 +517,14 @@
     const ocultarAuthor = () => {
         const author = document.getElementById('author');
         author.setAttribute('style','display:none');
-
     }
+
+    // Oculta la biblioteca
+    const ocultarBiblioteca = () => {
+        const biblioteca = document.getElementById('biblioteca');
+        biblioteca.setAttribute('style','display:none');
+    }
+    
 /* ----- FIN OCULTAR ----- */
 
 /* ----- PENDIENTE DE HACER ----- */
@@ -648,15 +606,27 @@
 
     // Pone el evento para home
     const ponerEventoHome = () => {
-        const cuerpo = document.getElementById('home');
-        cuerpo.addEventListener('click', gestionarEventoHome);
-        const biblio = document.querySelector("#biblioteca");
-        biblio.addEventListener('click',gestionarEventosNav);
+        document.getElementById('home').addEventListener('click', gestionarEventoHome);
     }
 
-    const gestionarEventosNav = (evt) => {
-         pedirDatos("bibliotecaUsuario",mostrarBiblioteca);
-      
+    // Pone el evento del navBar
+    const ponerEventoNavbar = () => {
+        document.getElementById('navbar').addEventListener('click', gestionarEventoNavbar);
+    }
+
+    // Pone el evento del reproductor
+    const ponerEventoReproductor = () => {
+        document.getElementById('reproductor').addEventListener('click', gestionarEventoReproductor);
+    }
+
+    // Pone el evento del author
+    const ponerEventoAuthor = () => {
+        document.getElementById('lista_discos').addEventListener('click', gestionarEventoAuthor);
+    }
+
+    // Pone el evento del album
+    const ponerEventoAlbum = () => {
+        document.getElementById('album_canciones').addEventListener('click', gestionarEventoAlbum);
     }
 
     // Falta ver que hacemos con los estilos, si llevan a una nueva página o no.
@@ -666,15 +636,18 @@
         // Mucho cuidados con cambiar o añadir cualquier clase en el template puede dejar de funcionar.
         if (evt.target !== evt.currentTarget) {
             let texto;
+            console.log(evt.target.className);
             switch (evt.target.className) {
                case 'biblioteca':
                     console.log("BIBLIOTECA");
                     break;
                 case 'card m-2 text-left flex-fill':
+                case 'card m-2 text-left flex-fill animated fadeInUp slow delay-1s':
                     texto = evt.target.firstChild.firstChild.innerHTML;
                     break;
                 case 'card-header bg-dark': 
-                case 'card-img-top w-100 h-100':  
+                case 'card-img-top w-100 h-100': 
+                case 'card-img-top w-100 h-100 rounded':  
                     texto = evt.target.parentNode.id;
                     break;
                 case 'card-title text-light font-weight-bold':
@@ -711,6 +684,73 @@
             }
         }
     }
+
+    // Falta hacerlo
+    const gestionarEventoNavbar = (evt) => {
+        if (evt.target !== evt.currentTarget) {
+            console.log(evt.target.id);
+            (evt.target.id) ? console.log('tiene id') :  console.log('no tiene id');
+            console.log(evt.target.id.split('_')[1]);
+            switch (evt.target.id.split('_')[1]) {
+                case 'biblioteca':
+                    pedirDatos('/bibliotecaUsuario', mostrarBiblioteca)
+                    break;
+                case '':
+                    break;
+                case '':
+                    break;
+                case '':
+                    break;
+            }
+        }
+
+    }
+
+    // Gestiona el evento de los discos del author
+    const gestionarEventoAuthor = (evt) => {
+        if (evt.target !== evt.currentTarget) {
+            const nombreAutor = document.getElementById('nombreAutor').innerHTML.toLowerCase().replace(/ /g,'_');            
+            const nombreAlbum = evt.target.innerHTML.toLowerCase().replace(/ /g,'_');
+            pedirDatos('autor/' + nombreAutor + '/' + nombreAlbum, mostrarAlbum);
+        }
+    }
+
+    // ???
+    // Revisar esta función porque da error al no estar creados los elementos con los id correspondiente
+    // Quita todos los eventos, el evento del navbar y del reproductor se puede pasar si se quiere quitar o no
+    const quitarEventos = (navbar = false, reproductor = false) => {
+        quitarEventoHome();
+        quitarEventoAuthor();
+        quitarEventoAlbum();
+        if (navbar) quitarEventoNavbar();
+        if (reproductor) quitarEventoReproductor();
+    }
+
+    // Quita el evento para home
+    const quitarEventoHome = () => {
+        document.getElementById('home').removeEventListener('click', gestionarEventoHome);
+    }
+
+    // Quita el evento del navBar
+    const quitarEventoNavbar = () => {
+        document.getElementById('navbar').removeEventListener('click', gestionarEventosNavbar);
+    }
+
+    // Quita el evento del reproductor
+    const quitarEventoReproductor = () => {
+        document.getElementById('reproductor').removeEventListener('click', gestionarEventosReproductor);
+    }
+
+    // Quita el evento del author
+    const quitarEventoAuthor = () => {
+        document.getElementById('lista_discos').removeEventListener('click', gestionarEventosAuthor);
+    }
+
+    // Quita el evento del album
+    const quitarEventoAlbum = () => {
+        document.getElementById('album_canciones').removeEventListener('click', gestionarEventosAlbum);
+    }
+
 
 /* ----- FIN PUESTA Y GESTION DE LOS EVENTOS ----- */
 
@@ -779,8 +819,18 @@
 
 /* ----- FIN FUNCIONES EXTRA ----- */
 
-    mostrarHome();
-    ponerEventoHome();
+/* ----- ARRANQUE DE LA APLICACIÓN ----- */
+
+    // Para iniciar la app
+    const iniciarApp = () => {
+        mostrarHome();
+        ponerEventoNavbar();
+        ponerEventoReproductor();
+    }
+    
+    iniciarApp();
+
+/* ----- FIN FUNCIONES EXTRA ----- */
 
     /*SE NECESITA UN BORRAR ALBUM Y BORRAR AUTORALBUMS*/
 
@@ -794,7 +844,7 @@
         - Hay que cambiar los id porque ahora se han añadido secciones para gestionar mejor el ocultarlas
         y da conflicto con los id de los templates.
         - Hacer la biblioteca.
-        - Hacer que funcione el reproductor.
+        - Hacer que funcione el reproductor. ¿¿¿Si ponemos todo el javascript en el footer funciona ya existira todo???
         - Revisar todo lo que tenga '???'.
         - ¿¿¿ Los scripts de abajo sirven para algo ???.
 

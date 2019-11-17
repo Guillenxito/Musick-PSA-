@@ -14,6 +14,8 @@
     <link href="https://fonts.googleapis.com/css?family=Bahianita|Emilys+Candy&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ asset('img/logo.jpg') }}" />
     @yield('styles')
     <!-- <style>*{outline:1px solid red;</style> -->
 </head>

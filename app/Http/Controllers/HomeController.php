@@ -29,11 +29,9 @@ class HomeController extends Controller
 
          $categorias = [];
         /***************************** CONSULTA NOVEDADES **************************************/
-        $novedades = DB::table('songs')
-                         ->join('authors','songs.id_author', '=', 'authors.id_author')
-                         ->join('albums','songs.id_album','=','albums.id_album')
-                         ->select('authors.nombre AS artista','albums.nombre')
-                         ->orderBy('albums.created_at', 'ASC')
+        $novedades = DB::table('authors')
+                         ->select('authors.nombre AS artista')
+                         ->orderBy('created_at', 'ASC')
                          ->take(6)
                          ->get();
 
@@ -69,6 +67,7 @@ class HomeController extends Controller
                                 ->where('songs.id_style','=',$key)
                                 ->distinct('albums.id_album')
                                 ->take($value)
+                                ->orderByRaw('RAND()')
                                 ->get();
 
 
@@ -122,6 +121,7 @@ class HomeController extends Controller
         $categorias['tendencias'] = json_decode(json_encode($tendencias), true);
         $categorias['estilos'] = json_decode(json_encode($estilos), true);
 
+        // return view('home', json_decode(json_encode($categorias), true));
         return view('home', compact('categorias'));
     }
 
@@ -209,7 +209,7 @@ class HomeController extends Controller
                     ->join('authors','songs.id_author','=','authors.id_author')
                     ->join('playLists','songs.id_song','=','playLists.id_song')
                     ->join('users','users.id','=','playLists.id_user')
-                    ->select('songs.titulo','albums.nombre AS nombreAlbum','authors.nombre AS nombreAuthor','playLists.id_list')
+                    ->select('songs.titulo','albums.nombre AS nombreAlbum','authors.nombre AS nombreAuthor','playLists.id_list','playLists.id_song')
                     ->where('users.id', '=' , auth()->user()->id)
                     ->get();
 

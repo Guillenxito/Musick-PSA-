@@ -1,0 +1,24 @@
+
+html {
+    scroll-behavior: smooth;
+}
+
+#cuerpo {
+    position: relative;
+    margin: 8rem auto;
+    font-family: 'Bahianita', cursive;
+    letter-spacing: 1.5;
+}
+
+h5, h6 {
+    font-family: 'Emilys Candy', cursive;
+    letter-spacing: 1.5;
+}
+
+#ten {
+    margin-top: 9rem;
+}
+
+.numeroCancion {
+    width: 4rem;
+}
