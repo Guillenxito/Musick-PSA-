@@ -23,6 +23,10 @@ Route::get('/', 'HomeController@home');
 
 
 Route::get('/login', 'MiControlador@login');
+Route::get('/logout', function(){
+   Auth::logout();
+   return Redirect::to('login');
+});
 
 
 Route::get('/user/show/{id}', 'UserController@show');
@@ -62,3 +66,4 @@ Route::group([
     Route::post('reproductor/play', 'ReproductorController@play');
 });
 */
+
