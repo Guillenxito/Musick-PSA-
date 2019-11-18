@@ -16,6 +16,31 @@ class ReproductorController extends Controller
         //return "esta funcionando cruck";
     }
 
+
+    public function playAlbum($album) {
+
+
+    }
+    
+    public function playCancion($cancion) {
+
+
+    }
+
+    public function bibliotecaAlbum($album) {
+
+
+    }
+    
+    public function bibliotecaCancion($cancion) {
+        DB::table('playLists')->insert([
+            ['id_user' => auth()->user()->id],
+            ['id_song' => $cancion]
+        ]);
+
+    }
+
+
     // TODO...
-    public function stop(){}
+    // public function stop(){}
 }

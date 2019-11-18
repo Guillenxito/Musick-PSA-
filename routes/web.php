@@ -10,17 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
-
-
 
 
 Route::get('/', 'HomeController@home');
-
 
 Route::get('/login', 'MiControlador@login');
 Route::get('/logout', function(){
@@ -28,42 +20,25 @@ Route::get('/logout', function(){
    return Redirect::to('login');
 });
 
-
+// UserController
 Route::get('/user/show/{id}', 'UserController@show');
 Route::get('/users/showAll', 'UserController@showAll');
 Route::get('/user/destroy/{id}', 'UserController@destroy');
 
-
 Auth::routes();//Con esto se pide autentificacion para todas las paginas.
-
-
-// Route::get('/autor/{artist}', 'AlbumController@showArtist');
-// Route::get('/autor/{artist}/{album}', 'AlbumController@showAlbum');
-
-
 
 
 Route::post('biblioteca/AddSong', 'PlaylistController@store');
 // Route::get('biblioteca/AddSong', 'PlaylistController@store'); para probar facil
 
+// AlbumController
+Route::get('/autor/{artist}', 'AlbumController@authorJSON');
+Route::get('/autor/{artist}/{album}', 'AlbumController@albumJSON');
+Route::get('/bibliotecaUsuario', 'AlbumController@bibliotecaJSON');
 
-/**** RUTAS HOME ****/
-    // Autor
-    Route::get('/autor/{artist}', 'HomeController@authorJSON');
-    // Album
-    Route::get('/autor/{artist}/{album}', 'HomeController@albumJSON');
-    // Biblioteca
-    Route::get('/bibliotecaUsuario', 'HomeController@bibliotecaJSON');
-
-/* Intentos sin form y con una peticion ajax por post
-Route::middleware('auth:api')->post('biblioteca/AddSong', 'BibliotecaController@AddSong');
-
-Route::middleware('auth:api')->post('reproductor/play', 'ReproductorController@play');
-
-Route::group([
-    'middleware' => 'auth',
-], function () {
-    Route::post('reproductor/play', 'ReproductorController@play');
-});
-*/
+// ReproductorController
+Route::get('/play/album/{album}', 'ReproductorController@playAlbum');
+Route::get('/play/cancion/{cancion}', 'ReproductorController@playCancion');
+Route::get('/biblioteca/album/{album}', 'ReproductorController@bibliotecaAlbum');
+Route::get('/biblioteca/cancion/{cancion}', 'ReproductorController@bibliotecaCancion');
 
