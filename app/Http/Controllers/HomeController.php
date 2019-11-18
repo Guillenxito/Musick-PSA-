@@ -39,7 +39,9 @@ class HomeController extends Controller
         /*************************** CONSULTA RECOMENDACIONES *************************/
         $JournalStyle = DB::table('journals')
                             ->join('songs', 'journals.id_song', '=', 'songs.id_song')
+                            ->join('users','users.id','=','playLists.id_user')
                             ->select('songs.id_style')
+                            ->where('users.id', '=' , auth()->user()->id)
                             ->take(6)
                             ->get();
 
