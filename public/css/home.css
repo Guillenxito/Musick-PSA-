@@ -22,3 +22,13 @@ h5, h6 {
 .numeroCancion {
     width: 4rem;
 }
+
+nav > a:first-of-type {
+    outline: none;
+    cursor: auto;
+}
+
+#navbar_home {
+    cursor: pointer;
+}
+
