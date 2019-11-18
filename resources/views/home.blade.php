@@ -163,12 +163,12 @@
                             ¡¡¡titulo!!!
                         </div>
                         <div class="col-1">
-                            <i class="material-icons" id="play-cancion-¡¡¡titulo_!!!">
+                            <i class="material-icons" id="play-cancion-¡¡¡id_song!!!">
                                 play_circle_outline
                             </i>
                         </div>
                         <div class="col-1">
-                            <i class="material-icons" id="biblioteca-cancion-¡¡¡titulo_!!!">
+                            <i class="material-icons" id="biblioteca-cancion-¡¡¡id_song!!!">
                                 playlist_add
                             </i>
                         </div>                
