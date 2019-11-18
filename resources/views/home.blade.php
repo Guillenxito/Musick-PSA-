@@ -250,6 +250,7 @@
     // Trata la respuesta de home
     const modificarRespuestaHome = (array) => {
         array = array[0];
+                console.log(array['recomendados']);
         let respuesta = new Array();
 
         let novedades = new Array();
