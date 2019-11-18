@@ -92,4 +92,5 @@ class UserController extends Controller
         $user =  new User;
         $user::destroy($id);
     }
+
 }

@@ -138,13 +138,13 @@
                             <div class="h3">
                                 ¡¡¡autor.informacion!!!
                             </div>
-                            <div id="play_¡¡¡id_cancion!!!" class="col-1">
-                                <i class="material-icons">
+                            <div class="col-1">
+                                <i class="material-icons" id="play-album-¡¡¡nombreAlbum_!!!">
                                     play_circle_outline
                                 </i>
                             </div>
-                            <div id="biblioteca_¡¡¡id_cancion!!!" class="col-1">
-                                <i class="material-icons">
+                            <div class="col-1">
+                                <i class="material-icons" id="biblioteca-album-¡¡¡nombreAlbum_!!!">
                                     playlist_add
                                 </i>
                             </div>
@@ -162,13 +162,13 @@
                         <div class="text-left flex-grow-1">
                             ¡¡¡titulo!!!
                         </div>
-                        <div id="play_¡¡¡id_cancion!!!" class="col-1">
-                            <i class="material-icons">
+                        <div class="col-1">
+                            <i class="material-icons" id="play-cancion-¡¡¡titulo_!!!">
                                 play_circle_outline
                             </i>
                         </div>
-                        <div id="biblioteca_¡¡¡id_cancion!!!" class="col-1">
-                            <i class="material-icons">
+                        <div class="col-1">
+                            <i class="material-icons" id="biblioteca-cancion-¡¡¡titulo_!!!">
                                 playlist_add
                             </i>
                         </div>                
@@ -470,6 +470,7 @@
         document.getElementById('album').setAttribute('style', 'display: block');
         if (cancionTendencia) 
             document.getElementById(cancionTendencia).classList.add('active');
+        ponerEventoAlbum();
     }
 
     // Muestra el nombre del autor, la imagen del album y el nombre del album
@@ -734,7 +735,7 @@
 
     // Pone el evento del album
     const ponerEventoAlbum = () => {
-        document.getElementById('album_canciones').addEventListener('click', gestionarEventoAlbum);
+        document.getElementById('alb').addEventListener('click', gestionarEventoAlbum);
     }
 
     // Falta ver que hacemos con los estilos, si llevan a una nueva página o no.
@@ -825,6 +826,18 @@
         }
     }
 
+    // Gestiona el evento del album
+    const gestionarEventoAlbum = (evt) => {
+        if (evt.target !== evt.currentTarget) {
+            if (evt.target.tagName == 'I') {
+                console.log(evt.target);  
+                console.log(evt.target.id);  
+                const accion = evt.target.id.split('-');
+                pedirDatos(accion[0] + '/' + accion[1] + '/' + accion[2]);
+            }
+        }
+    }
+
     // ???
     // Revisar esta función porque da error al no estar creados los elementos con los id correspondiente
     // Quita todos los eventos, el evento del navbar y del reproductor se puede pasar si se quiere quitar o no
@@ -858,7 +871,7 @@
 
     // Quita el evento del album
     const quitarEventoAlbum = () => {
-        document.getElementById('album_canciones').removeEventListener('click', gestionarEventosAlbum);
+        document.getElementById('alb').removeEventListener('click', gestionarEventosAlbum);
     }
 
 
@@ -880,7 +893,7 @@
             }
         } 
         });
-        // console.log(`${urlServidor}/${peticion}`);
+        console.log(`${urlServidor}/${peticion}`);
 
         xhr.open('GET', `${urlServidor}/${peticion}`);
         xhr.send(null);
