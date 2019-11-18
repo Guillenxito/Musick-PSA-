@@ -5,16 +5,20 @@
 -- Server version	5.7.27-0ubuntu0.18.04.1
 
 /* --- authors --- */
-INSERT INTO authors (nombre, informacion) VALUES('camaron','José Monje Cruz​​, conocido artísticamente como Camarón de la Isla o simplemente Camarón, fue un cantaor gitano español considerado una de las principales figuras del flamenco.​ En el 2000, le fue concedida a título póstumo la Llave de Oro del Cante.');
-INSERT INTO authors (nombre, informacion) VALUES('la_excepcion', "La excepción que confirma la regla, fue un grupo español de rap originario del barrio de Pan Bendito, en el distrito de Carabanchel, Madrid. Estuvo compuesto por los MC's El Langui y Gitano Antón  y por el DJ La Dako Style . ");
-INSERT INTO authors (nombre, informacion) VALUES('los_delinquentes', 'Los Delinqüentes fue un grupo musical andaluz, originario de Jerez de la Frontera (Cádiz), formado en 1998 por Miguel Ángel Benítez Gómez "Er Migue" y Marcos del Ojo "Er Canijo de Jeré", a los que se uniría posteriormente Diego Pozo "Er Ratón".');
-INSERT INTO authors (nombre, informacion) VALUES('bad_bunny','Benito Antonio Martínez Ocasio (San Juan, Puerto Rico, 10 de marzo de 1994), más conocido por su nombre artístico Bad Bunny, es un cantante puertorriqueño de trap y reguetón.');
-INSERT INTO authors (nombre, informacion) VALUES('arce','Pablo Arce es un rapero gallego nacido en Santiago de Compostela en 1990. Empezó con el rap en el 2002: escribía letras en su casa y las grababa con un mp3, después las bajaba al Parque de Ramírez y a la gente le gustaba porque era un rollo diferente, callejero, con las drogas, el dinero y las chicas como temática. Precisamente por el contenido "salvaje" de sus letras se le ha colgado el cartel de "polémico".');
-INSERT INTO authors (nombre, informacion) VALUES('paramore','Paramore es una banda estadounidense de pop punk y rock alternativo​​​​ integrada por Hayley Williams, Taylor York y Zac Farro. Fue formada en Franklin, Tennessee, en 2004, por Williams y Jeremy Davis junto con Josh Farro, Zac Farro ​ y Jason Bynum.​');
-INSERT INTO authors (nombre, informacion) VALUES('el_arrebato','Francisco Javier Labandón Pérez (Sevilla, 1 de septiembre de 1969), más conocido como El Arrebato, es un cantautor español de rumba-pop y flamenco. De familia paterna de Sevilla y familia materna de Barbate, comenzó su carrera artística sobre 1985 y su carrera discográfica en 1988 sacando su primer disco con el grupo Piel morena en el que le acompañaban 2 grandes amigos de su Sevilla natal.​');
-INSERT INTO authors (nombre, informacion) VALUES('el_canto_del_loco','(también abreviado ECDL) fue un grupo español de música pop rock. Fue creado en 1994 por Dani Martín e Iván Ganchegui (quien abandonaría el grupo en 2002), y años después terminarían por ser cinco miembros. Influidos principalmente por otros grupos españoles de la década de 1980 y con cinco álbumes de estudio, El Canto del Loco ha conseguido vender más de un millón de copias en el mercado,1​ convirtiéndose en uno de los grupos musicales más importantes del panorama español en su momento.');
-INSERT INTO authors (nombre, informacion) VALUES('thirty_seconds_to_mars','es una banda estadounidense de rock alternativo formada en 1998 en Los Ángeles (California). Integrada originalmente por tres miembros: Jared Leto (voz, guitarra), Matt Wachter (bajo, sintetizador) y Shannon Leto (batería), a quienes más tarde se les uniría el guitarrista Solon Bixler. Después de la publicación de su álbum debut, el guitarrista Solon Bixler salió de la banda debido a problemas durante su primera gira, poco después fue sustituido por el guitarrista Tomo Milicevic.11​ Después de la salida de Matt Wachter (ahora en Angels & Airwaves), Jared Leto se convirtió en el bajista de la banda.');
-INSERT INTO authors (nombre, informacion) VALUES('linkin_park', 'es una banda estadounidense de rock alternativo procedente de Agoura Hills, California. Formada en 1996, el grupo estuvo inicialmente integrado por Mike Shinoda, Dave Farrell, Joe Hahn, Brad Delson, Rob Bourdon y Mark Wakefield, este último como voz principal. La banda inició en ese mismo año sus primeros trabajos musicales de manera independiente y posterior a esto grabaron su primer material llamado Xero; sin embargo no tuvieron gran éxito en la búsqueda de un sello discográfico ya que nadie mostró interés por su trabajo, lo que ocasionó la renuncia de Mark Wakefield.2​ Poco después, Chester Bennington se incorporó a la banda como vocalista; el grupo realizó su primera presentación en un club de Los Ángeles y siendo respaldados por Jeff Blue, en aquel entonces vicepresidente de Warner Bros. Records, lograron firmar con el sello en 1999. El nombre del grupo es un juego de palabras que hace referencia al Lincoln Park en Santa Mónica.');
+/* 1*/INSERT INTO authors (nombre, informacion) VALUES('camaron','José Monje Cruz​​, conocido artísticamente como Camarón de la Isla o simplemente Camarón, fue un cantaor gitano español considerado una de las principales figuras del flamenco.​ En el 2000, le fue concedida a título póstumo la Llave de Oro del Cante.');
+/* 2*/INSERT INTO authors (nombre, informacion) VALUES('la_excepcion', "La excepción que confirma la regla, fue un grupo español de rap originario del barrio de Pan Bendito, en el distrito de Carabanchel, Madrid. Estuvo compuesto por los MC's El Langui y Gitano Antón  y por el DJ La Dako Style . ");
+/* 3*/INSERT INTO authors (nombre, informacion) VALUES('los_delinquentes', 'Los Delinqüentes fue un grupo musical andaluz, originario de Jerez de la Frontera (Cádiz), formado en 1998 por Miguel Ángel Benítez Gómez "Er Migue" y Marcos del Ojo "Er Canijo de Jeré", a los que se uniría posteriormente Diego Pozo "Er Ratón".');
+/* 4*/INSERT INTO authors (nombre, informacion) VALUES('bad_bunny','Benito Antonio Martínez Ocasio (San Juan, Puerto Rico, 10 de marzo de 1994), más conocido por su nombre artístico Bad Bunny, es un cantante puertorriqueño de trap y reguetón.');
+/* 5*/INSERT INTO authors (nombre, informacion) VALUES('arce','Pablo Arce es un rapero gallego nacido en Santiago de Compostela en 1990. Empezó con el rap en el 2002: escribía letras en su casa y las grababa con un mp3, después las bajaba al Parque de Ramírez y a la gente le gustaba porque era un rollo diferente, callejero, con las drogas, el dinero y las chicas como temática. Precisamente por el contenido "salvaje" de sus letras se le ha colgado el cartel de "polémico".');
+/* 6*/INSERT INTO authors (nombre, informacion) VALUES('paramore','Paramore es una banda estadounidense de pop punk y rock alternativo​​​​ integrada por Hayley Williams, Taylor York y Zac Farro. Fue formada en Franklin, Tennessee, en 2004, por Williams y Jeremy Davis junto con Josh Farro, Zac Farro ​ y Jason Bynum.​');
+/* 7*/INSERT INTO authors (nombre, informacion) VALUES('el_arrebato','Francisco Javier Labandón Pérez (Sevilla, 1 de septiembre de 1969), más conocido como El Arrebato, es un cantautor español de rumba-pop y flamenco. De familia paterna de Sevilla y familia materna de Barbate, comenzó su carrera artística sobre 1985 y su carrera discográfica en 1988 sacando su primer disco con el grupo Piel morena en el que le acompañaban 2 grandes amigos de su Sevilla natal.​');
+/* 8*/INSERT INTO authors (nombre, informacion) VALUES('el_canto_del_loco','(también abreviado ECDL) fue un grupo español de música pop rock. Fue creado en 1994 por Dani Martín e Iván Ganchegui (quien abandonaría el grupo en 2002), y años después terminarían por ser cinco miembros. Influidos principalmente por otros grupos españoles de la década de 1980 y con cinco álbumes de estudio, El Canto del Loco ha conseguido vender más de un millón de copias en el mercado,1​ convirtiéndose en uno de los grupos musicales más importantes del panorama español en su momento.');
+/* 9*/INSERT INTO authors (nombre, informacion) VALUES('thirty_seconds_to_mars','es una banda estadounidense de rock alternativo formada en 1998 en Los Ángeles (California). Integrada originalmente por tres miembros: Jared Leto (voz, guitarra), Matt Wachter (bajo, sintetizador) y Shannon Leto (batería), a quienes más tarde se les uniría el guitarrista Solon Bixler. Después de la publicación de su álbum debut, el guitarrista Solon Bixler salió de la banda debido a problemas durante su primera gira, poco después fue sustituido por el guitarrista Tomo Milicevic.11​ Después de la salida de Matt Wachter (ahora en Angels & Airwaves), Jared Leto se convirtió en el bajista de la banda.');
+/*10*/INSERT INTO authors (nombre, informacion) VALUES('linkin_park', 'es una banda estadounidense de rock alternativo procedente de Agoura Hills, California. Formada en 1996, el grupo estuvo inicialmente integrado por Mike Shinoda, Dave Farrell, Joe Hahn, Brad Delson, Rob Bourdon y Mark Wakefield, este último como voz principal. La banda inició en ese mismo año sus primeros trabajos musicales de manera independiente y posterior a esto grabaron su primer material llamado Xero; sin embargo no tuvieron gran éxito en la búsqueda de un sello discográfico ya que nadie mostró interés por su trabajo, lo que ocasionó la renuncia de Mark Wakefield.2​ Poco después, Chester Bennington se incorporó a la banda como vocalista; el grupo realizó su primera presentación en un club de Los Ángeles y siendo respaldados por Jeff Blue, en aquel entonces vicepresidente de Warner Bros. Records, lograron firmar con el sello en 1999. El nombre del grupo es un juego de palabras que hace referencia al Lincoln Park en Santa Mónica.');
+/*11*/INSERT INTO authors (nombre, informacion) VALUES('natos_y_woar','Natos y Waor es un dúo de rap madrileño afincado en Aluche, que lleva varios años revolucionando la escena hip-hop nacional a base de letras incendiarias y cercanas. Cuentan con un apoyo masivo en internet, como así avalan los cientos de millones de reproducciones en YouTube de sus videoclips y los cientos de miles de seguidores que tienen en redes sociales.');
+/*12*/INSERT INTO authors (nombre, informacion) VALUES('jhay_cortez','Es un cantante y destacado compositor del género urbano. Nació en Río Piedras, Puerto Rico, el 9 de abril de 1993. Es reconocido por sus numerosas colaboraciones con importantes exponentes del género, que le han permitido demostrar su talento innato como compositor, a pesar de su temprana edad.');
+/*13*/INSERT INTO authors (nombre, informacion) VALUES('ozuna','Juan Carlos Ozuna Rosado (San Juan, 13 de marzo de 1992), conocido como Ozuna, es un cantante, compositor y actor puertorriqueño. En 2014, firmó un contrato con la discográfica Golden Family Records​ y comenzó a publicar sus interpretaciones en redes sociales.​ Al año siguiente, obtuvo reconocimiento en Latinoamérica con sencillos como «Si tu marido no te quiere»​ y realizó varios conciertos en América del Sur.​ Saltó a la fama en 2016 al colaborar en el sencillo «La ocasión» de DJ Luian y Mambo Kingz junto con Anuel AA y De la Ghetto, posicionado en el puesto veintidós de la lista Hot Latin Songs.5 Sus sencillos «Si tu marido no te quiere» y «En la intimidad» también estuvieron entre los treinta puestos más populares de ella.​ Por sus logros en las listas de Billboard recibió una nominación en la categoría debut del año en los Premios Billboard de la música latina del 2017.');
+/*14*/INSERT INTO authors (nombre, informacion) VALUES('anuel_aa', 'Es un joven rapero que se ha destacado en el género del trap y reggaetón. Nació el 27 de noviembre de 1992 en Carolina, Puerto Rico, y es hijo de Nilda Santiago y José Gazmey, quien fue músico y vicepresidente de A&R de Sony Music en Puerto Rico.');
 -- ids: a partir del 11 estan llibres
 
 /********************************/
@@ -49,6 +53,18 @@ INSERT INTO albums (nombre,created_at) VALUES('love_lust_faith_+_dreams',CURRENT
 /* linkin park */
 INSERT INTO albums (nombre,created_at) VALUES('minutes_to_midnight',CURRENT_DATE);
 INSERT INTO albums (nombre,created_at) VALUES('living_things',CURRENT_DATE);
+/*bad_bunny 19*/
+INSERT INTO albums (nombre,created_at) VALUES('oasis',CURRENT_DATE);
+/*ozuna 20*/
+INSERT INTO albums (nombre,created_at) VALUES('odisea',CURRENT_DATE);
+/*anuel aa 21*/
+INSERT INTO albums (nombre,created_at) VALUES('real_hasta_la_muerte',CURRENT_DATE);
+/*natos y woar 22*/
+INSERT INTO albums (nombre,created_at) VALUES('cicatrices',CURRENT_DATE);
+/*jhaz cortez 23*/
+INSERT INTO albums (nombre,created_at) VALUES('famouz',CURRENT_DATE);
+
+
 -- ids: a patir del 19 estan libres
 /********************************/
 
@@ -317,6 +333,68 @@ INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('skin_t
 INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('until_it_breaks',18,10,4,CURRENT_DATE);
 INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('tinfoil',18,10,4,CURRENT_DATE);
 INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('powerless',18,10,4,CURRENT_DATE);
+
+/* oasis */
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('como_un_bebe',4,19,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('cuidao_por_ahi',4,19,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('la_cancion',4,19,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('marciano_cantero',4,19,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('mojaita',4,19,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('odio',4,19,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('que_pretendes',4,19,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('yo_le_llego',4,19,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('skin_to_bone',4,19,4,CURRENT_DATE);
+
+/* odisea */
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bebe',13,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('cumpleanos',13,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('dile_que_tu_me_quieres',13,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('el_farsante',13,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('noches_de_aventura',13,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('odisea',13,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('pide_lo_que_tu_quieras_',13,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('quiero_repetir',13,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('se_preparo',13,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('siguelo_bailando',13,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('una_flor_',13,20,4,CURRENT_DATE);
+
+/* real hasta la muerte*/
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bandolera',14,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('brindemos',14,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('ella_quiere_beber',14,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('espina',14,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('hipocrita',14,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('modo_de_avion',14,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('na_nuevo',14,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('naturaleza',14,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('pensando_en_ti',14,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('tu_no_lo_amas',14,20,4,CURRENT_DATE);
+
+/* famouz*/
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('aventura',12,23,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bebe',12,23,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('costear',12,23,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('easy',12,23,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('en_la_mia',12,23,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('imaginaste',12,23,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('no_me_conoce_remix',12,23,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('sabe',12,23,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('subiendo_de_nivel',12,23,4,CURRENT_DATE);
+
+/* cicatrices*/
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('alfa_y_omega',11,22,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('balada',11,22,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bestsellers',11,22,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bicho_raro',11,22,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('caminare',11,22,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('costa',11,22,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('ey_mama',11,22,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('generacion_perdida',11,22,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('niño_de_cristal',11,22,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('pecados',11,22,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('piratas',11,22,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('underground',11,22,2,CURRENT_DATE);
+
 
 /* --- journals --- */
 /* id_user 1 */
