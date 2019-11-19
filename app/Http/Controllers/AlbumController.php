@@ -100,7 +100,6 @@ class AlbumController extends Controller
 
     }
 
-
     public function authorJSON($author) {
 
         $id_author = DB::table('authors')

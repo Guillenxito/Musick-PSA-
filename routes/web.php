@@ -42,3 +42,5 @@ Route::get('/play/cancion/{cancion}', 'ReproductorController@playCancion');
 Route::get('/biblioteca/album/{album}', 'ReproductorController@bibliotecaAlbum');
 Route::get('/biblioteca/cancion/{cancion}', 'ReproductorController@bibliotecaCancion');
 
+// HomeController
+Route::get('/search/{wanted}', 'HomeController@searchInLiveJSON');

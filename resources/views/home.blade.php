@@ -163,12 +163,12 @@
                             ¡¡¡titulo!!!
                         </div>
                         <div class="col-1">
-                            <i class="material-icons" id="play-cancion-¡¡¡id_song!!!">
+                            <i class="material-icons" id="play-cancion-¡¡¡titulo_!!!">
                                 play_circle_outline
                             </i>
                         </div>
                         <div class="col-1">
-                            <i class="material-icons" id="biblioteca-cancion-¡¡¡id_song!!!">
+                            <i class="material-icons" id="biblioteca-cancion-¡¡¡titulo_!!!">
                                 playlist_add
                             </i>
                         </div>                
@@ -250,7 +250,7 @@
     // Trata la respuesta de home
     const modificarRespuestaHome = (array) => {
         array = array[0];
-                console.log(array['recomendados']);
+        console.log(array['recomendados']);
         let respuesta = new Array();
 
         let novedades = new Array();
@@ -515,6 +515,11 @@
         document.getElementById('biblioteca').setAttribute('style', 'display: block');
         document.getElementById('titulo_biblioteca').setAttribute('style', 'display: block');
     }
+    // Muestra el search
+    const mostrarSearch = (array) =>{
+        array = JSON.parse(array);
+        console.log(array);
+    }
 
 
 /* ----- FIN MOSTRAR ----- */
@@ -739,6 +744,11 @@
         document.getElementById('alb').addEventListener('click', gestionarEventoAlbum);
     }
 
+     // Pone el evento del buscar
+    const ponerEventoSearch = () => {
+       document.querySelector("#buscador").addEventListener('keyup',gestionarEventoSearch);
+    }
+
     // Falta ver que hacemos con los estilos, si llevan a una nueva página o no.
     // Gestiona el evento de home
     const gestionarEventoHome = (evt) => {
@@ -796,8 +806,6 @@
     // Falta hacerlo
     const gestionarEventoNavbar = (evt) => {
         if (evt.target !== evt.currentTarget) {
-            console.log(evt.target.id);
-            (evt.target.id) ? console.log('tiene id') :  console.log('no tiene id');
             console.log(evt.target.id.split('_')[1]);
             switch (evt.target.id.split('_')[1]) {
                 case 'biblioteca':
@@ -818,6 +826,11 @@
 
     }
 
+    // Gestionar el evento del buscador in live
+    const gestionarEventoSearch = (evt) => {
+         let wanted = evt.target.value.toLowerCase().replace(/ /g,'_');
+         pedirDatos('search/'+ wanted, mostrarSearch); 
+    }
     // Gestiona el evento de los discos del author
     const gestionarEventoAuthor = (evt) => {
         if (evt.target !== evt.currentTarget) {
@@ -950,8 +963,9 @@
         mostrarHome();
         ponerEventoNavbar();
         ponerEventoReproductor();
+        
     }
-    
+    ponerEventoSearch();
     iniciarApp();
 
 /* ----- FIN FUNCIONES EXTRA ----- */

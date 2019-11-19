@@ -307,32 +307,32 @@ INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('northe
 INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('depuis_le_debut',16,9,3,CURRENT_DATE);
 
 /* minutes to midnight */
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('wake',17,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('given_up',17,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('leave_out_all_the_rest',17,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bleed_it_out',17,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('shadow_of_the_day',17,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('what_ive_done',17,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('hands_held_high',17,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('no_more_sorrow',17,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('valentines_day',17,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('in_between',17,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('in_pieces',17,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('the_little_things_give_you_away',17,10,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('wake',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('given_up',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('leave_out_all_the_rest',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bleed_it_out',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('shadow_of_the_day',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('what_ive_done',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('hands_held_high',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('no_more_sorrow',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('valentines_day',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('in_between',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('in_pieces',17,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('the_little_things_give_you_away',17,10,4,CURRENT_DATE);
 
 /* living things */
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('lost_in_the_echo',18,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('in_my_remains',18,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('burn_it_down',18,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('lies_greed_misery',18,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('ill_be_gone',18,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('castle_of_glass',18,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('victimized',18,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('roads_untraveled',18,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('skin_to_bone',18,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('until_it_breaks',18,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('tinfoil',18,10,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('powerless',18,10,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('lost_in_the_echo',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('in_my_remains',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('burn_it_down',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('lies_greed_misery',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('ill_be_gone',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('castle_of_glass',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('victimized',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('roads_untraveled',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('skin_to_bone',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('until_it_breaks',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('tinfoil',18,10,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('powerless',18,10,4,CURRENT_DATE);
 
 /* oasis */
 INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('como_un_bebe',4,19,4,CURRENT_DATE);
@@ -608,4 +608,22 @@ INSERT INTO journals(id_user, id_song, created_at) VALUES (4,144,CURRENT_DATE);
 INSERT INTO journals(id_user, id_song, created_at) VALUES (4,14,CURRENT_DATE);
 
 /********************************/
+
+INSERT INTO playLists(id_user, id_song, created_at) VALUES (1,99,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES (1,100,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES (1,101,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES (1,101,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES (1,55,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES (1,56,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES (1,4,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES (1,52,CURRENT_DATE);
+
+INSERT INTO playLists(id_user, id_song, created_at) VALUES (2,29,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES (2,100,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES (2,1,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES (2,21,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES (2,2,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES (2,5,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES (2,5,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES (2,101,CURRENT_DATE);
 

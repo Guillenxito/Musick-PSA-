@@ -231,4 +231,44 @@ class HomeController extends Controller
         return json_decode(json_encode($playList), true);
     }
 
+    
+    public function searchInLiveJSON($wanted) {
+        $songs =  DB::table('songs')
+                     ->join('albums','songs.id_album','=','albums.id_album')
+                     ->join('authors','songs.id_author','=','authors.id_author')
+                     ->select('songs.titulo','albums.nombre AS nombreAlbum','authors.nombre AS nombreAuthor')
+                     ->where('titulo', 'like', $wanted.'%')
+                     ->distinct('songs.titulo')
+                     ->take(4)
+                     ->get();
+
+        $authors =  DB::table('authors')
+                     ->select('authors.nombre As nombreAuthor')
+                     ->where('nombre', 'like', $wanted . '%')
+                     ->distinct('nombre')
+                     ->take(4)
+                     ->get();
+
+        $albums = DB::table('songs')
+                     ->join('albums','songs.id_album','=','albums.id_album')
+                     ->join('authors','songs.id_author','=','authors.id_author')
+                     ->select('albums.nombre AS nombreAlbum','authors.nombre AS nombreAuthor')
+                     ->where('albums.nombre', 'like', $wanted.'%')
+                     ->distinct('albums.nombre')
+                     ->take(4)
+                     ->get();
+
+        /* Unifica los arrays */
+       $query = array();
+       array_push($query, $albums,$authors,$songs);
+
+       $queryFinal = array();
+
+       foreach($query as $k =>$v){
+            foreach($v as $t)
+                $queryFinal[] = $t;
+       }
+        return json_decode(json_encode($queryFinal), true);
+    }
+
 }
