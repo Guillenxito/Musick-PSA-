@@ -515,10 +515,60 @@
         document.getElementById('biblioteca').setAttribute('style', 'display: block');
         document.getElementById('titulo_biblioteca').setAttribute('style', 'display: block');
     }
+
+    const borrarListSearch = () =>{
+         const Lista = document.getElementById("list-search");
+         while (Lista.firstChild) {
+             Lista.removeChild(Lista.firstChild);
+         }
+    }
+
     // Muestra el search
     const mostrarSearch = (array) =>{
         array = JSON.parse(array);
         console.log(array);
+        
+        const padreLista = document.getElementById("div-search");
+        const lista = document.getElementById("list-search");
+        borrarListSearch();
+        if(array.length > 0){
+
+            array.forEach(function(ele){
+
+                let li = document.createElement("li");
+                let a = document.createElement("button");
+                    a.type = "button";
+
+                let counterKeys = Object.values(ele).length;
+                switch (counterKeys) {
+                    case 1:
+                        a.dataset.url = '/autor/'+ ele.nombreAuthor;
+                        a.dataset.counter = 1;
+                        a.innerHTML = ele.nombreAuthor.toLowerCase().replace(/_/g,' ');
+                        break;
+                    case 2:
+                        a.dataset.url = '/autor/'+ ele.nombreAuthor + '/' + ele.nombreAlbum;
+                        a.dataset.counter = 2;
+                        a.innerHTML = ele.nombreAlbum.toLowerCase().replace(/_/g,' ');
+                        break;
+                    case 3:
+                        a.dataset.url = '/autor/'+ ele.nombreAuthor + '/' + ele.nombreAlbum;
+                        a.dataset.counter = 3;
+                        a.innerHTML = ele.titulo.toLowerCase().replace(/_/g,' ');
+                        break;
+                }
+
+                li.appendChild(a);
+                lista.appendChild(li);
+                
+            });
+
+            padreLista.style.display = "block";
+
+        }else{
+            padreLista.style.display = "none";
+        }
+       
     }
 
 
@@ -749,6 +799,11 @@
        document.querySelector("#buscador").addEventListener('keyup',gestionarEventoSearch);
     }
 
+   // Pone el evento del lista de buscar
+   const ponerEventoListSearch = () => {
+      document.querySelector("#div-search").addEventListener('click',gestionarEventoListSearch);
+   }
+
     // Falta ver que hacemos con los estilos, si llevan a una nueva página o no.
     // Gestiona el evento de home
     const gestionarEventoHome = (evt) => {
@@ -827,12 +882,40 @@
     }
 
     // Gestionar el evento del buscador in live
-    const gestionarEventoSearch = (evt) => {
+   const gestionarEventoSearch = (evt) => {
          let wanted = evt.target.value.toLowerCase().replace(/ /g,'_');
-         pedirDatos('search/'+ wanted, mostrarSearch); 
-    }
+         if(wanted.length > 0){
+            pedirDatos('search/'+ wanted, mostrarSearch); 
+         }else{
+            borrarListSearch();
+         }   
+   }
+
+   const gestionarEventoListSearch = (evt) => {
+       // evt.preventDefault();
+       if (evt.target !== evt.currentTarget) {
+            console.log(evt.target.dataset["url"]);
+            pedirDatos(evt.target.dataset["url"], mostrarAlbum);
+            switch (evt.target.dataset["counter"]) {
+                    case "1":
+                        pedirDatos(evt.target.dataset["url"], mostrarAuthor);
+                        borrarListSearch();
+                        break;
+                    case "2":
+                        pedirDatos(evt.target.dataset["url"], mostrarAlbum);
+                        borrarListSearch();
+                        break;
+                    case "3":
+                        pedirDatos(evt.target.dataset["url"], mostrarAlbum);
+                        borrarListSearch();
+                        break;
+                }   
+       }
+   }
+        
+    
     // Gestiona el evento de los discos del author
-    const gestionarEventoAuthor = (evt) => {
+   const gestionarEventoAuthor = (evt) => {
         if (evt.target !== evt.currentTarget) {
             const nombreAutor = document.getElementById('nombreAutor').innerHTML.toLowerCase().replace(/ /g,'_');            
             const nombreAlbum = evt.target.innerHTML.toLowerCase().replace(/ /g,'_');
@@ -965,7 +1048,9 @@
         ponerEventoReproductor();
         
     }
+
     ponerEventoSearch();
+    ponerEventoListSearch();
     iniciarApp();
 
 /* ----- FIN FUNCIONES EXTRA ----- */
