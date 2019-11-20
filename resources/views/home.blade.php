@@ -139,12 +139,12 @@
                                 ¡¡¡autor.informacion!!!
                             </div>
                             <div class="col-1">
-                                <i class="material-icons" id="play-album-¡¡¡nombreAlbum_!!!">
+                                <i class="material-icons" id="play-album-¡¡¡id_album!!!">
                                     play_circle_outline
                                 </i>
                             </div>
                             <div class="col-1">
-                                <i class="material-icons" id="biblioteca-album-¡¡¡nombreAlbum_!!!">
+                                <i class="material-icons" id="biblioteca-album-¡¡¡id_album!!!">
                                     playlist_add
                                 </i>
                             </div>
@@ -163,12 +163,12 @@
                             ¡¡¡titulo!!!
                         </div>
                         <div class="col-1">
-                            <i class="material-icons" id="play-cancion-¡¡¡titulo_!!!">
+                            <i class="material-icons" id="play-cancion-¡¡¡id_cancion!!!">
                                 play_circle_outline
                             </i>
                         </div>
                         <div class="col-1">
-                            <i class="material-icons" id="biblioteca-cancion-¡¡¡titulo_!!!">
+                            <i class="material-icons" id="biblioteca-cancion-¡¡¡id_cancion!!!">
                                 playlist_add
                             </i>
                         </div>                
@@ -701,86 +701,30 @@
     // Falta terminar
     // Reproduce la cancion que se ha pulsado en la vista y a continuación la array pasada, que puede ser la biblioteca, el album o todos los discos del author
     const reproducirCanciones = (informacionCanciones) => {
+        arrayCanciones = informacionCanciones;
         const reproductor = document.getElementById('reproductor');
-        console.log(reproductor);
         reproductor.play();
         reproductor.addEventListener('ended', cambiarCancion);
     }
-    
+       
     // Falta terminar
     const cambiarCancion = () => {
         console.log('cambiarCancion');
-        // Para hacer pruebas, del servidor deberá llegar un objeto de este tipo para poder reproducir las canciones
-        let arrayCanciones = { 
-            "cancion_1" : {
-                nombreArtista : "bad_bunny",
-                nombreAlbum : "oasis",
-                nombreCancion : "la_cancion"
-            },
-            "cancion_2" : {
-                nombreArtista : "bad_bunny",
-                nombreAlbum : "oasis",
-                nombreCancion : "mojaita"
-            },
-            "cancion_3" : {
-                nombreArtista : "ozuna",
-                nombreAlbum : "odisea",
-                nombreCancion : "siguelo_bailando"
-            },
-            "cancion_4" : {
-                nombreArtista : "ozuna",
-                nombreAlbum : "odisea",
-                nombreCancion : "bebe"
-            }
-        };
         arrayCanciones = Object.values(arrayCanciones);
-        console.log(Object.values(arrayCanciones));
-        // console.log(i);
-        // console.log(arrayCanciones[i]);
-        // console.log(arrayCanciones[+i + 1]);
-        // console.log(Object.values(arrayCanciones[+i + 1]));
         const reproductor = document.getElementById('reproductor');
-        console.log(reproductor);
         const cancionFinalizada = reproductor.currentSrc.split('/')
                                                         .filter((v,p) => p > 3)
                                                         .map((v,p) => (p == 3) ? v : v.split('.')[0]);
-        console.log(cancionFinalizada);
-
         for (let i = 0; i < Object.keys(arrayCanciones).length; i++) {
-            /*
-            console.log(arrayCanciones[i].nombreArtista);
-            console.log(cancionFinalizada[0]);    
-            console.log(arrayCanciones[i].nombreAlbum);
-            console.log(cancionFinalizada[1]);   
-            console.log(arrayCanciones[i].nombreCancion);
-            console.log(cancionFinalizada[2]);
-            */
-
-            var uno = arrayCanciones[i].nombreArtista;
-            var dos = cancionFinalizada[0];   
-            var tres = arrayCanciones[i].nombreAlbum;
-            var cuatro = cancionFinalizada[1];  
-            var cinco = arrayCanciones[i].nombreCancion;
-            var seis = cancionFinalizada[2];
-             
             if (arrayCanciones[i].nombreArtista == cancionFinalizada[0] && 
             arrayCanciones[i].nombreAlbum == cancionFinalizada[1] &&
             arrayCanciones[i].nombreCancion == cancionFinalizada[2]){
-            //if ((arrayCanciones[i].nombreArtista == cancionFinalizada[0] && (arrayCanciones[i].nombreAlbum == cancionFinalizada[1]) &&(arrayCanciones[i].nombreCancion == cancionFinalizada[2])) {
-                    console.log("ENTRA --------------------");
-                    // console.log(Object.values(arrayCanciones[+i + 1]).join('/'));
-                    // console.log('CANCION FINALIZADA -->> ' + cancionFinalizada[0] + '/' + cancionFinalizada[1] + '/' + cancionFinalizada[2]);
-                    // console.log('CANCION A CARGAR -->> ' +  Object.values(arrayCanciones[+i + 1]).join('/') + '.mp3');
-
-                    // console.log(urlServidor + '/' + Object.values(arrayCanciones[+i + 1]).join('/') + '.mp3');
-                    // console.log(Object.values(arrayCanciones[+i + 1].join('/'));
                     reproductor.removeAttribute('src');
                     reproductor.setAttribute('src', urlServidor + '/musica/' + Object.values(arrayCanciones[+i + 1]).join('/') + '.mp3');
                     reproductor.play();
             }
         }
         
-        console.log(cancionFinalizada);
         
     }
 
@@ -862,19 +806,13 @@
             if (typeof(buscado) === 'object') {
                 switch (buscado.length) {
                     case 1:
-                        //Se mostrara todos los albumnes de Autor buscado
-                        // Se usara mostrarAuthor
                         pedirDatos('autor/' + buscado[0], mostrarAuthor);
                         break;
                     case 2:
-                        //Se mostrara todas las canciones del album buscado
-                        // Se usara mostrarAlbum
                         cancionTendencia = undefined;
                         pedirDatos('autor/' + buscado[0] + '/' + buscado[1], mostrarAlbum);
                         break;
                     case 3:
-                        //Se mostrara todas las canciones del album buscado + indicado la
-                        // Se usara mostrarAlbum
                         cancionTendencia = buscado[2];
                         pedirDatos('autor/' + buscado[0] + '/' + buscado[1], mostrarAlbum);
                         break;
@@ -955,7 +893,7 @@
                 console.log(evt.target);  
                 console.log(evt.target.id);  
                 const accion = evt.target.id.split('-');
-                pedirDatos(accion[0] + '/' + accion[1] + '/' + accion[2]);
+                pedirDatos(accion[0] + '/' + accion[1] + '/' + accion[2], ()=>{});
             }
         }
     }
@@ -1071,8 +1009,33 @@
         mostrarHome();
         ponerEventoNavbar();
         ponerEventoReproductor();
-        
+        // reproducirCanciones(arrayCanciones);
     }
+     
+    // Para hacer pruebas, del servidor deberá llegar un objeto de este tipo para poder reproducir las canciones
+    let arrayCanciones = { 
+        "cancion_1" : {
+            nombreArtista : "camaron",
+            nombreAlbum : "caminito_de_totana",
+            nombreCancion : "la_jaca_que_yo_tenia"
+        },
+        "cancion_2" : {
+            nombreArtista : "los_delinquentes",
+            nombreAlbum : "extras",
+            nombreCancion : "sigo_a_la_luna"
+        },
+        "cancion_3" : {
+            nombreArtista : "el_arrebato",
+            nombreAlbum : "abrazos",
+            nombreCancion : "pequeneces"
+        },
+        "cancion_4" : {
+            nombreArtista : "el_canto_del_loco",
+            nombreAlbum : "zapatillas",
+            nombreCancion : "zapatillas"
+        }
+    };
+
 
     ponerEventoSearch();
     ponerEventoListSearch();

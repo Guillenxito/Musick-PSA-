@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReproductorController extends Controller
 {
@@ -34,17 +35,22 @@ class ReproductorController extends Controller
                         ->select('songs.id_song')
                         ->where('songs.id_album', '=', $id_album)
                         ->get();
+                        console.log($id_songs);
+        // $biblioteca = new ReproductorController();
         forEach($id_songs as $id) {
             bibliotecaCancion($id);
+            // $this -> bibliotecaCancion($id);
+            // $biblioteca -> bibliotecaCancion($id);
         }
     }
     
     // Guarda en la tabla playLists el id de la canción con el id de usuario
-    public function bibliotecaCancion($id_song) {
-        DB::table('playLists')->insert([
-            ['id_user' => auth()->user()->id],
-            ['id_song' => $id_song]
-        ]);
+    function bibliotecaCancion($id_song) {
+        DB::table('playLists')->updateOrInsert(
+            ['id_user' => auth()->user()->id,
+             'id_song' => $id_song],
+            ['created_at' => NOW()]
+        );
     }
 
     // TODO...
