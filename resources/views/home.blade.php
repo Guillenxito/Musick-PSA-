@@ -713,44 +713,69 @@
         // Para hacer pruebas, del servidor deberá llegar un objeto de este tipo para poder reproducir las canciones
         let arrayCanciones = { 
             "cancion_1" : {
-                nombreArtista : "camaron",
-                nombreAlbum : "reencuentro",
-                nombreCancion : "soy_fraguero"
+                nombreArtista : "bad_bunny",
+                nombreAlbum : "oasis",
+                nombreCancion : "la_cancion"
             },
             "cancion_2" : {
-                nombreArtista : "la_excepcion",
-                nombreAlbum : "aguantando_el_tiron",
-                nombreCancion : "la_puerta_abierta"
+                nombreArtista : "bad_bunny",
+                nombreAlbum : "oasis",
+                nombreCancion : "mojaita"
             },
             "cancion_3" : {
-                nombreArtista : "los_delinquentes",
-                nombreAlbum : "extras",
-                nombreCancion : "chinchetas_en_el_aire"
+                nombreArtista : "ozuna",
+                nombreAlbum : "odisea",
+                nombreCancion : "siguelo_bailando"
             },
             "cancion_4" : {
-                nombreArtista : "arce",
-                nombreAlbum : "lucifer",
-                nombreCancion : "carpe_diem"
+                nombreArtista : "ozuna",
+                nombreAlbum : "odisea",
+                nombreCancion : "bebe"
             }
         };
         arrayCanciones = Object.values(arrayCanciones);
         console.log(Object.values(arrayCanciones));
+        // console.log(i);
+        // console.log(arrayCanciones[i]);
+        // console.log(arrayCanciones[+i + 1]);
+        // console.log(Object.values(arrayCanciones[+i + 1]));
         const reproductor = document.getElementById('reproductor');
         console.log(reproductor);
         const cancionFinalizada = reproductor.currentSrc.split('/')
                                                         .filter((v,p) => p > 3)
                                                         .map((v,p) => (p == 3) ? v : v.split('.')[0]);
+        console.log(cancionFinalizada);
+
         for (let i = 0; i < Object.keys(arrayCanciones).length; i++) {
-            if (arrayCanciones[i].nombreArtista == cancionFinalizada[0] &&
-                arrayCanciones[i].nombreAlbum == cancionFinalizada[1] &&
-                arrayCanciones[i].nombreCancion == cancionFinalizada[2]) {
-                    console.log(i);
-                    console.log(arrayCanciones[i]);
-                    console.log(arrayCanciones[+i + 1]);
+            /*
+            console.log(arrayCanciones[i].nombreArtista);
+            console.log(cancionFinalizada[0]);    
+            console.log(arrayCanciones[i].nombreAlbum);
+            console.log(cancionFinalizada[1]);   
+            console.log(arrayCanciones[i].nombreCancion);
+            console.log(cancionFinalizada[2]);
+            */
+
+            var uno = arrayCanciones[i].nombreArtista;
+            var dos = cancionFinalizada[0];   
+            var tres = arrayCanciones[i].nombreAlbum;
+            var cuatro = cancionFinalizada[1];  
+            var cinco = arrayCanciones[i].nombreCancion;
+            var seis = cancionFinalizada[2];
+             
+            if (arrayCanciones[i].nombreArtista == cancionFinalizada[0] && 
+            arrayCanciones[i].nombreAlbum == cancionFinalizada[1] &&
+            arrayCanciones[i].nombreCancion == cancionFinalizada[2]){
+            //if ((arrayCanciones[i].nombreArtista == cancionFinalizada[0] && (arrayCanciones[i].nombreAlbum == cancionFinalizada[1]) &&(arrayCanciones[i].nombreCancion == cancionFinalizada[2])) {
+                    console.log("ENTRA --------------------");
+                    // console.log(Object.values(arrayCanciones[+i + 1]).join('/'));
+                    // console.log('CANCION FINALIZADA -->> ' + cancionFinalizada[0] + '/' + cancionFinalizada[1] + '/' + cancionFinalizada[2]);
+                    // console.log('CANCION A CARGAR -->> ' +  Object.values(arrayCanciones[+i + 1]).join('/') + '.mp3');
+
                     // console.log(urlServidor + '/' + Object.values(arrayCanciones[+i + 1]).join('/') + '.mp3');
                     // console.log(Object.values(arrayCanciones[+i + 1].join('/'));
                     reproductor.removeAttribute('src');
-                    reproductor.setAttribute('src', urlServidor + '/' + Object.values(arrayCanciones[+i + 1]).join('/') + '.mp3');
+                    reproductor.setAttribute('src', urlServidor + '/musica/' + Object.values(arrayCanciones[+i + 1]).join('/') + '.mp3');
                     reproductor.play();
             }
         }
