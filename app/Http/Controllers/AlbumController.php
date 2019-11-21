@@ -139,19 +139,4 @@ class AlbumController extends Controller
     }
 
 
-    public function bibliotecaJSON() {
-        //$id_user = auth()->user()->id;
-        $playList = DB::table('songs')
-                    ->join('albums','songs.id_album','=','albums.id_album')
-                    ->join('authors','songs.id_author','=','authors.id_author')
-                    ->join('playLists','songs.id_song','=','playLists.id_song')
-                    ->join('users','users.id','=','playLists.id_user')
-                    ->select('songs.titulo','albums.nombre AS nombreAlbum','authors.nombre AS nombreAuthor','playLists.id_list','playLists.id_song')
-                    ->where('users.id', '=' , auth()->user()->id)
-                    ->get();
-
-        return json_decode(json_encode($playList), true);
-    }
-
-
 }

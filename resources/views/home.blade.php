@@ -875,10 +875,9 @@
                 }   
        }
    }
-        
     
     // Gestiona el evento de los discos del author
-   const gestionarEventoAuthor = (evt) => {
+    const gestionarEventoAuthor = (evt) => {
         if (evt.target !== evt.currentTarget) {
             const nombreAutor = document.getElementById('nombreAutor').innerHTML.toLowerCase().replace(/ /g,'_');            
             const nombreAlbum = evt.target.innerHTML.toLowerCase().replace(/ /g,'_');
@@ -890,10 +889,9 @@
     const gestionarEventoAlbum = (evt) => {
         if (evt.target !== evt.currentTarget) {
             if (evt.target.tagName == 'I') {
-                console.log(evt.target);  
-                console.log(evt.target.id);  
+                console.log(evt.target.id);
                 const accion = evt.target.id.split('-');
-                pedirDatos(accion[0] + '/' + accion[1] + '/' + accion[2], ()=>{});
+                pedirDatos(accion[0] + '/' + accion[1] + '/' + accion[2], (respuesta)=>{ console.log(respuesta);});
             }
         }
     }

@@ -11,36 +11,36 @@
 |
 */
 
-
-Route::get('/', 'HomeController@home');
-
+// MiControlador
 Route::get('/login', 'MiControlador@login');
 Route::get('/logout', function(){
    Auth::logout();
    return Redirect::to('login');
 });
 
+// Pide autentificacion para todas las paginas.
+Auth::routes();
+
 // UserController
 Route::get('/user/show/{id}', 'UserController@show');
 Route::get('/users/showAll', 'UserController@showAll');
 Route::get('/user/destroy/{id}', 'UserController@destroy');
 
-Auth::routes();//Con esto se pide autentificacion para todas las paginas.
-
-
-Route::post('biblioteca/AddSong', 'PlaylistController@store');
-// Route::get('biblioteca/AddSong', 'PlaylistController@store'); para probar facil
-
 // AlbumController
 Route::get('/autor/{artist}', 'AlbumController@authorJSON');
 Route::get('/autor/{artist}/{album}', 'AlbumController@albumJSON');
-Route::get('/bibliotecaUsuario', 'AlbumController@bibliotecaJSON');
+// Route::get('/bibliotecaUsuario', 'AlbumController@bibliotecaJSON');
 
 // ReproductorController
 Route::get('/play/album/{album}', 'ReproductorController@playAlbum');
 Route::get('/play/cancion/{cancion}', 'ReproductorController@playCancion');
-Route::get('/biblioteca/album/{album}', 'ReproductorController@bibliotecaAlbum');
-Route::get('/biblioteca/cancion/{cancion}', 'ReproductorController@bibliotecaCancion');
+
+// PlayListController
+Route::get('/biblioteca/album/{album}', 'PlayListController@bibliotecaAlbum');
+Route::get('/biblioteca/cancion/{cancion}', 'PlayListController@bibliotecaCancion');
+Route::get('/bibliotecaUsuario', 'PlayListController@bibliotecaJSON');
+Route::get('/biblioteca/cancion/{cancion}', 'PlayListController@bibliotecaCancion');
 
 // HomeController
+Route::get('/', 'HomeController@home');
 Route::get('/search/{wanted}', 'HomeController@searchInLiveJSON');

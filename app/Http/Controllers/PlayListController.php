@@ -3,84 +3,59 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PlaylistController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+
+    // Guarda todos los id de todas las canciones de un album en la tabla playLists con el id del usuario
+    public function bibliotecaAlbum($id_album) {
+        $id_songs = DB::table('songs')
+                        ->select('id_song')
+                        ->where('id_album', '=', $id_album)
+                        ->get();
+                        echo "<pre>";
+                        print_r(json_decode(json_encode($id_songs), true));
+                        echo "</pre>";
+                        $array_id_songs = json_decode(json_encode($id_songs), true);
+        forEach($array_id_songs as $clave => $valor) {
+            forEach($valor as $id_song) {
+                DB::table('playLists')->updateOrInsert(
+                    ['id_user' => auth()->user()->id,
+                     'id_song' => $id_song],
+                    ['created_at' => NOW()]
+                );
+            }
+        }
+    }
+    
+    // Guarda en la tabla playLists el id de la canción con el id de usuario
+    public function bibliotecaCancion($id_song) {
+        DB::table('playLists')->updateOrInsert(
+            ['id_user' => auth()->user()->id,
+             'id_song' => $id_song],
+            ['created_at' => NOW()]
+        );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function bibliotecaJSON() {
+        //$id_user = auth()->user()->id;
+        $playList = DB::table('songs')
+                    ->join('albums','songs.id_album','=','albums.id_album')
+                    ->join('authors','songs.id_author','=','authors.id_author')
+                    ->join('playLists','songs.id_song','=','playLists.id_song')
+                    ->join('users','users.id','=','playLists.id_user')
+                    ->select('songs.titulo','albums.nombre AS nombreAlbum','authors.nombre AS nombreAuthor','playLists.id_list','playLists.id_song','playLists.created_at')
+                    ->where('users.id', '=' , auth()->user()->id)
+                    ->orderBy('playLists.created_at', 'asc')
+                    ->get();
+
+        return json_decode(json_encode($playList), true);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {       
-        
-        return response()->json(['name' => 'Abigail','state' => 'CA']);
-        // return response()->json(['name' => 'Abigail', 'state' => 'CA'])->withCallback($request->input('callback'));
+    // Devuelve la playList del usuario
+    public function devolverPlayList() {
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
