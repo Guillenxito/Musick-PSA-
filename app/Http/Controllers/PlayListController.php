@@ -36,6 +36,7 @@ class PlaylistController extends Controller
              'id_song' => $id_song],
             ['created_at' => NOW()]
         );
+        return bibliotecaJSON();
     }
 
     public function bibliotecaJSON() {
@@ -51,6 +52,15 @@ class PlaylistController extends Controller
                     ->get();
 
         return json_decode(json_encode($playList), true);
+    }
+
+    public function borrarBiblioteca($id_song) {
+        DB::table('playLists')
+            ->where([
+                ['id_song', '=', $id_song],
+                ['id_user', '=', auth()->user()->id]
+                ])
+            ->delete();
     }
 
     // Devuelve la playList del usuario

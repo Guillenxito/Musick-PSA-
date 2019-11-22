@@ -193,14 +193,14 @@
                         <div class="nombre_album">¡¡¡nombreAlbum!!!</div>
                         <div> / </div>
                         <div class="nombre_autor">¡¡¡nombreAuthor!!!</div>
-                        <div id="play_¡¡¡id_song!!!" class="col-1">
-                            <i class="material-icons">
+                        <div class="col-1">
+                            <i class="material-icons" id="play-¡¡¡id_song!!!">
                                 play_circle_outline
                             </i>
                         </div>
-                        <div id="biblioteca_¡¡¡id_song!!!" class="col-1">
-                            <i class="material-icons">
-                                playlist_add
+                        <div class="col-1">
+                            <i class="material-icons" id="borrarBiblioteca-¡¡¡id_song!!!">
+                                restore_from_trash
                             </i>
                         </div>   
                     </button>
@@ -484,7 +484,7 @@
     // Muestra todas las canciones del album
     const mostrarCancionesAlbum = (array) => {
         const patron = document.getElementById('template-album-canciones').innerHTML;        
-        const res = templ.rellenar(patron, array.canciones);        
+        const res = templ.rellenar(patron, array.canciones);
         contenedor_album_canciones.innerHTML += `<div class="list-group">${res}</div>`;
         contenedor_album_canciones.style.display="block";
     }
@@ -514,6 +514,7 @@
         // contenedor_biblioteca.style.display="block";
         document.getElementById('biblioteca').setAttribute('style', 'display: block');
         document.getElementById('titulo_biblioteca').setAttribute('style', 'display: block');
+        ponerEventoBiblioteca();
     }
 
     const borrarListSearch = () =>{
@@ -706,10 +707,9 @@
         reproductor.play();
         reproductor.addEventListener('ended', cambiarCancion);
     }
-       
+
     // Falta terminar
     const cambiarCancion = () => {
-        console.log('cambiarCancion');
         arrayCanciones = Object.values(arrayCanciones);
         const reproductor = document.getElementById('reproductor');
         const cancionFinalizada = reproductor.currentSrc.split('/')
@@ -724,8 +724,16 @@
                     reproductor.play();
             }
         }
-        
-        
+    }
+
+    // Reproduce una canción en concreto
+    const reproducirCancion = (cancion) => {
+        cancion = JSON.parse(cancion)[0];
+        const reproductor = document.getElementById('reproductor');
+        reproductor.removeAttribute('src');
+        reproductor.setAttribute('src', urlServidor + '/musica/' + cancion.nombreAuthor + '/' + cancion.nombreAlbum + '/' + cancion.nombreCancion + '.mp3');
+        reproductor.play();
+        reproducirCanciones();
     }
 
     // window.onload(reproducirCanciones());
@@ -771,6 +779,11 @@
    // Pone el evento del lista de buscar
    const ponerEventoListSearch = () => {
       document.querySelector("#div-search").addEventListener('click',gestionarEventoListSearch);
+   }
+
+   // Pone el evento de la biblioteca
+   const ponerEventoBiblioteca = () => {
+       document.getElementById('biblioteca').addEventListener('click',gestionarEventoBiblioteca);
    }
 
     // Falta ver que hacemos con los estilos, si llevan a una nueva página o no.
@@ -845,14 +858,14 @@
     }
 
     // Gestionar el evento del buscador in live
-   const gestionarEventoSearch = (evt) => {
-         let wanted = evt.target.value.toLowerCase().replace(/ /g,'_');
-         if(wanted.length > 0){
+    const gestionarEventoSearch = (evt) => {
+        let wanted = evt.target.value.toLowerCase().replace(/ /g,'_');
+        if(wanted.length > 0){
             pedirDatos('search/'+ wanted, mostrarSearch); 
-         }else{
+        }else{
             borrarListSearch();
-         }   
-   }
+        }   
+    }
 
    const gestionarEventoListSearch = (evt) => {
        // evt.preventDefault();
@@ -889,9 +902,36 @@
     const gestionarEventoAlbum = (evt) => {
         if (evt.target !== evt.currentTarget) {
             if (evt.target.tagName == 'I') {
-                console.log(evt.target.id);
                 const accion = evt.target.id.split('-');
-                pedirDatos(accion[0] + '/' + accion[1] + '/' + accion[2], (respuesta)=>{ console.log(respuesta);});
+                if (accion[0] == 'biblioteca') {
+                    pedirDatos(accion[0] + '/' + accion[1] + '/' + accion[2], ()=> {});
+                } else if (accion[0] == 'play') {
+                    if (accion[1] == 'cancion') {
+                        pedirDatos(accion[0] + '/' + accion[1] + '/' + accion[2], reproducirCancion);
+                    } else if (accion[1] == 'album') {
+                        pedirDatos(accion[0] + '/' + accion[1] + '/' + accion[2], reproducirAlbum);
+                    }
+                }
+            }
+        }
+    }
+
+    // Gestiona el evento de la biblioteca
+    const gestionarEventoBiblioteca = (evt) => {
+        if (evt.target !== evt.currentTarget) {
+            if (evt.target.tagName == 'I') {
+                const accion = evt.target.id.split('-');
+                if (accion[0] == 'borrarBiblioteca') {
+                    pedirDatos(accion[0] + '/' + accion[1], ()=>{});
+                    console.log(evt.target);
+                    evt.target.parentNode.parentNode.classList.add('animated');
+                    evt.target.parentNode.parentNode.classList.add('bounceOutRight');
+                    evt.target.parentNode.parentNode.classList.add('slow');
+                    setTimeout(() => { evt.target.parentNode.parentNode.parentNode.removeChild(evt.target.parentNode.parentNode)               
+                    },1000);                    
+                } else if (accion[0] == 'play') {
+                    pedirDatos(accion[0] + '/cancion/' + accion[1], reproducirCancion);
+                }
             }
         }
     }

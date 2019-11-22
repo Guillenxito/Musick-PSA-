@@ -29,7 +29,6 @@ Route::get('/user/destroy/{id}', 'UserController@destroy');
 // AlbumController
 Route::get('/autor/{artist}', 'AlbumController@authorJSON');
 Route::get('/autor/{artist}/{album}', 'AlbumController@albumJSON');
-// Route::get('/bibliotecaUsuario', 'AlbumController@bibliotecaJSON');
 
 // ReproductorController
 Route::get('/play/album/{album}', 'ReproductorController@playAlbum');
@@ -39,7 +38,7 @@ Route::get('/play/cancion/{cancion}', 'ReproductorController@playCancion');
 Route::get('/biblioteca/album/{album}', 'PlayListController@bibliotecaAlbum');
 Route::get('/biblioteca/cancion/{cancion}', 'PlayListController@bibliotecaCancion');
 Route::get('/bibliotecaUsuario', 'PlayListController@bibliotecaJSON');
-Route::get('/biblioteca/cancion/{cancion}', 'PlayListController@bibliotecaCancion');
+Route::get('/borrarBiblioteca/{cancion}', 'PlayListController@borrarBiblioteca');
 
 // HomeController
 Route::get('/', 'HomeController@home');

@@ -60,7 +60,6 @@ class AlbumController extends Controller
         return view('list.album', ['datos' => $datos]);
     }
 
-
     public function albumJSON($author,$album) {
 
         $id_author = DB::table('authors')

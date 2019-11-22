@@ -12,8 +12,7 @@
     <link href="{{ asset('css/mdb.min.css') }}" rel="stylesheet">
     <link href="{{ asset('fonts/open-iconic.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Bahianita|Emilys+Candy&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('img/logo.jpg') }}" />
     @yield('styles')
