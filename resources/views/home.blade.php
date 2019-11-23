@@ -453,6 +453,7 @@
         document.getElementById('lista_discos').setAttribute('style', 'display: contents');
         document.getElementById('albumes_titulos').classList.remove('show');
         ponerEventoAuthor();
+        setTimeout(window.scrollTo(0, -100), 100);
     }
 
     // Muestra un album con todas sus canciones
@@ -469,6 +470,7 @@
         if (cancionTendencia) 
             document.getElementById(cancionTendencia).classList.add('active');
         ponerEventoAlbum();
+        setTimeout(window.scrollTo(0, -100), 100);
     }
 
     // Muestra el nombre del autor, la imagen del album y el nombre del album
@@ -512,6 +514,7 @@
         document.getElementById('biblioteca').setAttribute('style', 'display: block');
         document.getElementById('titulo_biblioteca').setAttribute('style', 'display: block');
         ponerEventoBiblioteca();
+        setTimeout(window.scrollTo(0, -100), 100);
     }
 
     const borrarListSearch = () =>{
@@ -580,6 +583,7 @@
         ocultarAuthor(); 
         ocultarAlbum();
         ocultarBiblioteca();
+        borrarBiblioteca();
         setTimeout(window.scrollTo(0, -100), 100);
     }
 
@@ -644,11 +648,10 @@
         const albumPortada = document.querySelector("#album_autor > div.card.col-12.px-0");
         const albumCanciones = document.querySelector("#album_canciones > div");
         const albumTitulo = document.querySelector("#album_autor > div:nth-child(3)");
- 
         if(albumPortada && albumCanciones){
-           albumPortada.remove();
-           albumCanciones.remove();
-           albumTitulo.remove();
+            albumPortada.remove();
+            albumCanciones.remove();
+            albumTitulo.remove();
         }
     }
 
@@ -664,7 +667,6 @@
         const authorInfo = document.querySelector("#albumes_info > div.card.rounded.flex-fill.col-12.col-md-8.p-0.animated.fadeInRight.slow")
         const auhorAlbums = document.querySelector("#lista_discos");
         const auhorDesplegableAlbums = document.querySelector("#desplegableAlbumnes");
-
         if(authorFoto && authorInfo && auhorAlbums){
             authorFoto.remove();
             authorInfo.remove();
@@ -742,18 +744,14 @@
         reproductor.removeAttribute('src');
         reproductor.setAttribute('src', urlServidor + '/musica/' + cancion.nombreAuthor + '/' + cancion.nombreAlbum + '/' + cancion.nombreCancion + '.mp3');
         reproductor.play();
+        cambiarCancion();
         // reproducirCanciones();
     }
 
-    const reproducirLista = (lista) => {
-
+    const cambiarListaReproduccion = (lista) => {
+        arrayCanciones = JSON.parse(lista);
+        reproducirCancion(arrayCanciones[0]);
     }
-
-    // window.onload(reproducirCanciones());
-    // reproducirCanciones(arrayCanciones);
-
-    // pedirDatos('http://musick.test/autor/camaron/reencuentro/caminito_de_totana',guardarBiblioteca);
-    // pedirDatos('http://musick.test/autor/camaron/reencuentro/caminito_de_totana',reproducirCancion);
 
 /* ----- FIN PENDIENTE DE HACER ----- */
 

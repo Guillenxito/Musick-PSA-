@@ -3,16 +3,22 @@ html {
     scroll-behavior: smooth;
 }
 
+.cabecera,
 #cuerpo {
     position: relative;
     margin: 8rem auto;
     font-family: 'Bahianita', cursive;
-    letter-spacing: 1.5;
+    letter-spacing: 2px;
+}
+
+form > input,
+form > button {
+    letter-spacing: 2px;
+    font-size: 1.2rem !important;
 }
 
 h5, h6 {
     font-family: 'Emilys Candy', cursive;
-    letter-spacing: 1.5;
 }
 
 #ten {
@@ -34,5 +40,11 @@ nav > a:first-of-type {
 
 .icono-album {
     font-size: 4rem;
+}
+
+button,
+.card,
+.card-header {
+    letter-spacing: 2px;
 }
 

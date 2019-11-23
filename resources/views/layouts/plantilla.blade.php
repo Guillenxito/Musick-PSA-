@@ -19,7 +19,7 @@
     <!-- <style>*{outline:1px solid red;</style> -->
 </head>
 <body>
-    <div class="cabecera">
+    <div class="cabecera h3">
         @include('layouts.navbar')
     </div>
 
