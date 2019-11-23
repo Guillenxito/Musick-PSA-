@@ -32,3 +32,7 @@ nav > a:first-of-type {
     cursor: pointer;
 }
 
+.icono-album {
+    font-size: 4rem;
+}
+
