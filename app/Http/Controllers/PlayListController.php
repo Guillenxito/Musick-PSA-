@@ -36,7 +36,6 @@ class PlaylistController extends Controller
              'id_song' => $id_song],
             ['created_at' => NOW()]
         );
-        return bibliotecaJSON();
     }
 
     public function bibliotecaJSON() {
@@ -50,7 +49,6 @@ class PlaylistController extends Controller
                     ->where('users.id', '=' , auth()->user()->id)
                     ->orderBy('playLists.created_at', 'asc')
                     ->get();
-
         return json_decode(json_encode($playList), true);
     }
 

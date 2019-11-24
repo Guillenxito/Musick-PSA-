@@ -7,22 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class ReproductorController extends Controller
 {
-    public function play(Request $request)
-    {
-        // id_song, titulo, id_album, id_author, id_style
-        //$temp = DB::table('songs')->where('id_song', '=', $id)->get();
-        //$datos['canciones'] = json_decode(json_encode($temp[0]), true);
-
+    public function play(Request $request) {
         return view('layouts.footer', ['datos' => $request]);
-        //return "esta funcionando cruck";
     }
 
-    public function playAlbum($album) {
-
-
-
-    }
-    
     public function playCancion($id_cancion) {
         $cancion = DB::table('songs')
                        ->join('authors','authors.id_author', '=', 'songs.id_author')
@@ -33,18 +21,30 @@ class ReproductorController extends Controller
         return json_decode(json_encode($cancion), true);
     }
 
-    public function playLista($id_album) {
-        $canciones = DB::table('albums')
+    public function playAlbum($id_album) {
+        $canciones = DB::table('songs')
                          ->join('authors','authors.id_author', '=', 'songs.id_author')
                          ->join('albums','albums.id_album', '=', 'songs.id_album')
-                         ->select('authors.nombre AS nombreAuthor','albums.nombre AS nombreAlbum','songs.titulo')
+                         ->select('authors.nombre AS nombreAuthor','albums.nombre AS nombreAlbum','songs.titulo AS nombreCancion')
                          ->where('songs.id_album','=', $id_album)
                          ->get();
-        return json_decode(json_encode($canciones), true);
-        
-
+        return json_decode(json_encode($canciones), true);   
     }
 
-    // TODO...
-    // public function stop(){}
+    // Devuelve una lista de canciones ordenadas aleatoriamente del estilo de la última cancion escuchada
+    public function cancionesEstilo($nombreCancion) {
+        $id_style = DB::table('songs')
+                      ->select('id_style')
+                      ->where('titulo','=',$nombreCancion)
+                      ->get();
+        $listaEstilo = DB::table('songs')
+                           ->join('albums','albums.id_album', '=', 'songs.id_album')
+                           ->join('authors','authors.id_author', '=', 'songs.id_author')
+                           ->select('authors.nombre AS nombreAuthor', 'albums.nombre AS nombreAlbum', 'songs.titulo AS nombreCancion')
+                           ->where('songs.id_style','=',$id_style[0] -> id_style)
+                           ->inRandomOrder()
+                           ->get();
+        return json_decode(json_encode($listaEstilo), true);
+    }
+    
 }

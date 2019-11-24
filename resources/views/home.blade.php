@@ -18,9 +18,7 @@
                             <h6 class="card-title text-light font-weight-light">¡¡¡nombreAlbum!!!</h6>
                             <h6 class="card-title text-light font-weight-light font-italic">¡¡¡nombreCancion!!!</h6>
                         </div>
-                        <!-- <div style="background-image:{{ asset('img/artistas/¡¡¡nombreArtista_!!!/¡¡¡nombreAlbum_!!!.png') }};"> -->
-                            <img class="card-img-top w-100 h-100 rounded" src="{{ asset('img/artistas/¡¡¡nombreArtista_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap"> 
-                        <!-- </div> -->
+                        <img class="card-img-top w-100 h-100 rounded" src="{{ asset('img/artistas/¡¡¡nombreArtista_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap"> 
                     </div>
                 </template>
             </div>
@@ -136,15 +134,15 @@
                         <img class="flex-fill card-img-top border rounded col-12 col-lg-4 p-0 animated fadeInLeft slow" src="{{ asset('img/artistas/¡¡¡nombreAutor_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap"> 
                         <div class="flex-fill card-text-right col-12 col-lg-8 animated fadeInRight slow">
                             <div class="h3">
-                                ¡¡¡autor.informacion!!!
+                                ¡¡¡informacion!!!
                             </div>
                             <div class="col-1">
-                                <i class="material-icons" id="play-album-¡¡¡id_album!!!">
+                                <i class="material-icons icono-album" id="play-album-¡¡¡id_album!!!">
                                     play_circle_outline
                                 </i>
                             </div>
                             <div class="col-1">
-                                <i class="material-icons" id="biblioteca-album-¡¡¡id_album!!!">
+                                <i class="material-icons icono-album" id="biblioteca-album-¡¡¡id_album!!!">
                                     playlist_add
                                 </i>
                             </div>
@@ -188,7 +186,7 @@
             <div class="text-center animated fadeInUp slow delay-1s" id="contenedor_biblioteca">
                 <template id="template-biblioteca">
                     <button type="button" class="list-group-item list-group-item-action d-flex h4" id="¡¡¡id_list!!!-¡¡¡id_song!!!">
-                        <div class="numeroCancion">¡¡¡posicionCancionAlbum!!!</div>
+                        <div class="numeroCancion numeroCancionBiblioteca">¡¡¡posicionCancionAlbum!!!</div>
                         <div class="text-left flex-grow-1">¡¡¡titulo!!!</div>
                         <div class="nombre_album">¡¡¡nombreAlbum!!!</div>
                         <div> / </div>
@@ -215,8 +213,8 @@
 /* ----- VARIABLES ----- */
 
     // objeto audio, ¿¿¿ no lo encuentra porque pertenece al footer ??? 
-    let reproductor = document.getElementById('reproductor');
-    console.log(reproductor);
+    // let reproductor = document.getElementById('reproductor');
+    // console.log(reproductor);
 
     // Esto hay que cambiarlo para pedirlo por javascript porque sino cuando volvamos a HOME se volvera a cargar la página.
     let informacionHome;
@@ -250,9 +248,7 @@
     // Trata la respuesta de home
     const modificarRespuestaHome = (array) => {
         array = array[0];
-        console.log(array['recomendados']);
         let respuesta = new Array();
-
         let novedades = new Array();
         array['novedades'].forEach(function(element) {
             novedades.push({
@@ -260,7 +256,6 @@
                 "nombreAuthor":(element.artista).replace(/_/g,' ').toUpperCase()
             })
         });
-
         let recomendados = new Array();
         array['recomendados'].forEach(function(element) {
             recomendados.push({
@@ -270,7 +265,6 @@
                 "nombreAuthor":(element.artista).replace(/_/g,' ').toUpperCase()                        
             });
         });
-
         let tendencias = new Array();
         array['tendencias'].forEach(function(element) {
             tendencias.push({
@@ -282,7 +276,6 @@
                 "nombreArtista":(element.artista).replace(/_/g,' ').toUpperCase()
             });
         });
-
         let estilos = new Array();
         array['estilos'].forEach(function(element) {
             estilos.push({
@@ -299,7 +292,6 @@
 
     // Trata la respuesta del author 
     const modificarRespuestaAuthor = (array) => {
-        console.log('/////modificarRespuestaAuhor');
         let respuesta = new Array();      
         let albumes = new Array();
         array.albums.forEach(function(album) {
@@ -327,13 +319,11 @@
         respuesta['albumes'] = albumes;        
         respuesta['canciones'] = canciones;
         respuesta['autor'] = autor;
-        console.log('respuesta --->>> ',respuesta);
         return respuesta;
     }
 
     // Trata la respuesta del album 
     const modificarRespuestaAlbum = (array) => {
-        console.log('MODIFICAR RESPUESTA ALBUM ---->>>> ', array);
         let respuesta = new Array();      
         let album = new Array();
         album.push({
@@ -355,22 +345,13 @@
                 "posicionCancionAlbum" : posicionCancionAlbum++
             });
         });
-        // let autor = new Array();
-        // autor.push({
-        //     "nombreAutor_" : array.autor.nombreAutor,
-        //     "nombreAutor" : (array.autor.nombreAutor).replace(/_/g,' ').toUpperCase(),
-        //     "informacion" : array.autor.informacion
-        // });
         respuesta['album'] = album;        
         respuesta['canciones'] = canciones;
-        // respuesta['autor'] = autor;
-        console.log('respuesta --->>> ',respuesta);
         return respuesta;
     }
 
     // Trata la respuesta de la biblioteca
     const modificarRespuestaBiblioteca = (array) => {
-            console.log('MODIFICAR RESPUESTA BIBLIOTECA ---->>>> ', array);
         let respuesta = new Array();      
         let canciones = new Array();
         let posicionCancionAlbum = 1;
@@ -386,8 +367,7 @@
                 "id_song" : cancion.id_song,
                 "posicionCancionAlbum" : posicionCancionAlbum++
             });
-        });    
-        console.log('respuesta --->>> ',respuesta);
+        });
         return respuesta;
     }
 
@@ -403,6 +383,7 @@
         informacionHome = modificarRespuestaHome(Array(<?php echo json_encode($categorias); ?>));
         //ocultarTodo();
         borrarAlbum();
+        borrarBiblioteca();
         mostrarTendenciasHome();
         mostrarRecomendadosHome(); 
         // mostrarEstilosHome();
@@ -450,6 +431,7 @@
         informacionArtista = modificarRespuestaAuthor(informacionArtista);
         ocultarHome();
         borrarAlbum();
+        borrarBiblioteca();
        // borrarAuthor();
         mostrarInformacionAuthor(informacionArtista);
         mostrarAlbumesDelAuthor(informacionArtista);
@@ -457,6 +439,7 @@
         document.getElementById('lista_discos').setAttribute('style', 'display: contents');
         document.getElementById('albumes_titulos').classList.remove('show');
         ponerEventoAuthor();
+        setTimeout(window.scrollTo(0, -100), 100);
     }
 
     // Muestra un album con todas sus canciones
@@ -466,12 +449,14 @@
         ocultarHome();
         borrarAlbum();
         borrarAuthor();
+        borrarBiblioteca();
         mostrarAlbumPortada(informacionAlbum);
         mostrarCancionesAlbum(informacionAlbum);
         document.getElementById('album').setAttribute('style', 'display: block');
         if (cancionTendencia) 
             document.getElementById(cancionTendencia).classList.add('active');
         ponerEventoAlbum();
+        setTimeout(window.scrollTo(0, -100), 100);
     }
 
     // Muestra el nombre del autor, la imagen del album y el nombre del album
@@ -515,6 +500,7 @@
         document.getElementById('biblioteca').setAttribute('style', 'display: block');
         document.getElementById('titulo_biblioteca').setAttribute('style', 'display: block');
         ponerEventoBiblioteca();
+        setTimeout(window.scrollTo(0, -100), 100);
     }
 
     const borrarListSearch = () =>{
@@ -583,6 +569,7 @@
         ocultarAuthor(); 
         ocultarAlbum();
         ocultarBiblioteca();
+        borrarBiblioteca();
         setTimeout(window.scrollTo(0, -100), 100);
     }
 
@@ -647,11 +634,10 @@
         const albumPortada = document.querySelector("#album_autor > div.card.col-12.px-0");
         const albumCanciones = document.querySelector("#album_canciones > div");
         const albumTitulo = document.querySelector("#album_autor > div:nth-child(3)");
- 
         if(albumPortada && albumCanciones){
-           albumPortada.remove();
-           albumCanciones.remove();
-           albumTitulo.remove();
+            albumPortada.remove();
+            albumCanciones.remove();
+            albumTitulo.remove();
         }
     }
 
@@ -667,7 +653,6 @@
         const authorInfo = document.querySelector("#albumes_info > div.card.rounded.flex-fill.col-12.col-md-8.p-0.animated.fadeInRight.slow")
         const auhorAlbums = document.querySelector("#lista_discos");
         const auhorDesplegableAlbums = document.querySelector("#desplegableAlbumnes");
-
         if(authorFoto && authorInfo && auhorAlbums){
             authorFoto.remove();
             authorInfo.remove();
@@ -702,45 +687,66 @@
     // Falta terminar
     // Reproduce la cancion que se ha pulsado en la vista y a continuación la array pasada, que puede ser la biblioteca, el album o todos los discos del author
     const reproducirCanciones = (informacionCanciones) => {
-        arrayCanciones = informacionCanciones;
+        console.log("reproducirCanciones --->>> *********************");
+        console.log(informacionCanciones);
+        arrayCanciones = JSON.parse(informacionCanciones);
+        console.log("arrayCanciones --->>> ",arrayCanciones);
         const reproductor = document.getElementById('reproductor');
+        reproducirCancion(arrayCanciones[0]);
         reproductor.play();
         reproductor.addEventListener('ended', cambiarCancion);
     }
 
     // Falta terminar
     const cambiarCancion = () => {
-        arrayCanciones = Object.values(arrayCanciones);
+        console.log("cambiarCancion --->>> *********************");
+        console.log(arrayCanciones);
         const reproductor = document.getElementById('reproductor');
         const cancionFinalizada = reproductor.currentSrc.split('/')
                                                         .filter((v,p) => p > 3)
                                                         .map((v,p) => (p == 3) ? v : v.split('.')[0]);
-        for (let i = 0; i < Object.keys(arrayCanciones).length; i++) {
-            if (arrayCanciones[i].nombreArtista == cancionFinalizada[0] && 
-            arrayCanciones[i].nombreAlbum == cancionFinalizada[1] &&
-            arrayCanciones[i].nombreCancion == cancionFinalizada[2]){
+        console.log("cancionFinalizada --->>>",cancionFinalizada);
+        console.log("arrayCanciones --->>>");
+        console.log(arrayCanciones);
+        console.log(arrayCanciones[0]);
+        if (arrayCanciones[0]) {
+            for (let i = 0; i < Object.keys(arrayCanciones).length; i++) {
+                if (arrayCanciones[i].nombreAuthor == cancionFinalizada[0] && 
+                arrayCanciones[i].nombreAlbum == cancionFinalizada[1] &&
+                arrayCanciones[i].nombreCancion == cancionFinalizada[2]){
                     reproductor.removeAttribute('src');
                     reproductor.setAttribute('src', urlServidor + '/musica/' + Object.values(arrayCanciones[+i + 1]).join('/') + '.mp3');
                     reproductor.play();
-            }
+                    return;
+                }
+            }   
         }
+        console.log("CANCION NO ENCONTRADA --------->>>>>>>>>>>>");
+        pedirDatos('play/cancionesEstilo/' + cancionFinalizada[2],cambiarListaReproduccion);
     }
 
     // Reproduce una canción en concreto
     const reproducirCancion = (cancion) => {
+        console.log("reproducirCancion --->>> *********************");
+        console.log(cancion);
+        if (typeof(cancion) == 'string')
         cancion = JSON.parse(cancion)[0];
+        console.log(cancion);
         const reproductor = document.getElementById('reproductor');
         reproductor.removeAttribute('src');
         reproductor.setAttribute('src', urlServidor + '/musica/' + cancion.nombreAuthor + '/' + cancion.nombreAlbum + '/' + cancion.nombreCancion + '.mp3');
         reproductor.play();
-        reproducirCanciones();
+        reproductor.addEventListener('ended', cambiarCancion);
+        // cambiarCancion();
+        // reproducirCanciones();
     }
 
-    // window.onload(reproducirCanciones());
-    // reproducirCanciones(arrayCanciones);
-
-    // pedirDatos('http://musick.test/autor/camaron/reencuentro/caminito_de_totana',guardarBiblioteca);
-    // pedirDatos('http://musick.test/autor/camaron/reencuentro/caminito_de_totana',reproducirCancion);
+    const cambiarListaReproduccion = (lista) => {
+        console.log("cambiarListaReproduccion --->>>");
+        console.log(JSON.parse(lista));
+        arrayCanciones = JSON.parse(lista);
+        reproducirCancion(arrayCanciones[0]);
+    }
 
 /* ----- FIN PENDIENTE DE HACER ----- */
 
@@ -789,13 +795,9 @@
     // Falta ver que hacemos con los estilos, si llevan a una nueva página o no.
     // Gestiona el evento de home
     const gestionarEventoHome = (evt) => {
-     console.log("EVENTOS");
-        // Mucho cuidados con cambiar o añadir cualquier clase en el template puede dejar de funcionar.
         if (evt.target !== evt.currentTarget) {
             let texto;
-            console.log(evt.target.className);
             switch (evt.target.className) {
-                // case 'card m-2 text-left flex-fill':
                 case 'card m-2 text-left flex-fill animated fadeInUp slow delay-1s':
                     texto = evt.target.firstChild.firstChild.innerHTML;
                     break;
@@ -808,8 +810,7 @@
                 case 'card-title text-light font-weight-light':
                 case 'card-title text-light font-weight-light font-italic':
                     texto = evt.target.parentNode.parentNode.id;
-                    break;
-                
+                    break;                
             }
             const buscado = (texto) 
                             ? texto.split("+")
@@ -909,7 +910,7 @@
                     if (accion[1] == 'cancion') {
                         pedirDatos(accion[0] + '/' + accion[1] + '/' + accion[2], reproducirCancion);
                     } else if (accion[1] == 'album') {
-                        pedirDatos(accion[0] + '/' + accion[1] + '/' + accion[2], reproducirAlbum);
+                        pedirDatos(accion[0] + '/' + accion[1] + '/' + accion[2], reproducirCanciones);
                     }
                 }
             }
@@ -927,8 +928,16 @@
                     evt.target.parentNode.parentNode.classList.add('animated');
                     evt.target.parentNode.parentNode.classList.add('bounceOutRight');
                     evt.target.parentNode.parentNode.classList.add('slow');
-                    setTimeout(() => { evt.target.parentNode.parentNode.parentNode.removeChild(evt.target.parentNode.parentNode)               
-                    },1000);                    
+                    setTimeout(() => { 
+                        evt.target.parentNode.parentNode.parentNode.removeChild(evt.target.parentNode.parentNode);
+                        let numeroCancion = document.getElementsByClassName('numeroCancionBiblioteca');
+                        console.log("numeroCancion --->>>", numeroCancion);
+                        for (let i = 0; i < numeroCancion.length; ) {
+                            console.log("numeroCancion --->>>" + i);
+                            console.log(numeroCancion[i]);
+                            numeroCancion[i].innerHTML = ++i;
+                        }
+                    },1000);
                 } else if (accion[0] == 'play') {
                     pedirDatos(accion[0] + '/cancion/' + accion[1], reproducirCancion);
                 }
@@ -971,7 +980,6 @@
     const quitarEventoAlbum = () => {
         document.getElementById('alb').removeEventListener('click', gestionarEventosAlbum);
     }
-
 
 /* ----- FIN PUESTA Y GESTION DE LOS EVENTOS ----- */
 
@@ -1046,58 +1054,41 @@
     const iniciarApp = () => {
         mostrarHome();
         ponerEventoNavbar();
-        ponerEventoReproductor();
+        // ponerEventoReproductor();
         // reproducirCanciones(arrayCanciones);
     }
      
     // Para hacer pruebas, del servidor deberá llegar un objeto de este tipo para poder reproducir las canciones
-    let arrayCanciones = { 
-        "cancion_1" : {
-            nombreArtista : "camaron",
-            nombreAlbum : "caminito_de_totana",
-            nombreCancion : "la_jaca_que_yo_tenia"
-        },
-        "cancion_2" : {
-            nombreArtista : "los_delinquentes",
-            nombreAlbum : "extras",
-            nombreCancion : "sigo_a_la_luna"
-        },
-        "cancion_3" : {
-            nombreArtista : "el_arrebato",
-            nombreAlbum : "abrazos",
-            nombreCancion : "pequeneces"
-        },
-        "cancion_4" : {
-            nombreArtista : "el_canto_del_loco",
-            nombreAlbum : "zapatillas",
-            nombreCancion : "zapatillas"
-        }
-    };
+    // let arrayCanciones = { 
+    //     "cancion_1" : {
+    //         nombreArtista : "camaron",
+    //         nombreAlbum : "caminito_de_totana",
+    //         nombreCancion : "la_jaca_que_yo_tenia"
+    //     },
+    //     "cancion_2" : {
+    //         nombreArtista : "los_delinquentes",
+    //         nombreAlbum : "extras",
+    //         nombreCancion : "sigo_a_la_luna"
+    //     },
+    //     "cancion_3" : {
+    //         nombreArtista : "el_arrebato",
+    //         nombreAlbum : "abrazos",
+    //         nombreCancion : "pequeneces"
+    //     },
+    //     "cancion_4" : {
+    //         nombreArtista : "el_canto_del_loco",
+    //         nombreAlbum : "zapatillas",
+    //         nombreCancion : "zapatillas"
+    //     }
+    // };
 
+    let arrayCanciones = [];
 
     ponerEventoSearch();
     ponerEventoListSearch();
     iniciarApp();
 
 /* ----- FIN FUNCIONES EXTRA ----- */
-
-    /*SE NECESITA UN BORRAR ALBUM Y BORRAR AUTORALBUMS*/
-
-/*********************************************************************** 
-    Tareas sábado:
-        - Hacer bien las consultas a la base de datos.
-        - Los datos de la primera vez al home tienen que cargarse por JSON porque sino cada vez que queramos 
-        llamar al home se va a recargar la página.
-        - Hay que poner bien los templates de los authores y de los albumes, 
-        no puede llamar albumesCanciones a los discos del author no tiene sentido.
-        - Hay que cambiar los id porque ahora se han añadido secciones para gestionar mejor el ocultarlas
-        y da conflicto con los id de los templates.
-        - Hacer la biblioteca.
-        - Hacer que funcione el reproductor. ¿¿¿Si ponemos todo el javascript en el footer funciona ya existira todo???
-        - Revisar todo lo que tenga '???'.
-        - ¿¿¿ Los scripts de abajo sirven para algo ???.
-
-************************************************************************/
 
 </script>
 
