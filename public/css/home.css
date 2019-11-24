@@ -21,10 +21,6 @@ h5, h6 {
     font-family: 'Emilys Candy', cursive;
 }
 
-#ten {
-    margin-top: 9rem;
-}
-
 .numeroCancion {
     width: 4rem;
 }
@@ -48,3 +44,13 @@ button,
     letter-spacing: 2px;
 }
 
+#rec .card,
+#ten .card,
+#nov .card {
+    width: 16rem;
+}
+
+#ten,
+#nov {
+    display: none;
+}

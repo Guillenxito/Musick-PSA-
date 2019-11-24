@@ -9,10 +9,10 @@
         <!-- recomendados -->
         <div class="container text-center mb-5" id="rec">
             <a name="recomendados"></a>
-            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto animated fadeInDown slow">Recomendados</div>
+            <div class="card text-center h1 titulo mt-5 m-auto animated fadeInDown slow">Discos recomendados</div>
             <div class="row text-center" id="recomendados">
                 <template id="template-recomendados">
-                    <div class="card m-2 text-left flex-fill animated fadeInUp slow delay-1s" style="width: 16rem;" id="¡¡¡nombreAuthor_!!!+¡¡¡nombreAlbum_!!!">
+                    <div class="card m-2 text-left flex-fill animated fadeInUp slow delay-1s" id="¡¡¡nombreAuthor_!!!+¡¡¡nombreAlbum_!!!">
                         <div class="card-header bg-dark">
                             <h5 class="card-title text-light font-weight-bold">¡¡¡nombreAuthor!!!</h5>
                             <h6 class="card-title text-light font-weight-light">¡¡¡nombreAlbum!!!</h6>
@@ -26,10 +26,10 @@
          <!-- tendencias -->
         <div class="container text-center mb-5" id="ten">
             <a name="tendencias"></a>
-            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto animated fadeInDown slow">Tendencias</div>
+            <div class="card text-center h1 titulo mt-5 m-auto">Canciones tendencia</div>
             <div class="row text-center" id="tendencias">
                 <template id="template-tendencias">
-                    <div class="card m-2 text-left flex-fill animated fadeInUp slow delay-1s" style="width: 16rem;" id="¡¡¡nombreArtista_!!!+¡¡¡nombreAlbum_!!!+¡¡¡nombreCancion_!!!">
+                    <div class="card m-2 text-left flex-fill" id="¡¡¡nombreArtista_!!!+¡¡¡nombreAlbum_!!!+¡¡¡nombreCancion_!!!">
                         <div class="card-header bg-dark">
                             <h5 class="card-title text-light font-weight-bold">¡¡¡nombreArtista!!!</h5>
                             <h6 class="card-title text-light font-weight-light">¡¡¡nombreAlbum!!!</h6>
@@ -52,34 +52,35 @@
                         </li>
                     </template>
                 </ol>
-            <div class="carousel-inner" id="estilos_2">
-                <template id="template-estilos-2">
-                    <div class="carousel-item active">
-                        <img src="{{ asset('img/estilos/¡¡¡nombreEstilo!!!.png') }}" class="d-block  p-5" alt="...">
-                        <div class="carousel-caption rounded d-none d-md-block bg-dark">
-                            <h5>¡¡¡nombreEstilo!!!</h5>
-                            <p>¡¡¡descripcion!!!</p>
+                <div class="carousel-inner" id="estilos_2">
+                    <template id="template-estilos-2">
+                        <div class="carousel-item active">
+                            <img src="{{ asset('img/estilos/¡¡¡nombreEstilo!!!.png') }}" class="d-block  p-5" alt="...">
+                            <div class="carousel-caption rounded d-none d-md-block bg-dark">
+                                <h5>¡¡¡nombreEstilo!!!</h5>
+                                <p>¡¡¡descripcion!!!</p>
+                            </div>
                         </div>
-                    </div>
-                </template>
+                    </template>
+                </div>
+                <a class="carousel-control-prev" href="#carruselEstilos" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carruselEstilos" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-            <a class="carousel-control-prev" href="#carruselEstilos" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carruselEstilos" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
-        
+
         <!-- novedades -->
         <div class="container text-center mb-5" id="nov">
             <a name="novedades"></a>
-            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto animated fadeInDown slow">Novedades</div>
+            <div class="card text-center h1 titulo mt-5 m-auto">Nuevos autores</div>
             <div class="row text-center" id="novedades">
                 <template id="template-novedades">
-                    <div class="card m-2 text-left flex-fill animated fadeInUp slow delay-1s" style="width: 16rem;" id="¡¡¡nombreAuthor_!!!">
+                    <div class="card m-2 text-left flex-fill" id="¡¡¡nombreAuthor_!!!">
                         <div class="card-header bg-dark">
                             <h5 class="card-title text-light font-weight-bold">¡¡¡nombreAuthor!!!</h5>
                         </div>
@@ -206,8 +207,7 @@
                 </template>
             </div>
         </div>
-    </section>
-    
+    </section>  
 
 <script>
 
@@ -381,16 +381,18 @@
     // Muestra el home principal
     const mostrarHome = () => {
         // quitarEventos();
-        setTimeout(window.scrollTo(0, -100), 100);
+        setTimeout(window.scrollTo(0, -100), 10);
         // Esto hay que cambiarlo para pedirlo por javascript porque sino cuando volvamos a HOME se volvera a cargar la página.
         informacionHome = modificarRespuestaHome(Array(<?php echo json_encode($categorias); ?>));
         //ocultarTodo();
         borrarAlbum();
         borrarBiblioteca();
-        mostrarTendenciasHome();
-        mostrarRecomendadosHome(); 
-        // mostrarEstilosHome();
-        mostrarNovedadesHome();
+        setTimeout(() => {
+            mostrarTendenciasHome();
+            mostrarNovedadesHome();
+            // mostrarEstilosHome();
+        },2000);
+        mostrarRecomendadosHome();
         const home = document.getElementById('home');
         home.setAttribute('style','display:visibility');
         contenedor_album.setAttribute('style','display:none');
@@ -399,6 +401,8 @@
     
     // Muestra la información de novedades del home
     const mostrarNovedadesHome = array => {
+        const nov = document.getElementById('nov');
+        nov.setAttribute('style', 'display:block');
         const patron = document.getElementById('template-novedades').innerHTML;        
         const res = templ.rellenar(patron, informacionHome.novedades);
         contenedor_novedades.innerHTML += `${res}</div>`;
@@ -423,6 +427,8 @@
 
     // Muestra la información de tendencias del home
     const mostrarTendenciasHome = array => {
+        const ten = document.getElementById('ten');
+        ten.setAttribute('style', 'display:block');
         const patron = document.getElementById('template-tendencias').innerHTML;        
         const res = templ.rellenar(patron, informacionHome.tendencias);
         contenedor_tendencias.innerHTML += `${res}</div>`;
@@ -435,14 +441,14 @@
         ocultarHome();
         borrarAlbum();
         borrarBiblioteca();
-       // borrarAuthor();
+        borrarAuthor();
         mostrarInformacionAuthor(informacionArtista);
         mostrarAlbumesDelAuthor(informacionArtista);
         document.getElementById('author').setAttribute('style', 'display: contents');
         document.getElementById('lista_discos').setAttribute('style', 'display: contents');
         document.getElementById('albumes_titulos').classList.remove('show');
         ponerEventoAuthor();
-        setTimeout(window.scrollTo(0, -100), 100);
+        setTimeout(window.scrollTo(0, -100), 10);
     }
 
     // Muestra un album con todas sus canciones
@@ -459,7 +465,7 @@
         if (cancionTendencia) 
             document.getElementById(cancionTendencia).classList.add('active');
         ponerEventoAlbum();
-        setTimeout(window.scrollTo(0, -100), 100);
+        setTimeout(window.scrollTo(0, -100), 10);
     }
 
     // Muestra el nombre del autor, la imagen del album y el nombre del album
@@ -492,7 +498,7 @@
     }
 
      // Muestra la biblioteca
-    function mostrarBiblioteca(informacionBiblioteca){
+    const mostrarBiblioteca = (informacionBiblioteca) => {
         array = modificarRespuestaBiblioteca(JSON.parse(informacionBiblioteca));
         borrarBiblioteca();
         ocultarTodo();
@@ -502,11 +508,10 @@
         const patron = document.getElementById('template-biblioteca').innerHTML;        
         const res = templ.rellenar(patron, array);        
         contenedor_biblioteca.innerHTML += `<div class="list-group">${res}</div>`;
-        // contenedor_biblioteca.style.display="block";
         document.getElementById('biblioteca').setAttribute('style', 'display: block');
         document.getElementById('titulo_biblioteca').setAttribute('style', 'display: block');
         ponerEventoBiblioteca();
-        setTimeout(window.scrollTo(0, -100), 100);
+        setTimeout(window.scrollTo(0, -100), 10);
     }
 
     const borrarListSearch = () =>{
@@ -518,52 +523,35 @@
 
     // Muestra el search
     const mostrarSearch = (array) =>{
-        array = JSON.parse(array);
-        console.log(array);
-        
+        array = JSON.parse(array);        
         const padreLista = document.getElementById("div-search");
         const lista = document.getElementById("list-search");
         borrarListSearch();
-        if(array.length > 0){
-
+        if (array.length > 0) {
             array.forEach(function(ele){
-
-                // let li = document.createElement("li");
-                // let a = document.createElement("button");
-                //     a.type = "button";
                 let a = document.createElement('option');
-
                 let counterKeys = Object.values(ele).length;
                 switch (counterKeys) {
                     case 1:
                         a.dataset.url = '/autor/'+ ele.nombreAuthor;
                         a.dataset.counter = 1;
-                        // a.innerHTML = ele.nombreAuthor.toLowerCase().replace(/_/g,' ');
                         a.value = ele.nombreAuthor.toLowerCase().replace(/_/g,' ');
                         break;
                     case 2:
                         a.dataset.url = '/autor/'+ ele.nombreAuthor + '/' + ele.nombreAlbum;
                         a.dataset.counter = 2;
-                        // a.innerHTML = ele.nombreAlbum.toLowerCase().replace(/_/g,' ');
                         a.value = ele.nombreAlbum.toLowerCase().replace(/_/g,' ');
                         break;
                     case 3:
                         a.dataset.url = '/autor/'+ ele.nombreAuthor + '/' + ele.nombreAlbum;
                         a.dataset.counter = 3;
-                        // a.innerHTML = ele.titulo.toLowerCase().replace(/_/g,' ');
                         a.value = ele.titulo.toLowerCase().replace(/_/g,' ');
                         break;
                 }
-
-                // li.appendChild(a);
-                // lista.appendChild(li);
-                lista.appendChild(a);
-                
+                lista.appendChild(a);                
             });
-
             padreLista.style.display = "block";
-
-        }else{
+        } else {
             padreLista.style.display = "none";
         }
        
@@ -571,19 +559,24 @@
 
     // Muestra la página correspondiente según el dato buscado en el buscador
     const mostrarBuscado = (buscado) => {
-        buscado = Object.values(JSON.parse(buscado)[0]);
-        switch (buscado.length) {
-            case 1:
-                pedirDatos('autor/' + buscado[0], mostrarAuthor);
-                break;
-            case 2:
-                canciontendencia = undefined;
-                pedirDatos('autor/' + buscado[0] + '/' + buscado[1], mostrarAlbum);
-                break;
-            case 3:
-                cancionTendencia = buscado[2];
-                pedirDatos('autor/' + buscado[0] + '/' + buscado[1], mostrarAlbum);
-                break;
+        if (buscado.length > 2) {        
+            buscado = Object.values(JSON.parse(buscado)[0]);
+            borrarBiblioteca();
+            borrarAuthor();
+            borrarAlbum();    
+            switch (buscado.length) {
+                case 1:
+                    pedirDatos('autor/' + buscado[0], mostrarAuthor);
+                    break;
+                case 2:
+                    canciontendencia = undefined;
+                    pedirDatos('autor/' + buscado[0] + '/' + buscado[1], mostrarAlbum);
+                    break;
+                case 3:
+                    cancionTendencia = buscado[2];
+                    pedirDatos('autor/' + buscado[0] + '/' + buscado[1], mostrarAlbum);
+                    break;
+            }
         }
     }
 
@@ -599,7 +592,7 @@
         ocultarAlbum();
         ocultarBiblioteca();
         borrarBiblioteca();
-        setTimeout(window.scrollTo(0, -100), 100);
+        setTimeout(window.scrollTo(0, -100), 10);
     }
 
     // Oculta el home principal
@@ -619,7 +612,7 @@
         borrarHomeTendencias();
         borrarHomeRecomendados();
         borrarHomeNovedades();
-        setTimeout(window.scrollTo(0, -100), 100);
+        setTimeout(window.scrollTo(0, -100), 10);
     }
 
     const borrarHomeTendencias = () => {
@@ -663,7 +656,7 @@
         const albumPortada = document.querySelector("#album_autor > div.card.col-12.px-0");
         const albumCanciones = document.querySelector("#album_canciones > div");
         const albumTitulo = document.querySelector("#album_autor > div:nth-child(3)");
-        if(albumPortada && albumCanciones){
+        if (albumPortada && albumCanciones) {
             albumPortada.remove();
             albumCanciones.remove();
             albumTitulo.remove();
@@ -682,7 +675,7 @@
         const authorInfo = document.querySelector("#albumes_info > div.card.rounded.flex-fill.col-12.col-md-8.p-0.animated.fadeInRight.slow")
         const auhorAlbums = document.querySelector("#lista_discos");
         const auhorDesplegableAlbums = document.querySelector("#desplegableAlbumnes");
-        if(authorFoto && authorInfo && auhorAlbums){
+        if (authorFoto && authorInfo && auhorAlbums) {
             authorFoto.remove();
             authorInfo.remove();
             auhorAlbums.remove();
@@ -700,7 +693,7 @@
     const borrarBiblioteca = () => {
         const tituloBiblioteca = document.getElementById('titulo_biblioteca').setAttribute('style','display:none');
         const biblioteca = document.querySelector("#contenedor_biblioteca > div");
-        if(biblioteca){
+        if (biblioteca) {
             biblioteca.remove();
         }
     }
@@ -709,35 +702,20 @@
 
 /* ----- PENDIENTE DE HACER ----- */
 
-    // Guarda la canción en la biblioteca del usuario
-    const guardarBiblioteca = (datosCancion) => {
-    }
-
-    // Falta terminar
     // Reproduce la cancion que se ha pulsado en la vista y a continuación la array pasada, que puede ser la biblioteca, el album o todos los discos del author
     const reproducirCanciones = (informacionCanciones) => {
-        console.log("reproducirCanciones --->>> *********************");
-        console.log(informacionCanciones);
         arrayCanciones = JSON.parse(informacionCanciones);
-        console.log("arrayCanciones --->>> ",arrayCanciones);
         const reproductor = document.getElementById('reproductor');
         reproducirCancion(arrayCanciones[0]);
         reproductor.play();
-        // reproductor.addEventListener('ended', cambiarCancion);
     }
 
-    // Falta terminar
+    // Cambia la canción a la siguiente de arrayCanciones
     const cambiarCancion = () => {
-        console.log("cambiarCancion --->>> *********************");
-        console.log(arrayCanciones);
         const reproductor = document.getElementById('reproductor');
         const cancionFinalizada = reproductor.currentSrc.split('/')
                                                         .filter((v,p) => p > 3)
-                                                        .map((v,p) => (p == 3) ? v : v.split('.')[0]);
-        console.log("cancionFinalizada --->>>",cancionFinalizada);
-        console.log("arrayCanciones --->>>");
-        console.log(arrayCanciones);
-        console.log(arrayCanciones[0]);
+                                                        .map((v,p) => (p !== 2) ? v : v.slice(0,-4));
         if (arrayCanciones[0]) {
             for (let i = 0; i < Object.keys(arrayCanciones).length; i++) {
                 if (arrayCanciones[i].nombreAuthor == cancionFinalizada[0] && 
@@ -750,26 +728,20 @@
                 }
             }   
         }
-        console.log("CANCION NO ENCONTRADA --------->>>>>>>>>>>>");
         pedirDatos('play/cancionesEstilo/' + cancionFinalizada[2],cambiarListaReproduccion);
     }
 
     // Reproduce una canción en concreto
     const reproducirCancion = (cancion) => {
-        console.log("reproducirCancion --->>> *********************");
-        console.log(cancion);
         if (typeof(cancion) == 'string')
-        cancion = JSON.parse(cancion)[0];
-        console.log(cancion);
+            cancion = JSON.parse(cancion)[0];
         const reproductor = document.getElementById('reproductor');
         reproductor.removeAttribute('src');
         reproductor.setAttribute('src', urlServidor + '/musica/' + cancion.nombreAuthor + '/' + cancion.nombreAlbum + '/' + cancion.nombreCancion + '.mp3');
         reproductor.play();
-        // reproductor.addEventListener('ended', cambiarCancion);
-        // cambiarCancion();
-        // reproducirCanciones();
     }
 
+    // Cambia el array
     const cambiarListaReproduccion = (lista) => {
         console.log("cambiarListaReproduccion --->>>");
         console.log(JSON.parse(lista));
@@ -806,7 +778,7 @@
         document.getElementById('alb').addEventListener('click', gestionarEventoAlbum);
     }
 
-     // Pone el evento del buscar
+    // Pone el evento del buscar
     const ponerEventoSearch = () => {
        document.querySelector("#buscador").addEventListener('keyup',gestionarEventoSearch);
     }
@@ -883,7 +855,6 @@
                     break;
             }
         }
-
     }
 
     // Gestionar el evento del buscador in live
@@ -896,21 +867,19 @@
         }   
     }
 
-   const gestionarEventoListSearch = (evt) => {
+    // Gestiona el valor del buscador
+    const gestionarEventoListSearch = (evt) => {
        if (evt.target !== evt.currentTarget) {
-            if (evt.target.tagName == 'INPUT' && evt.target.keycode == 13) {
+            if (evt.target.tagName == 'INPUT' && 
+                evt.target.keycode == 13 && 
+                evt.target.value.trim().length) {
                 pedirDatos('saberBuscado/' + evt.target.value.trim(), mostrarBuscado);
-                        borrarBiblioteca();
-                        borrarAuthor();
-                        borrarAlbum();
-            } else if (evt.target.tagName == 'BUTTON') {
+            } else if (evt.target.tagName == 'BUTTON' &&
+                       evt.target.parentNode.firstChild.nextElementSibling.value.trim().length) {
                 pedirDatos('saberBuscado/' + evt.target.parentNode.firstChild.nextElementSibling.value.trim(), mostrarBuscado);
-                        borrarBiblioteca();
-                        borrarAuthor();
-                        borrarAlbum();
             }
-       }
-   }
+        }
+    }
     
     // Gestiona el evento de los discos del author
     const gestionarEventoAuthor = (evt) => {
@@ -953,10 +922,7 @@
                     setTimeout(() => { 
                         evt.target.parentNode.parentNode.parentNode.removeChild(evt.target.parentNode.parentNode);
                         let numeroCancion = document.getElementsByClassName('numeroCancionBiblioteca');
-                        console.log("numeroCancion --->>>", numeroCancion);
                         for (let i = 0; i < numeroCancion.length; ) {
-                            console.log("numeroCancion --->>>" + i);
-                            console.log(numeroCancion[i]);
                             numeroCancion[i].innerHTML = ++i;
                         }
                     },1000);
@@ -967,8 +933,6 @@
         }
     }
 
-    // ???
-    // Revisar esta función porque da error al no estar creados los elementos con los id correspondiente
     // Quita todos los eventos, el evento del navbar y del reproductor se puede pasar si se quiere quitar o no
     const quitarEventos = (navbar = false, reproductor = false) => {
         quitarEventoHome();
