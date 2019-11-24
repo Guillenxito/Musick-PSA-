@@ -6,24 +6,6 @@
     <!-- Seccion home -->
     <section id="home">
     
-        <!-- tendencias -->
-        <div class="container text-center mb-5" id="ten">
-            <a name="tendencias"></a>
-            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto animated fadeInDown slow">Tendencias</div>
-            <div class="row text-center" id="tendencias">
-                <template id="template-tendencias">
-                    <div class="card m-2 text-left flex-fill animated fadeInUp slow delay-1s" style="width: 16rem;" id="¡¡¡nombreArtista_!!!+¡¡¡nombreAlbum_!!!+¡¡¡nombreCancion_!!!">
-                        <div class="card-header bg-dark">
-                            <h5 class="card-title text-light font-weight-bold">¡¡¡nombreArtista!!!</h5>
-                            <h6 class="card-title text-light font-weight-light">¡¡¡nombreAlbum!!!</h6>
-                            <h6 class="card-title text-light font-weight-light font-italic">¡¡¡nombreCancion!!!</h6>
-                        </div>
-                        <img class="card-img-top w-100 h-100 rounded" src="{{ asset('img/artistas/¡¡¡nombreArtista_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap"> 
-                    </div>
-                </template>
-            </div>
-        </div>
-
         <!-- recomendados -->
         <div class="container text-center mb-5" id="rec">
             <a name="recomendados"></a>
@@ -37,6 +19,25 @@
                         </div>
                         <img class="card-img-top w-100 h-100" src="{{ asset('img/artistas/¡¡¡nombreAuthor_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap">
                     </div>
+                </template>
+            </div>
+        </div>
+
+         <!-- tendencias -->
+        <div class="container text-center mb-5" id="ten">
+            <a name="tendencias"></a>
+            <div class="card text-center h1 titulo col-lg-4 mt-5 m-auto animated fadeInDown slow">Tendencias</div>
+            <div class="row text-center" id="tendencias">
+                <template id="template-tendencias">
+                    <div class="card m-2 text-left flex-fill animated fadeInUp slow delay-1s" style="width: 16rem;" id="¡¡¡nombreArtista_!!!+¡¡¡nombreAlbum_!!!+¡¡¡nombreCancion_!!!">
+                        <div class="card-header bg-dark">
+                            <h5 class="card-title text-light font-weight-bold">¡¡¡nombreArtista!!!</h5>
+                            <h6 class="card-title text-light font-weight-light">¡¡¡nombreAlbum!!!</h6>
+                            <!--<h6 class="card-title text-light font-weight-light font-italic">¡¡¡nombreCancion!!!</h6>-->
+                        </div>
+                        <img style="filter: blur(5px);" class="card-img-top w-100 h-100 rounded" src="{{ asset('img/artistas/¡¡¡nombreArtista_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap"> 
+                        <h3 class="font-weight-light" style="letter-spacing:2px;user-select: none; color:white;text-align:center;width:80%;padding:5px;border-radius:20px;background-color: hsla(0, 0%, 0%, 0.4);font-size:280%;position: absolute;top: 60%;left: 50%;transform: translate(-50%, -50%);text-shadow: -4px 3px 0 black">¡¡¡nombreCancion!!!</h6>
+                     </div>
                 </template>
             </div>
         </div>
@@ -495,6 +496,9 @@
         array = modificarRespuestaBiblioteca(JSON.parse(informacionBiblioteca));
         borrarBiblioteca();
         ocultarTodo();
+        borrarBiblioteca();
+        borrarAuthor();
+        borrarAlbum();
         const patron = document.getElementById('template-biblioteca').innerHTML;        
         const res = templ.rellenar(patron, array);        
         contenedor_biblioteca.innerHTML += `<div class="list-group">${res}</div>`;
@@ -896,8 +900,14 @@
        if (evt.target !== evt.currentTarget) {
             if (evt.target.tagName == 'INPUT' && evt.target.keycode == 13) {
                 pedirDatos('saberBuscado/' + evt.target.value.trim(), mostrarBuscado);
+                        borrarBiblioteca();
+                        borrarAuthor();
+                        borrarAlbum();
             } else if (evt.target.tagName == 'BUTTON') {
                 pedirDatos('saberBuscado/' + evt.target.parentNode.firstChild.nextElementSibling.value.trim(), mostrarBuscado);
+                        borrarBiblioteca();
+                        borrarAuthor();
+                        borrarAlbum();
             }
        }
    }

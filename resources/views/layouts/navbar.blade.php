@@ -12,10 +12,10 @@
 					<a class="nav-link" href="#" id ="navbar_biblioteca">Biblioteca<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#tendencias" id ="navbar_tendencias">Tendencias</a>
-				</li>
-				<li class="nav-item">
 					<a class="nav-link" href="#recomendados" id ="navbar_recomendados">Recomendados</a>
+				</li>
+                <li class="nav-item">
+					<a class="nav-link" href="#tendencias" id ="navbar_tendencias">Tendencias</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#novedades" id ="navbar_novedades">Novedades</a>
