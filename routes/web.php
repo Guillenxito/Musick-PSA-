@@ -44,3 +44,4 @@ Route::get('/borrarBiblioteca/{cancion}', 'PlayListController@borrarBiblioteca')
 // HomeController
 Route::get('/', 'HomeController@home');
 Route::get('/search/{wanted}', 'HomeController@searchInLiveJSON');
+Route::get('/saberBuscado/{wanted}', 'HomeController@saberBuscado');

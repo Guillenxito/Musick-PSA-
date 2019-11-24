@@ -7,10 +7,12 @@ use Illuminate\Support\Facades\DB;
 
 class ReproductorController extends Controller
 {
+    
     public function play(Request $request) {
         return view('layouts.footer', ['datos' => $request]);
     }
 
+    // Devuelve una cancion
     public function playCancion($id_cancion) {
         $cancion = DB::table('songs')
                        ->join('authors','authors.id_author', '=', 'songs.id_author')
@@ -21,6 +23,7 @@ class ReproductorController extends Controller
         return json_decode(json_encode($cancion), true);
     }
 
+    // Devuelve una lista de canciones de un album
     public function playAlbum($id_album) {
         $canciones = DB::table('songs')
                          ->join('authors','authors.id_author', '=', 'songs.id_author')

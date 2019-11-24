@@ -32,14 +32,18 @@
 				</div>
 				</li> -->
 			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input id="buscador" class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search">
+			<form class="form-inline my-2 my-lg-0" id="form-buscar">
+				<!-- <input id="buscador" class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search"> -->
+				<input id="buscador" class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search" list="list-search">
 				<button class="btn btn-outline-light my-2 my-sm-0 px-3 py-2" type="submit">Buscar..</button>
 
                 <div class="btn-group" id ="div-search">
-                  <ul class="" id ="list-search">
+					<!-- <ul class="" id ="list-search">
 
-                  </ul>
+					</ul> -->
+					<datalist class="" id ="list-search">
+
+					</datalist>
                 </div>
 			</form>
 		</div>

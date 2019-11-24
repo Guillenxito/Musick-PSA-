@@ -206,4 +206,29 @@ class HomeController extends Controller
         return json_decode(json_encode($queryFinal), true);
     }
 
+    public function saberBuscado($wanted) {
+        $wanted = str_replace(" ", "_", $wanted);
+        $respuesta =  DB::table('authors')
+                      ->select('authors.nombre AS nombreAuthor')
+                      ->where('authors.nombre', '=', $wanted)
+                      ->get();
+        if (count($respuesta) < 1) {
+            $respuesta =  DB::table('albums')
+                           ->join('songs','songs.id_album','=','albums.id_album')
+                           ->join('authors','songs.id_author','=','authors.id_author')
+                           ->select('authors.nombre AS nombreAuthor','albums.nombre AS nombreAlbum')
+                           ->where('albums.nombre', '=', $wanted)
+                           ->get();
+            if (count($respuesta) < 1) {
+                $respuesta =  DB::table('songs')
+                              ->join('albums','songs.id_album','=','albums.id_album')
+                              ->join('authors','songs.id_author','=','authors.id_author')
+                              ->select('authors.nombre AS nombreAuthor','albums.nombre AS nombreAlbum','songs.titulo AS nombreCancion')
+                              ->where('songs.titulo', '=', $wanted)
+                              ->get();
+            }
+        }
+        return json_decode(json_encode($respuesta), true);
+    }
+
 }

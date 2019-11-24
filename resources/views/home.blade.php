@@ -220,9 +220,11 @@
     let informacionHome;
     // cancionTendencia guardara la canción buscada para resaltarla en el album
     let cancionTendencia;
-    // Estas variables si solo se usan en una función concreta mejor meterlas en la función.
+    // Lista de las canciones que se escucharan
+    let arrayCanciones = [];
     // url del servidor
     const urlServidor = 'http://musick.test';
+    // Estas variables si solo se usan en una función concreta mejor meterlas en la función.
     const contenedor_novedades = document.getElementById('novedades');
     const contenedor_recomendados = document.getElementById('recomendados');
     const contenedor_tendencias = document.getElementById('tendencias');
@@ -522,31 +524,36 @@
 
             array.forEach(function(ele){
 
-                let li = document.createElement("li");
-                let a = document.createElement("button");
-                    a.type = "button";
+                // let li = document.createElement("li");
+                // let a = document.createElement("button");
+                //     a.type = "button";
+                let a = document.createElement('option');
 
                 let counterKeys = Object.values(ele).length;
                 switch (counterKeys) {
                     case 1:
                         a.dataset.url = '/autor/'+ ele.nombreAuthor;
                         a.dataset.counter = 1;
-                        a.innerHTML = ele.nombreAuthor.toLowerCase().replace(/_/g,' ');
+                        // a.innerHTML = ele.nombreAuthor.toLowerCase().replace(/_/g,' ');
+                        a.value = ele.nombreAuthor.toLowerCase().replace(/_/g,' ');
                         break;
                     case 2:
                         a.dataset.url = '/autor/'+ ele.nombreAuthor + '/' + ele.nombreAlbum;
                         a.dataset.counter = 2;
-                        a.innerHTML = ele.nombreAlbum.toLowerCase().replace(/_/g,' ');
+                        // a.innerHTML = ele.nombreAlbum.toLowerCase().replace(/_/g,' ');
+                        a.value = ele.nombreAlbum.toLowerCase().replace(/_/g,' ');
                         break;
                     case 3:
                         a.dataset.url = '/autor/'+ ele.nombreAuthor + '/' + ele.nombreAlbum;
                         a.dataset.counter = 3;
-                        a.innerHTML = ele.titulo.toLowerCase().replace(/_/g,' ');
+                        // a.innerHTML = ele.titulo.toLowerCase().replace(/_/g,' ');
+                        a.value = ele.titulo.toLowerCase().replace(/_/g,' ');
                         break;
                 }
 
-                li.appendChild(a);
-                lista.appendChild(li);
+                // li.appendChild(a);
+                // lista.appendChild(li);
+                lista.appendChild(a);
                 
             });
 
@@ -556,6 +563,24 @@
             padreLista.style.display = "none";
         }
        
+    }
+
+    // Muestra la página correspondiente según el dato buscado en el buscador
+    const mostrarBuscado = (buscado) => {
+        buscado = Object.values(JSON.parse(buscado)[0]);
+        switch (buscado.length) {
+            case 1:
+                pedirDatos('autor/' + buscado[0], mostrarAuthor);
+                break;
+            case 2:
+                canciontendencia = undefined;
+                pedirDatos('autor/' + buscado[0] + '/' + buscado[1], mostrarAlbum);
+                break;
+            case 3:
+                cancionTendencia = buscado[2];
+                pedirDatos('autor/' + buscado[0] + '/' + buscado[1], mostrarAlbum);
+                break;
+        }
     }
 
 
@@ -694,7 +719,7 @@
         const reproductor = document.getElementById('reproductor');
         reproducirCancion(arrayCanciones[0]);
         reproductor.play();
-        reproductor.addEventListener('ended', cambiarCancion);
+        // reproductor.addEventListener('ended', cambiarCancion);
     }
 
     // Falta terminar
@@ -736,7 +761,7 @@
         reproductor.removeAttribute('src');
         reproductor.setAttribute('src', urlServidor + '/musica/' + cancion.nombreAuthor + '/' + cancion.nombreAlbum + '/' + cancion.nombreCancion + '.mp3');
         reproductor.play();
-        reproductor.addEventListener('ended', cambiarCancion);
+        // reproductor.addEventListener('ended', cambiarCancion);
         // cambiarCancion();
         // reproducirCanciones();
     }
@@ -782,17 +807,16 @@
        document.querySelector("#buscador").addEventListener('keyup',gestionarEventoSearch);
     }
 
-   // Pone el evento del lista de buscar
-   const ponerEventoListSearch = () => {
-      document.querySelector("#div-search").addEventListener('click',gestionarEventoListSearch);
-   }
+    // Pone el evento del lista de buscar
+    const ponerEventoListSearch = () => {
+        document.getElementById('form-buscar').addEventListener('click',gestionarEventoListSearch);
+    }
 
    // Pone el evento de la biblioteca
    const ponerEventoBiblioteca = () => {
        document.getElementById('biblioteca').addEventListener('click',gestionarEventoBiblioteca);
    }
 
-    // Falta ver que hacemos con los estilos, si llevan a una nueva página o no.
     // Gestiona el evento de home
     const gestionarEventoHome = (evt) => {
         if (evt.target !== evt.currentTarget) {
@@ -869,24 +893,12 @@
     }
 
    const gestionarEventoListSearch = (evt) => {
-       // evt.preventDefault();
        if (evt.target !== evt.currentTarget) {
-            console.log(evt.target.dataset["url"]);
-            pedirDatos(evt.target.dataset["url"], mostrarAlbum);
-            switch (evt.target.dataset["counter"]) {
-                    case "1":
-                        pedirDatos(evt.target.dataset["url"], mostrarAuthor);
-                        borrarListSearch();
-                        break;
-                    case "2":
-                        pedirDatos(evt.target.dataset["url"], mostrarAlbum);
-                        borrarListSearch();
-                        break;
-                    case "3":
-                        pedirDatos(evt.target.dataset["url"], mostrarAlbum);
-                        borrarListSearch();
-                        break;
-                }   
+            if (evt.target.tagName == 'INPUT' && evt.target.keycode == 13) {
+                pedirDatos('saberBuscado/' + evt.target.value.trim(), mostrarBuscado);
+            } else if (evt.target.tagName == 'BUTTON') {
+                pedirDatos('saberBuscado/' + evt.target.parentNode.firstChild.nextElementSibling.value.trim(), mostrarBuscado);
+            }
        }
    }
     
@@ -1054,47 +1066,19 @@
     const iniciarApp = () => {
         mostrarHome();
         ponerEventoNavbar();
-        // ponerEventoReproductor();
-        // reproducirCanciones(arrayCanciones);
+        ponerEventoSearch();
+        ponerEventoListSearch();
+        window.onload = () => {
+            const reproductor = document.getElementById('reproductor');
+            reproductor.addEventListener('ended', cambiarCancion);
+            reproductor.volume = 0.33;
+        }
     }
-     
-    // Para hacer pruebas, del servidor deberá llegar un objeto de este tipo para poder reproducir las canciones
-    // let arrayCanciones = { 
-    //     "cancion_1" : {
-    //         nombreArtista : "camaron",
-    //         nombreAlbum : "caminito_de_totana",
-    //         nombreCancion : "la_jaca_que_yo_tenia"
-    //     },
-    //     "cancion_2" : {
-    //         nombreArtista : "los_delinquentes",
-    //         nombreAlbum : "extras",
-    //         nombreCancion : "sigo_a_la_luna"
-    //     },
-    //     "cancion_3" : {
-    //         nombreArtista : "el_arrebato",
-    //         nombreAlbum : "abrazos",
-    //         nombreCancion : "pequeneces"
-    //     },
-    //     "cancion_4" : {
-    //         nombreArtista : "el_canto_del_loco",
-    //         nombreAlbum : "zapatillas",
-    //         nombreCancion : "zapatillas"
-    //     }
-    // };
-
-    let arrayCanciones = [];
-
-    ponerEventoSearch();
-    ponerEventoListSearch();
+    
     iniciarApp();
 
 /* ----- FIN FUNCIONES EXTRA ----- */
 
 </script>
-
-    <!-- <script src="{{ asset('js/handlerTemplate.js') }}"></script> -->
-    <!-- <script src="{{ asset('js/fillerData.js') }}"></script> -->
-    <!-- <script src="{{ asset('js/player.js') }}" rel="text/javascript"></script>
-    <script src="{{ asset('js/jquery.min.js') }}" rel="text/javascript"></script> -->
 
 @endsection

@@ -10,15 +10,11 @@ echo "</pre>";
     <div class="row">
         <div class="col-12 p-3 text-center">
             <?php
-                // Estos datos vendran de la base de datos
-                // $nombreArtista = "bad_bunny";
-                // $nombreDisco = "oasis";
-                // $nombreCancion = "la_cancion";
-                $nombreArtista = "camaron";
-                $nombreDisco = "caminito_de_totana";
-                $nombreCancion = "la_jaca_que_yo_tenia";
+                $nombreArtista = "la_excepcion";
+                $nombreDisco = "aguantando_el_tiron";
+                $nombreCancion = "besolla_f.s.";
             ?> 
-            <audio id="reproductor" src="{{ asset('musica/'.$nombreArtista.'/'.$nombreDisco.'/'.$nombreCancion.'.mp3') }}" preload="auto" controls id="reproductor">
+            <audio id="reproductor" src="{{ asset('musica/'.$nombreArtista.'/'.$nombreDisco.'/'.$nombreCancion.'.mp3') }}" preload="auto" controls id="reproductor" class="w-50">
                 <p>Tu navegador no implementa el elemento audio</p>
             </audio>
         </div>
