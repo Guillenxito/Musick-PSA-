@@ -31,14 +31,16 @@ class HomeController extends Controller
                             ->where('users.id','=',auth()->user()->id)
                             ->take(6)
                             ->get();
-        /* Comprobar que llega algo, si no se se pone unos artistas genericos.
-        if(){
+
+        //Comprobar que llega algo, si no se se pone unos artistas genericos.
+        if(empty($var)){
             $JournalStyle = DB::table('journals')
                             ->join('songs', 'journals.id_song', '=', 'songs.id_song')
                             ->select('songs.id_style')
                             ->take(6)
                             ->get();
-        }*/
+        }
+
         $JournalStyle = json_decode(json_encode($JournalStyle), true);
         $countStyles = array();
         foreach ($JournalStyle as $value) {

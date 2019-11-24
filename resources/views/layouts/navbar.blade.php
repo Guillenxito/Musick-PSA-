@@ -31,6 +31,14 @@
 					<a class="dropdown-item" href="#">Reggaeton</a>
 				</div>
 				</li> -->
+                <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#estilos" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Perfil
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a href="http://musick.test/logout">logout</a>
+				</div>
+				</li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
 				<input id="buscador" class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search">
@@ -42,6 +50,7 @@
                   </ul>
                 </div>
 			</form>
+
 		</div>
 	</nav>
 </header>
