@@ -335,65 +335,66 @@ INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('tinfoi
 INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('powerless',18,10,4,CURRENT_DATE);
 
 /* oasis */
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('como_un_bebe',4,19,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('cuidao_por_ahi',4,19,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('la_cancion',4,19,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('marciano_cantero',4,19,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('mojaita',4,19,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('odio',4,19,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('que_pretendes',4,19,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('yo_le_llego',4,19,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('skin_to_bone',4,19,4,CURRENT_DATE);
+
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('como_un_bebe',19,4,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('cuidao_por_ahi',19,4,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('la_cancion',19,4,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('marciano_cantero',19,4,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('mojaita',19,4,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('odio',19,4,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('que_pretendes',19,4,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('yo_le_llego',19,4,4,CURRENT_DATE);
 
 /* odisea */
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bebe',13,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('cumpleanos',13,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('dile_que_tu_me_quieres',13,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('el_farsante',13,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('noches_de_aventura',13,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('odisea',13,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('pide_lo_que_tu_quieras_',13,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('quiero_repetir',13,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('se_preparo',13,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('siguelo_bailando',13,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('una_flor_',13,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bebe',20,13,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('cumpleanos',20,13,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('dile_que_tu_me_quieres',20,13,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('egoista',20,13,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('el_farsante',20,13,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('noches_de_aventura',20,13,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('odisea',20,13,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('pide_lo_que_tu_quieras_',20,13,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('quiero_repetir',20,13,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('se_preparo',20,13,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('siguelo_bailando',20,13,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('una_flor_',20,13,4,CURRENT_DATE);
 
 /* real hasta la muerte*/
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bandolera',14,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('brindemos',14,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('ella_quiere_beber',14,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('espina',14,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('hipocrita',14,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('modo_de_avion',14,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('na_nuevo',14,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('naturaleza',14,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('pensando_en_ti',14,20,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('tu_no_lo_amas',14,20,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bandolera',21,14,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('brindemos',21,14,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('ella_quiere_beber',21,14,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('espina',21,14,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('hipocrita',21,14,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('modo_de_avion',21,14,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('na_nuevo',21,14,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('naturaleza',21,14,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('pensando_en_ti',21,14,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('tu_no_lo_amas',21,14,4,CURRENT_DATE);
 
 /* famouz*/
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('aventura',12,23,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bebe',12,23,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('costear',12,23,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('easy',12,23,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('en_la_mia',12,23,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('imaginaste',12,23,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('no_me_conoce_remix',12,23,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('sabe',12,23,4,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('subiendo_de_nivel',12,23,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('aventura',23,12,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bebe',23,12,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('costear',23,12,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('easy',23,12,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('en_la_mia',23,12,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('imaginaste',23,12,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('no_me_conoce_remix',23,12,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('sabe',23,12,4,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('subiendo_de_nivel',23,12,4,CURRENT_DATE);
 
 /* cicatrices*/
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('alfa_y_omega',11,22,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('balada',11,22,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bestsellers',11,22,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bicho_raro',11,22,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('caminare',11,22,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('costa',11,22,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('ey_mama',11,22,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('generacion_perdida',11,22,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('niño_de_cristal',11,22,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('pecados',11,22,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('piratas',11,22,2,CURRENT_DATE);
-INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('underground',11,22,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('alfa_y_omega',22,11,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('balada',22,11,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bestsellers',22,11,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('bicho_raro',22,11,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('caminare',22,11,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('costa',22,11,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('ey_mama',22,11,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('generacion_perdida',22,11,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('niño_de_cristal',22,11,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('pecados',22,11,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('piratas',22,11,2,CURRENT_DATE);
+INSERT INTO songs (titulo,id_album,id_author,id_style,created_at) VALUES('underground',22,11,2,CURRENT_DATE);
 
 
 /* --- journals --- */
@@ -607,8 +608,8 @@ INSERT INTO journals(id_user, id_song, created_at) VALUES (4,54,CURRENT_DATE);
 INSERT INTO journals(id_user, id_song, created_at) VALUES (4,144,CURRENT_DATE);
 INSERT INTO journals(id_user, id_song, created_at) VALUES (4,14,CURRENT_DATE);
 
-/********************************/
 
+/********************************/
 INSERT INTO playLists(id_user, id_song, created_at) VALUES (1,99,CURRENT_DATE);
 INSERT INTO playLists(id_user, id_song, created_at) VALUES (1,100,CURRENT_DATE);
 INSERT INTO playLists(id_user, id_song, created_at) VALUES (1,101,CURRENT_DATE);
@@ -627,3 +628,51 @@ INSERT INTO playLists(id_user, id_song, created_at) VALUES (2,5,CURRENT_DATE);
 INSERT INTO playLists(id_user, id_song, created_at) VALUES (2,5,CURRENT_DATE);
 INSERT INTO playLists(id_user, id_song, created_at) VALUES (2,101,CURRENT_DATE);
 
+
+
+
+/* USUARIO QUE LE GUSTA EL REGGETON Y RAP*/
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,233,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,234,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,235,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,236,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,237,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,238,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,239,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,240,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,241,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,242,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,243,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,244,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,255,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,260,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,250,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,251,CURRENT_DATE);
+
+
+
+INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,250,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,251,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,244,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,255,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,260,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,250,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,251,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,235,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,236,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,237,CURRENT_DATE);
+
+
+
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,244,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,262,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,263,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,265,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,262,CURRENT_DATE);
+
+INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,265,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,263,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,262,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,264,CURRENT_DATE);
+
+/********************************/
