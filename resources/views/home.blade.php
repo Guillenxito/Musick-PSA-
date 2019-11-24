@@ -213,8 +213,8 @@
 /* ----- VARIABLES ----- */
 
     // objeto audio, ¿¿¿ no lo encuentra porque pertenece al footer ??? 
-    let reproductor = document.getElementById('reproductor');
-    console.log(reproductor);
+    // let reproductor = document.getElementById('reproductor');
+    // console.log(reproductor);
 
     // Esto hay que cambiarlo para pedirlo por javascript porque sino cuando volvamos a HOME se volvera a cargar la página.
     let informacionHome;
@@ -248,9 +248,7 @@
     // Trata la respuesta de home
     const modificarRespuestaHome = (array) => {
         array = array[0];
-        console.log(array['recomendados']);
         let respuesta = new Array();
-
         let novedades = new Array();
         array['novedades'].forEach(function(element) {
             novedades.push({
@@ -258,7 +256,6 @@
                 "nombreAuthor":(element.artista).replace(/_/g,' ').toUpperCase()
             })
         });
-
         let recomendados = new Array();
         array['recomendados'].forEach(function(element) {
             recomendados.push({
@@ -268,7 +265,6 @@
                 "nombreAuthor":(element.artista).replace(/_/g,' ').toUpperCase()                        
             });
         });
-
         let tendencias = new Array();
         array['tendencias'].forEach(function(element) {
             tendencias.push({
@@ -280,7 +276,6 @@
                 "nombreArtista":(element.artista).replace(/_/g,' ').toUpperCase()
             });
         });
-
         let estilos = new Array();
         array['estilos'].forEach(function(element) {
             estilos.push({
@@ -297,7 +292,6 @@
 
     // Trata la respuesta del author 
     const modificarRespuestaAuthor = (array) => {
-        console.log('/////modificarRespuestaAuhor');
         let respuesta = new Array();      
         let albumes = new Array();
         array.albums.forEach(function(album) {
@@ -325,18 +319,13 @@
         respuesta['albumes'] = albumes;        
         respuesta['canciones'] = canciones;
         respuesta['autor'] = autor;
-        console.log('respuesta --->>> ',respuesta);
         return respuesta;
     }
 
     // Trata la respuesta del album 
     const modificarRespuestaAlbum = (array) => {
-        console.log('MODIFICAR RESPUESTA ALBUM ---->>>> ', array);
         let respuesta = new Array();      
         let album = new Array();
-        console.log(array.album);
-        console.log(array.autor);
-        console.log(array.autor.informacion);
         album.push({
             "id_album" : array.album.id_album,
             "nombreAlbum_" : array.album.nombreAlbum,
@@ -358,13 +347,11 @@
         });
         respuesta['album'] = album;        
         respuesta['canciones'] = canciones;
-        console.log('respuesta --->>> ',respuesta);
         return respuesta;
     }
 
     // Trata la respuesta de la biblioteca
     const modificarRespuestaBiblioteca = (array) => {
-            console.log('MODIFICAR RESPUESTA BIBLIOTECA ---->>>> ', array);
         let respuesta = new Array();      
         let canciones = new Array();
         let posicionCancionAlbum = 1;
@@ -380,8 +367,7 @@
                 "id_song" : cancion.id_song,
                 "posicionCancionAlbum" : posicionCancionAlbum++
             });
-        });    
-        console.log('respuesta --->>> ',respuesta);
+        });
         return respuesta;
     }
 
@@ -719,18 +705,24 @@
         const cancionFinalizada = reproductor.currentSrc.split('/')
                                                         .filter((v,p) => p > 3)
                                                         .map((v,p) => (p == 3) ? v : v.split('.')[0]);
-        console.log(cancionFinalizada);
-        for (let i = 0; i < Object.keys(arrayCanciones).length; i++) {
-            if (arrayCanciones[i].nombreAuthor == cancionFinalizada[0] && 
-            arrayCanciones[i].nombreAlbum == cancionFinalizada[1] &&
-            arrayCanciones[i].nombreCancion == cancionFinalizada[2]){
-                reproductor.removeAttribute('src');
-                reproductor.setAttribute('src', urlServidor + '/musica/' + Object.values(arrayCanciones[+i + 1]).join('/') + '.mp3');
-                reproductor.play();
-                return;
-            }
+        console.log("cancionFinalizada --->>>",cancionFinalizada);
+        console.log("arrayCanciones --->>>");
+        console.log(arrayCanciones);
+        console.log(arrayCanciones[0]);
+        if (arrayCanciones[0]) {
+            for (let i = 0; i < Object.keys(arrayCanciones).length; i++) {
+                if (arrayCanciones[i].nombreAuthor == cancionFinalizada[0] && 
+                arrayCanciones[i].nombreAlbum == cancionFinalizada[1] &&
+                arrayCanciones[i].nombreCancion == cancionFinalizada[2]){
+                    reproductor.removeAttribute('src');
+                    reproductor.setAttribute('src', urlServidor + '/musica/' + Object.values(arrayCanciones[+i + 1]).join('/') + '.mp3');
+                    reproductor.play();
+                    return;
+                }
+            }   
         }
-        // pedirDatos(,cancionesEstilo);
+        console.log("CANCION NO ENCONTRADA --------->>>>>>>>>>>>");
+        pedirDatos('play/cancionesEstilo/' + cancionFinalizada[2],cambiarListaReproduccion);
     }
 
     // Reproduce una canción en concreto
@@ -744,11 +736,14 @@
         reproductor.removeAttribute('src');
         reproductor.setAttribute('src', urlServidor + '/musica/' + cancion.nombreAuthor + '/' + cancion.nombreAlbum + '/' + cancion.nombreCancion + '.mp3');
         reproductor.play();
-        cambiarCancion();
+        reproductor.addEventListener('ended', cambiarCancion);
+        // cambiarCancion();
         // reproducirCanciones();
     }
 
     const cambiarListaReproduccion = (lista) => {
+        console.log("cambiarListaReproduccion --->>>");
+        console.log(JSON.parse(lista));
         arrayCanciones = JSON.parse(lista);
         reproducirCancion(arrayCanciones[0]);
     }
@@ -1059,33 +1054,35 @@
     const iniciarApp = () => {
         mostrarHome();
         ponerEventoNavbar();
-        ponerEventoReproductor();
+        // ponerEventoReproductor();
         // reproducirCanciones(arrayCanciones);
     }
      
     // Para hacer pruebas, del servidor deberá llegar un objeto de este tipo para poder reproducir las canciones
-    let arrayCanciones = { 
-        "cancion_1" : {
-            nombreArtista : "camaron",
-            nombreAlbum : "caminito_de_totana",
-            nombreCancion : "la_jaca_que_yo_tenia"
-        },
-        "cancion_2" : {
-            nombreArtista : "los_delinquentes",
-            nombreAlbum : "extras",
-            nombreCancion : "sigo_a_la_luna"
-        },
-        "cancion_3" : {
-            nombreArtista : "el_arrebato",
-            nombreAlbum : "abrazos",
-            nombreCancion : "pequeneces"
-        },
-        "cancion_4" : {
-            nombreArtista : "el_canto_del_loco",
-            nombreAlbum : "zapatillas",
-            nombreCancion : "zapatillas"
-        }
-    };
+    // let arrayCanciones = { 
+    //     "cancion_1" : {
+    //         nombreArtista : "camaron",
+    //         nombreAlbum : "caminito_de_totana",
+    //         nombreCancion : "la_jaca_que_yo_tenia"
+    //     },
+    //     "cancion_2" : {
+    //         nombreArtista : "los_delinquentes",
+    //         nombreAlbum : "extras",
+    //         nombreCancion : "sigo_a_la_luna"
+    //     },
+    //     "cancion_3" : {
+    //         nombreArtista : "el_arrebato",
+    //         nombreAlbum : "abrazos",
+    //         nombreCancion : "pequeneces"
+    //     },
+    //     "cancion_4" : {
+    //         nombreArtista : "el_canto_del_loco",
+    //         nombreAlbum : "zapatillas",
+    //         nombreCancion : "zapatillas"
+    //     }
+    // };
+
+    let arrayCanciones = [];
 
     ponerEventoSearch();
     ponerEventoListSearch();

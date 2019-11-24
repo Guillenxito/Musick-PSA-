@@ -33,6 +33,7 @@ Route::get('/autor/{artist}/{album}', 'AlbumController@albumJSON');
 // ReproductorController
 Route::get('/play/album/{album}', 'ReproductorController@playAlbum');
 Route::get('/play/cancion/{cancion}', 'ReproductorController@playCancion');
+Route::get('/play/cancionesEstilo/{cancion}', 'ReproductorController@cancionesEstilo');
 
 // PlayListController
 Route::get('/biblioteca/album/{album}', 'PlayListController@bibliotecaAlbum');

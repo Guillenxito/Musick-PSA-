@@ -30,5 +30,21 @@ class ReproductorController extends Controller
                          ->get();
         return json_decode(json_encode($canciones), true);   
     }
+
+    // Devuelve una lista de canciones ordenadas aleatoriamente del estilo de la última cancion escuchada
+    public function cancionesEstilo($nombreCancion) {
+        $id_style = DB::table('songs')
+                      ->select('id_style')
+                      ->where('titulo','=',$nombreCancion)
+                      ->get();
+        $listaEstilo = DB::table('songs')
+                           ->join('albums','albums.id_album', '=', 'songs.id_album')
+                           ->join('authors','authors.id_author', '=', 'songs.id_author')
+                           ->select('authors.nombre AS nombreAuthor', 'albums.nombre AS nombreAlbum', 'songs.titulo AS nombreCancion')
+                           ->where('songs.id_style','=',$id_style[0] -> id_style)
+                           ->inRandomOrder()
+                           ->get();
+        return json_decode(json_encode($listaEstilo), true);
+    }
     
 }
