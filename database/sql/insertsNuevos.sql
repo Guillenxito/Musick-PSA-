@@ -631,7 +631,7 @@ INSERT INTO playLists(id_user, id_song, created_at) VALUES (2,101,CURRENT_DATE);
 
 
 
-/* USUARIO QUE LE GUSTA EL REGGETON*/
+/* USUARIO QUE LE GUSTA EL REGGETON Y RAP*/
 INSERT INTO journals(id_user, id_song, created_at) VALUES (?,233,CURRENT_DATE);
 INSERT INTO journals(id_user, id_song, created_at) VALUES (?,234,CURRENT_DATE);
 INSERT INTO journals(id_user, id_song, created_at) VALUES (?,235,CURRENT_DATE);
@@ -650,6 +650,7 @@ INSERT INTO journals(id_user, id_song, created_at) VALUES (?,250,CURRENT_DATE);
 INSERT INTO journals(id_user, id_song, created_at) VALUES (?,251,CURRENT_DATE);
 
 
+
 INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,250,CURRENT_DATE);
 INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,251,CURRENT_DATE);
 INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,244,CURRENT_DATE);
@@ -660,4 +661,18 @@ INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,251,CURRENT_DATE)
 INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,235,CURRENT_DATE);
 INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,236,CURRENT_DATE);
 INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,237,CURRENT_DATE);
+
+
+
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,244,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,262,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,263,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,265,CURRENT_DATE);
+INSERT INTO journals(id_user, id_song, created_at) VALUES (?,262,CURRENT_DATE);
+
+INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,265,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,263,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,262,CURRENT_DATE);
+INSERT INTO playLists(id_user, id_song, created_at) VALUES  (?,264,CURRENT_DATE);
+
 /********************************/
