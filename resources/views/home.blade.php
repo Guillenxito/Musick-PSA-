@@ -130,23 +130,25 @@
         <!-- album -->
         <div class="container text-center" id="alb">
             <div class="row text-center" id="album_autor">
-                <template id="template-album-portada"> 
-                    <div class="card col-12 px-0">
+                <template id="template-album-portada">
+                    <img class="flex-fill card-img-top border rounded col-12 col-lg-4 p-0 animated fadeInLeft slow" src="{{ asset('img/artistas/¡¡¡nombreAutor_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap"> 
+                    <div class="card col-12 col-lg-8 px-0 animated fadeInRight slow">
                         <div class="card-header bg-dark text-light text-center h1 titulo">¡¡¡nombreAutor!!!</div>
-                        <img class="flex-fill card-img-top border rounded col-12 col-lg-4 p-0 animated fadeInLeft slow" src="{{ asset('img/artistas/¡¡¡nombreAutor_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap"> 
-                        <div class="flex-fill card-text-right col-12 col-lg-8 animated fadeInRight slow">
+                        <div class="flex-fill card-text-right col-12 p-5">
                             <div class="h3">
                                 ¡¡¡informacion!!!
                             </div>
-                            <div class="col-1">
-                                <i class="material-icons icono-album" id="play-album-¡¡¡id_album!!!">
-                                    play_circle_outline
-                                </i>
-                            </div>
-                            <div class="col-1">
-                                <i class="material-icons icono-album" id="biblioteca-album-¡¡¡id_album!!!">
-                                    playlist_add
-                                </i>
+                            <div class="row">                            
+                                <div class="flex-fill col-6">
+                                    <i class="material-icons icono-album" id="play-album-¡¡¡id_album!!!">
+                                        play_circle_outline
+                                    </i>
+                                </div>
+                                <div class="flex-fill col-6">
+                                    <i class="material-icons icono-album" id="biblioteca-album-¡¡¡id_album!!!">
+                                        playlist_add
+                                    </i>
+                                </div>
                             </div>
                         </div>
                     </div>
