@@ -131,20 +131,22 @@
         <div class="container text-center" id="alb">
             <div class="row text-center" id="album_autor">
                 <template id="template-album-portada">
-                    <img class="flex-fill card-img-top border rounded col-12 col-lg-4 p-0 animated fadeInLeft slow" src="{{ asset('img/artistas/¡¡¡nombreAutor_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap"> 
+                    <div class="col-12 col-lg-4">
+                        <img class="flex-fill card-img-top border rounded col-12 p-0 animated fadeInLeft slow" src="{{ asset('img/artistas/¡¡¡nombreAutor_!!!/¡¡¡nombreAlbum_!!!.png') }}" alt="Card image cap"> 
+                    </div>
                     <div class="card col-12 col-lg-8 px-0 animated fadeInRight slow">
                         <div class="card-header bg-dark text-light text-center h1 titulo">¡¡¡nombreAutor!!!</div>
                         <div class="flex-fill card-text-right col-12 p-5">
                             <div class="h3">
                                 ¡¡¡informacion!!!
                             </div>
-                            <div class="row">                            
-                                <div class="flex-fill col-6">
+                            <div class="row pt-5">                            
+                                <div class="flex-fill col-6 col-lg-10 text-lg-right">
                                     <i class="material-icons icono-album" id="play-album-¡¡¡id_album!!!">
                                         play_circle_outline
                                     </i>
                                 </div>
-                                <div class="flex-fill col-6">
+                                <div class="flex-fill col-6 col-lg-2">
                                     <i class="material-icons icono-album" id="biblioteca-album-¡¡¡id_album!!!">
                                         playlist_add
                                     </i>
@@ -192,9 +194,9 @@
                     <button type="button" class="list-group-item list-group-item-action d-flex h4" id="¡¡¡id_list!!!-¡¡¡id_song!!!">
                         <div class="numeroCancion numeroCancionBiblioteca">¡¡¡posicionCancionAlbum!!!</div>
                         <div class="text-left flex-grow-1">¡¡¡titulo!!!</div>
-                        <div class="nombre_album">¡¡¡nombreAlbum!!!</div>
-                        <div> / </div>
-                        <div class="nombre_autor">¡¡¡nombreAuthor!!!</div>
+                        <div class="nombre_album d-none d-lg-flex">¡¡¡nombreAlbum!!!</div>
+                        <div class="d-none d-lg-flex"> / </div>
+                        <div class="nombre_autor d-none d-lg-flex">¡¡¡nombreAuthor!!!</div>
                         <div class="col-1">
                             <i class="material-icons" id="play-¡¡¡id_song!!!">
                                 play_circle_outline
@@ -654,10 +656,12 @@
 
     // Borrar el album
     const borrarAlbum = () => {
-        const albumPortada = document.querySelector("#album_autor > div.card.col-12.px-0");
+        const albumImagen = document.querySelector("#album_autor > div.col-12.col-lg-4");
+        const albumPortada = document.querySelector("#album_autor > div.card.col-12.col-lg-8.px-0.animated.fadeInRight.slow");
         const albumCanciones = document.querySelector("#album_canciones > div");
-        const albumTitulo = document.querySelector("#album_autor > div:nth-child(3)");
+        const albumTitulo = document.querySelector("#album_autor > div.card-header.bg-dark.text-light.text-center.col-12.mt-3.h1.titulo.animated.fadeInUp.slow.delay-1s");
         if (albumPortada && albumCanciones) {
+            albumImagen.remove();
             albumPortada.remove();
             albumCanciones.remove();
             albumTitulo.remove();
@@ -1055,7 +1059,7 @@
     
     iniciarApp();
 
-/* ----- FIN FUNCIONES EXTRA ----- */
+/* ----- FIN ARRANQUE DE LA APLICACIÓN ----- */
 
 </script>
 

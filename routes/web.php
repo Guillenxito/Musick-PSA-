@@ -21,11 +21,6 @@ Route::get('/logout', function(){
 // Pide autentificacion para todas las paginas.
 Auth::routes();
 
-// UserController
-Route::get('/user/show/{id}', 'UserController@show');
-Route::get('/users/showAll', 'UserController@showAll');
-Route::get('/user/destroy/{id}', 'UserController@destroy');
-
 // AlbumController
 Route::get('/autor/{artist}', 'AlbumController@authorJSON');
 Route::get('/autor/{artist}/{album}', 'AlbumController@albumJSON');

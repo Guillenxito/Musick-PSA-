@@ -1,11 +1,3 @@
-<?php
-/*
-echo "<pre>";
-echo '<b>ARRAY $footer</b><BR>';
-print_r($footer);
-echo "</pre>";
-*/
-?>
 <div class="container-fluid fixed-bottom bg-dark animated fadeInUp slow delay-2s">
     <div class="row">
         <div class="col-12 p-3 text-center">
