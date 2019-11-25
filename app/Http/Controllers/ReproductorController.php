@@ -50,4 +50,17 @@ class ReproductorController extends Controller
         return json_decode(json_encode($listaEstilo), true);
     }
     
+    // Devuelve la playList del usuario
+    public function biblioteca() {
+        $canciones = DB::table('playLists')
+                         ->join('songs','songs.id_song', '=', 'playLists.id_song')
+                         ->join('authors','authors.id_author', '=', 'songs.id_author')
+                         ->join('albums','albums.id_album', '=', 'songs.id_album')
+                         ->select('authors.nombre AS nombreAuthor','albums.nombre AS nombreAlbum','songs.titulo AS nombreCancion')
+                         ->where('playLists.id_user','=', auth()->user()->id)
+                         ->orderBy('playLists.created_at', 'asc')
+                         ->get();
+        return json_decode(json_encode($canciones), true);   
+    }
+
 }

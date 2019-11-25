@@ -14,10 +14,7 @@ class PlaylistController extends Controller
                         ->select('id_song')
                         ->where('id_album', '=', $id_album)
                         ->get();
-                        echo "<pre>";
-                        print_r(json_decode(json_encode($id_songs), true));
-                        echo "</pre>";
-                        $array_id_songs = json_decode(json_encode($id_songs), true);
+        $array_id_songs = json_decode(json_encode($id_songs), true);
         forEach($array_id_songs as $clave => $valor) {
             forEach($valor as $id_song) {
                 DB::table('playLists')->updateOrInsert(
@@ -59,11 +56,6 @@ class PlaylistController extends Controller
                 ['id_user', '=', auth()->user()->id]
                 ])
             ->delete();
-    }
-
-    // Devuelve la playList del usuario
-    public function devolverPlayList() {
-
     }
 
 }

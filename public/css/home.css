@@ -54,3 +54,19 @@ button,
 #nov {
     display: none;
 }
+
+#navbarSupportedContent {
+    flex-basis: -moz-available;
+}
+
+#alb button,
+#bibl button {
+    cursor: auto;
+}
+
+#alb i,
+#bibl i,
+#desplegableAlbumnes {
+    cursor: pointer;
+}
+

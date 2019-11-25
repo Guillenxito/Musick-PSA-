@@ -580,7 +580,6 @@
         }
     }
 
-
 /* ----- FIN MOSTRAR ----- */
 
 /* ----- OCULTAR ----- */
@@ -700,9 +699,9 @@
     
 /* ----- FIN OCULTAR ----- */
 
-/* ----- PENDIENTE DE HACER ----- */
+/* ----- REPRODUCTOR ----- */
 
-    // Reproduce la cancion que se ha pulsado en la vista y a continuación la array pasada, que puede ser la biblioteca, el album o todos los discos del author
+    // Cambia la lista de canciones y reproduce la primera
     const reproducirCanciones = (informacionCanciones) => {
         arrayCanciones = JSON.parse(informacionCanciones);
         const reproductor = document.getElementById('reproductor');
@@ -721,14 +720,19 @@
                 if (arrayCanciones[i].nombreAuthor == cancionFinalizada[0] && 
                 arrayCanciones[i].nombreAlbum == cancionFinalizada[1] &&
                 arrayCanciones[i].nombreCancion == cancionFinalizada[2]){
-                    reproductor.removeAttribute('src');
-                    reproductor.setAttribute('src', urlServidor + '/musica/' + Object.values(arrayCanciones[+i + 1]).join('/') + '.mp3');
-                    reproductor.play();
-                    return;
+                    if (arrayCanciones[+i + 1] == undefined) {
+                        pedirDatos('play/cancionesEstilo/' + cancionFinalizada[2],reproducirCanciones);
+                        return;
+                    } else {
+                        reproductor.removeAttribute('src');
+                        reproductor.setAttribute('src', urlServidor + '/musica/' + Object.values(arrayCanciones[+i + 1]).join('/') + '.mp3');
+                        reproductor.play();
+                        return;
+                    }
                 }
             }   
         }
-        pedirDatos('play/cancionesEstilo/' + cancionFinalizada[2],cambiarListaReproduccion);
+        pedirDatos('play/cancionesEstilo/' + cancionFinalizada[2],reproducirCanciones);
     }
 
     // Reproduce una canción en concreto
@@ -741,15 +745,12 @@
         reproductor.play();
     }
 
-    // Cambia el array
+    // Cambia el la lista de reproduccion sin cambiar la cancion que esta sonando
     const cambiarListaReproduccion = (lista) => {
-        console.log("cambiarListaReproduccion --->>>");
-        console.log(JSON.parse(lista));
         arrayCanciones = JSON.parse(lista);
-        reproducirCancion(arrayCanciones[0]);
     }
 
-/* ----- FIN PENDIENTE DE HACER ----- */
+/* ----- FIN REPRODUCTOR ----- */
 
 /* ----- PUESTA Y GESTION DE LOS EVENTOS ----- */
 
@@ -928,6 +929,7 @@
                     },1000);
                 } else if (accion[0] == 'play') {
                     pedirDatos(accion[0] + '/cancion/' + accion[1], reproducirCancion);
+                    pedirDatos(accion[0] + '/biblioteca/', cambiarListaReproduccion);
                 }
             }
         }
